@@ -8,6 +8,7 @@ import argparse
 import importlib
 import importlib.util
 import io
+import os
 import sys
 import time
 from collections.abc import Callable, Sequence
@@ -30,6 +31,7 @@ from scripts._automation_shared import (  # noqa: E402
     normalize_repository_paths,
     run_command,
 )
+from scripts.pytest_guard import WRAPPER_ENV_VAR
 from scripts.toml_compat import parse_toml_text
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -217,7 +219,9 @@ def _run_pytest(command: Sequence[str]) -> tuple[int, str, float]:
 
     SUMMARY_DIR.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
-    completed = run_command(command, cwd=REPO_ROOT, check=False)
+    env = dict(os.environ)
+    env[WRAPPER_ENV_VAR] = "1"
+    completed = run_command(command, cwd=REPO_ROOT, env=env, check=False)
     duration = time.perf_counter() - start
     output = (completed.stdout or "") + (completed.stderr or "")
     PYTEST_RAW_LOG.write_text(output, encoding="utf-8")
@@ -249,9 +253,15 @@ def _run_pytest_inline(command: Sequence[str]) -> tuple[int, str, float]:
     original_stderr = sys.stderr
     sys.stdout = capture
     sys.stderr = capture
+    previous_env = os.environ.get(WRAPPER_ENV_VAR)
+    os.environ[WRAPPER_ENV_VAR] = "1"
     try:
         exit_code = int(main_callable(command[3:]))
     finally:
+        if previous_env is None:
+            os.environ.pop(WRAPPER_ENV_VAR, None)
+        else:
+            os.environ[WRAPPER_ENV_VAR] = previous_env
         sys.stdout = original_stdout
         sys.stderr = original_stderr
     duration = time.perf_counter() - start

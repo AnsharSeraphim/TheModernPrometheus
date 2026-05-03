@@ -24,6 +24,8 @@ This folder is the operational entry point for repository automation.
 
 ## Wrapper-first policy
 
+- Naked `pytest` execution is blocked by `tests/conftest.py` unless `scripts/run_tests.py` sets the wrapper gate environment variable.
+
 - Use `python scripts/run_precommit_suite.py` instead of naked `pre-commit run` hook aliases.
 - Use `python scripts/run_tests.py` instead of naked `pytest` so summary artifacts and scope logic stay consistent.
 
@@ -35,3 +37,11 @@ This folder is the operational entry point for repository automation.
   - `python scripts/audit_docstrings.py --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md`
 
 Use the JSON catalog when downstream tooling expects structured machine-readable metadata, and use the Markdown inventory when reviewers need a line-by-line audit table they can quickly compare against implementation notes.
+
+
+## Docstring aggregation operational modes
+
+- Full scan: `python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json`
+- Scoped exclusions: add one or more `--exclude <glob>` entries to omit generated/vendor paths during export.
+- Output conventions: prefer writing JSON under `context/` for bootstrap payloads and keep review markdown under `build/automation_contract/` for local evidence.
+- Downstream consumers: agent bootstrap docs (`docs/agent_bootstrap/README.md`), prompt recipes, and audit workflows should reference the generated JSON schema/keys instead of parsing source files ad hoc.

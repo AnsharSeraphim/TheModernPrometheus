@@ -70,3 +70,21 @@ The pre-commit suite currently orchestrates:
 ## Release notes
 
 Update [docs/release_notes.md](docs/release_notes.md) whenever tooling, contributor workflow, or user-visible repository behavior changes.
+
+## Template onboarding
+
+If you are using this repository as a starter template, complete this onboarding path before your first PR:
+
+1. Read `README.md` for repository purpose and layout.
+2. Read `AGENTS.md` for wrapper-first policy, required quality gates, and checklist governance.
+3. Run the canonical command flow:
+   - `python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>` while iterating.
+   - `python scripts/run_precommit_suite.py` then `python scripts/run_tests.py` before review.
+4. Collect evidence artifacts from `build/automation_contract/` and paste the summary blocks in your PR/testing notes.
+5. If a failure cannot be fixed in-session, add a granular remaining-work entry to `Final-Productization-Checklist.md` with scope, target files, dependencies, and DONE WHEN criteria.
+
+Failure/remediation flow:
+- Wrapper reports failing hook/test target.
+- Remediate implementation (never suppress tooling).
+- Re-run wrapper on touched paths.
+- Re-run full wrappers before handoff.
