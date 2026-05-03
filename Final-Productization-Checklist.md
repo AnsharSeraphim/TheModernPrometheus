@@ -32,9 +32,6 @@ Poor wording in these entries can keep each checklist entry from being specific,
 ---
 
 ## Outstanding Tasks
-
-- [ ] Create `.github/dependabot.yml` with grouped update strategy for ecosystem-specific dependency batching (pip + GitHub Actions), explicit schedules, and reviewer labels so template consumers inherit sane update noise control; DONE WHEN config validates and grouping rules are documented in README/docs.
-- [ ] Audit pyproject tooling constraints for template reproducibility notes (Python pinning rationale, dependency caps, strict checker posture) and capture this rationale in docs; DONE WHEN rationale appears in documentation with links to `pyproject.toml` sections.
     
 ### Checklist Entry Template (Use for every new actionable item)
 - Required fields for each entry:
