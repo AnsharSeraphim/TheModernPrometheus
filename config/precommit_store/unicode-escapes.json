@@ -26,6 +26,9 @@
   "config/precommit_store/bandit.json": {
     "skip": "Y"
   },
+  "config/precommit_store/checklist-structure.json": {
+    "skip": "Y"
+  },
   "config/precommit_store/deptry.json": {
     "skip": "Y"
   },
@@ -80,6 +83,9 @@
   "scripts/aggregate_project_docstrings.py": {
     "skip": "Y"
   },
+  "scripts/audit_docstrings.py": {
+    "skip": "Y"
+  },
   "scripts/check_checklist_structure.py": {
     "skip": "Y"
   },
@@ -114,6 +120,9 @@
     "skip": "Y"
   },
   "tests/test_aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "tests/test_audit_docstrings.py": {
     "skip": "Y"
   },
   "tests/test_check_checklist_structure.py": {

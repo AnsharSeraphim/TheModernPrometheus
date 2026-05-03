@@ -40,7 +40,8 @@ python scripts/run_tests.py
 
 ## Docstring automation support
 
-- `scripts/aggregate_project_docstrings.py` exports a monolithic JSON catalog of Python module/class/function docstrings for contextual bootstrap workflows.
+- `scripts/aggregate_project_docstrings.py` exports a monolithic JSON catalog of Python module/class/function docstrings for contextual bootstrap workflows and machine-readable downstream processing.
+- `scripts/audit_docstrings.py` generates a human-readable Markdown inventory of discovered docstrings so reviewers can run live implementation-vs-documentation parity audits with line-level symbol visibility.
 - Interrogate is configured at 100% coverage in project tooling and is executed via the pre-commit wrapper.
 
 ## Documentation expectations for template consumers
