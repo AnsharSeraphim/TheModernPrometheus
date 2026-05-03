@@ -1,4 +1,7 @@
 {
+  ".github/dependabot.yml": {
+    "skip": "Y"
+  },
   "AGENTS.md": {
     "skip": "Y"
   },

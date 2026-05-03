@@ -1,0 +1,59 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "python"
+    reviewers:
+      - "repository-contributors"
+    open-pull-requests-limit: 8
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      python-runtime-and-build:
+        patterns:
+          - "setuptools"
+          - "wheel"
+      python-quality-tooling:
+        patterns:
+          - "bandit"
+          - "deptry"
+          - "interrogate"
+          - "mypy"
+          - "pre-commit"
+          - "pylint"
+          - "pyright"
+          - "pytest"
+          - "pytest-cov"
+          - "pytest-xdist"
+          - "ruff"
+          - "tomli"
+          - "vulture"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:30"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    reviewers:
+      - "repository-contributors"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      github-actions-weekly:
+        patterns:
+          - "*"

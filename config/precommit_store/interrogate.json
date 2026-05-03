@@ -38,6 +38,9 @@
   "scripts/toml_compat.py": {
     "skip": "Y"
   },
+  "tests/conftest.py": {
+    "skip": "N"
+  },
   "tests/test_aggregate_project_docstrings.py": {
     "skip": "N"
   },
@@ -54,6 +57,9 @@
     "skip": "N"
   },
   "tests/test_precommit_filter.py": {
+    "skip": "N"
+  },
+  "tests/test_pytest_guard.py": {
     "skip": "N"
   },
   "tests/test_run_tests.py": {

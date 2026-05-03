@@ -5,8 +5,10 @@
 ### Added
 - Added a UTF-8 compliance hook (`scripts/check_unicode_escapes.py`) to the unified pre-commit suite so text assets are validated for UTF-8 decoding and symbolic Unicode escape literals.
 - Added an `interrogate` hook to the unified pre-commit suite with `--fail-under=100` so docstring coverage enforcement is explicit and automated.
+- Added `.github/dependabot.yml` with grouped weekly update strategies for pip and GitHub Actions dependencies, explicit labels, reviewer defaults, and bounded open-PR limits.
 
 ### Changed
+- Documented the pyproject reproducibility rationale in `README.md`, including Python pinning (`>=3.13,<3.14`), bounded dependency caps, and strict checker posture expectations.
 - Enforced wrapper-first pytest execution via a repository-level pytest session guard and wrapper-managed environment variable handshake, with tests covering the warning contract.
 - Added `context/README.md` and `docs/agent_bootstrap/README.md` to document docstring-catalog artifact lifecycle, bootstrap outputs, and acceptance checks.
 - Reworked `docs/README.md` into an audience-based documentation index and expanded `CONTRIBUTING.md` onboarding/remediation flow for template consumers.

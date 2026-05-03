@@ -67,6 +67,13 @@ python scripts/run_tests.py
 - Tests must be driven by `scripts/run_tests.py`.
 - Direct/manual invocations (`pre-commit run <hook>`, naked `pytest`) are treated as policy violations because they bypass repository summary artifacts and skip-ledger coordination.
 
+## Dependency and tooling reproducibility posture
+
+- Python runtime is intentionally pinned to `>=3.13,<3.14` in `pyproject.toml` so contributors and automation runners execute under a single interpreter target that matches Ruff, MyPy, Pyright, and Pylint settings.
+- Build backend packages (`setuptools`, `wheel`) and development tools use explicit lower and upper bounds (`>=x,<next-major`) to reduce resolver drift while still accepting patch/minor security and stability updates.
+- Strict checker posture is intentional: MyPy and Pyright both run in strict modes, Ruff linting selects correctness/simplification rule families, and interrogate enforces 100% docstring coverage.
+- Dependabot grouping is configured in `.github/dependabot.yml` to batch Python quality-tooling and GitHub Actions updates separately, reducing review noise while preserving frequent update cadence.
+
 ## Docstring automation support
 
 - `scripts/aggregate_project_docstrings.py` exports a monolithic JSON catalog of Python module/class/function docstrings for contextual bootstrap workflows and machine-readable downstream processing.
