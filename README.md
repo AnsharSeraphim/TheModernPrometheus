@@ -1,6 +1,10 @@
-# Generic Python Repository Scaffold
+# The Modern Prometheus / GitHub Repository Template
 
-This repository is a template baseline for teams who want strict, wrapper-first automation from day one.
+This GitHub Repository Starter is a reusable repository-bootstrap system for creating agent-ready, quality-controlled Python projects. It packages the instructions, scripts, ledgers, checklists, policies, and automation needed for a repository to begin with disciplined execution rather than acquiring rules later through preventable execution failures.
+
+The starter includes coding-agent directives, contributor instructions, unified pre-commit orchestration, unified test orchestration, strict lint/type/security/docstring checks, UTF-8 policy, release-note practices, checklist templates, and per-hook JSON skip ledgers. The skip-ledger design allows quality-assurance hooks to avoid rechecking the whole repository on every iteration by focusing on touched or not-yet-cleared files.
+
+The system can be extended from single-contributor use to multi-contributor work by adding stronger file identity metadata such as blob hashes, modification times, contributor scope, and manifest reconciliation. Its docstring aggregation and interrogation functions also support rapid conceptual audit: reviewers can inspect what the code claims each module, class, and function is doing without reading the entire repository from scratch. This system also allows .json export of Docstring Manifests for frictionless LLM processing for the purpose of project documentation, user manuals, and conceptual audit.
 
 ## Repository map
 
