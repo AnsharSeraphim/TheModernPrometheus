@@ -1,4 +1,7 @@
 {
+  "<GLOBAL>": {
+    "skip": "N"
+  },
   "scripts/__init__.py": {
     "skip": "Y"
   },
