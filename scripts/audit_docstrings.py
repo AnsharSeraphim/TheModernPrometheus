@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a docstring inventory for documentation-versus-implementation audits."""
+"""Build a Markdown docstring inventory for documentation-versus-implementation audits."""
 
 from __future__ import annotations
 
@@ -12,7 +12,8 @@ DocstringNode = ast.Module | ast.ClassDef | ast.FunctionDef | ast.AsyncFunctionD
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_PATH = REPO_ROOT / "build" / "automation_contract" / "docstring_inventory.md"
-DEFAULT_SCAN_ROOTS = (REPO_ROOT / "src" / "lcdadtmb", REPO_ROOT / "scripts")
+DEFAULT_SCAN_ROOTS = (REPO_ROOT / "scripts", REPO_ROOT / "tests")
+EXCLUDED_DIRECTORY_NAMES = {".git", ".venv", "build", "dist", "__pycache__"}
 
 
 @dataclass(frozen=True)
@@ -83,17 +84,38 @@ class _DocstringCollector(ast.NodeVisitor):
         )
 
 
+def _is_excluded(path: Path) -> bool:
+    """Return True when the path includes an excluded directory name."""
+
+    return any(part in EXCLUDED_DIRECTORY_NAMES for part in path.parts)
+
+
 def _iter_python_files(*, roots: tuple[Path, ...]) -> list[Path]:
     """Return sorted Python files found beneath the configured scan roots."""
 
     files: list[Path] = []
     for root in roots:
+        if _is_excluded(root):
+            continue
         if root.is_file() and root.suffix == ".py":
             files.append(root)
             continue
         if root.is_dir():
-            files.extend(path for path in root.rglob("*.py") if ".egg-info" not in path.parts)
+            files.extend(path for path in root.rglob("*.py") if not _is_excluded(path))
     return sorted(files)
+
+
+def _relative_display_path(*, file_path: Path, roots: tuple[Path, ...]) -> str:
+    """Return a stable display path relative to repository or requested scan roots."""
+
+    if file_path.is_relative_to(REPO_ROOT):
+        return file_path.relative_to(REPO_ROOT).as_posix()
+    for root in roots:
+        if root.is_dir() and file_path.is_relative_to(root):
+            return file_path.relative_to(root).as_posix()
+        if root.is_file() and file_path == root:
+            return root.name
+    return file_path.as_posix()
 
 
 def collect_docstrings(*, roots: tuple[Path, ...]) -> dict[str, list[DocstringEntry]]:
@@ -101,7 +123,7 @@ def collect_docstrings(*, roots: tuple[Path, ...]) -> dict[str, list[DocstringEn
 
     collected: dict[str, list[DocstringEntry]] = {}
     for file_path in _iter_python_files(roots=roots):
-        relative_path = file_path.relative_to(REPO_ROOT).as_posix()
+        relative_path = _relative_display_path(file_path=file_path, roots=roots)
         tree = ast.parse(file_path.read_text(encoding="utf-8"), filename=relative_path)
         module_symbol = relative_path.removesuffix(".py").replace("/", ".")
         collector = _DocstringCollector(module_path=module_symbol)
@@ -147,7 +169,7 @@ def _parse_args() -> argparse.Namespace:
         action="append",
         dest="scan_roots",
         default=None,
-        help="Optional file or directory to scan (repeatable). Defaults to src/lcdadtmb and scripts.",
+        help="Optional file or directory to scan (repeatable). Defaults to scripts and tests.",
     )
     parser.add_argument(
         "--output",

@@ -15,3 +15,4 @@
 - Added folder-level README coverage for `config/`, `docs/`, `scripts/`, `scripts/test_profiles/`, and `tests/` to improve template navigation for new users and stateless agents.
 - Added coverage tests for `scripts/aggregate_project_docstrings.py` to verify missing-docstring accounting and excluded-directory behavior.
 - Expanded root README orientation with wrapper-first execution policy, repository map, and docstring automation context.
+- Repurposed `scripts/audit_docstrings.py` for this repository with default scan roots (`scripts/`, `tests/`), excluded-directory handling, and Markdown inventory documentation in `scripts/README.md`.

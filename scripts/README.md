@@ -16,6 +16,7 @@ This folder is the operational entry point for repository automation.
 - `check_conflicts.py`: Lightweight merge-conflict marker detector.
 - `check_checklist_structure.py`: Guards required checklist governance/audit sections from accidental removal.
 - `aggregate_project_docstrings.py`: Exports a JSON catalog of module/class/function docstrings for agent context bootstrapping.
+- `audit_docstrings.py`: Produces a Markdown inventory report for implementation-vs-documentation parity audits, ideal for human review and release-note validation.
 
 ## Test profile assets
 
@@ -25,3 +26,12 @@ This folder is the operational entry point for repository automation.
 
 - Use `python scripts/run_precommit_suite.py` instead of naked `pre-commit run` hook aliases.
 - Use `python scripts/run_tests.py` instead of naked `pytest` so summary artifacts and scope logic stay consistent.
+
+## Docstring workflow quickstart
+
+- JSON bootstrap payload for automated context ingestion:
+  - `python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json`
+- Markdown parity audit for live script behavior checks and narrative alignment:
+  - `python scripts/audit_docstrings.py --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md`
+
+Use the JSON catalog when downstream tooling expects structured machine-readable metadata, and use the Markdown inventory when reviewers need a line-by-line audit table they can quickly compare against implementation notes.
