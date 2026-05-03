@@ -1,0 +1,14 @@
+-e .
+pip>=26.0.1,<27
+bandit>=1.9.4,<2
+deptry>=0.25.1,<1
+interrogate>=1.7.0,<2
+mypy>=1.20.0,<2
+pre-commit>=4.5.1,<5
+pylint>=4.0.5,<5
+pyright>=1.1.408,<2
+pytest>=9.0.2,<10
+pytest-cov>=7.1.0,<8
+pytest-xdist>=3.8.0,<4
+ruff>=0.15.9,<1
+vulture>=2.16,<3

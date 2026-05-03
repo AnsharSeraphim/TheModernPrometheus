@@ -1,0 +1,6 @@
+{
+  "tests/test_run_precommit_suite.py": [
+    "************* Module scripts.run_precommit_suite",
+    "scripts/run_precommit_suite.py:302:0: R0911: Too many return statements (7/6) (too-many-return-statements)"
+  ]
+}

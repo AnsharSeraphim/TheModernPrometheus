@@ -1,0 +1,148 @@
+[build-system]
+requires = ["setuptools>=82.0.1,<83", "wheel>=0.46.3,<0.47"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-repo-scaffold"
+version = "0.1.0"
+description = "Generic automation and quality tooling scaffold for Python repositories"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+authors = [{ name = "Repository contributors" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "bandit>=1.9.4,<2",
+    "deptry>=0.25.1,<1",
+    "interrogate>=1.7.0,<2",
+    "mypy>=1.20.0,<2",
+    "pre-commit>=4.5.1,<5",
+    "pylint>=4.0.5,<5",
+    "pyright>=1.1.408,<2",
+    "pytest>=9.0.2,<10",
+    "pytest-cov>=7.1.0,<8",
+    "pytest-xdist>=3.8.0,<4",
+    "ruff>=0.15.9,<1",
+    "vulture>=2.16,<3",
+]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.format]
+docstring-code-format = true
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E203", "E501"]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["scripts"]
+
+[tool.pylint.main]
+py-version = "3.13"
+jobs = 1
+fail-under = 10
+recursive = true
+ignore-paths = [
+    "^build/automation_contract/.*$",
+    "^reports/reasoning/pipeline/.*$",
+]
+
+[tool.pylint.reports]
+score = false
+
+[tool.pylint.format]
+max-line-length = 120
+max-module-lines = 3000
+
+[tool.pylint.messages_control]
+disable = [
+    "C0114",
+    "C0115",
+    "C0116",
+    "C0301",
+    "W0404",
+    "W0611",
+    "W0612",
+    "W0621",
+    "R0903",
+    "R0801",
+]
+
+[tool.pylint.design]
+exclude-too-few-public-methods = ".*(Protocol|LoggerLike)$"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+disallow_any_generics = true
+no_implicit_optional = true
+follow_imports = "skip"
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
+show_error_codes = true
+files = ["scripts", "tests"]
+exclude = [
+    "^build/automation_contract/",
+    "^reports/reasoning/pipeline/",
+]
+
+[tool.pyright]
+include = ["scripts", "tests"]
+exclude = ["build/automation_contract", "reports/reasoning/pipeline"]
+pythonVersion = "3.13"
+pythonPlatform = "Linux"
+typeCheckingMode = "strict"
+reportMissingTypeStubs = "none"
+
+[tool.deptry]
+ignore_notebooks = true
+extend_exclude = ["build", "reports"]
+optional_dependencies_dev_groups = ["dev"]
+
+[tool.deptry.package_module_name_map]
+"pre-commit" = ["pre_commit"]
+"pytest-cov" = ["pytest_cov"]
+"pytest-xdist" = ["xdist"]
+
+[tool.deptry.per_rule_ignores]
+DEP002 = [
+    "bandit",
+    "deptry",
+    "interrogate",
+    "mypy",
+    "pre-commit",
+    "pylint",
+    "pyright",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "ruff",
+    "vulture",
+]
+
+[tool.vulture]
+paths = ["scripts", "tests"]
+min_confidence = 80
+sort_by_size = true
+
+[tool.interrogate]
+fail-under = 100
+verbose = 0
+ignore-init-method = false
+ignore-init-module = false

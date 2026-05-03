@@ -1,0 +1,101 @@
+{
+  "AGENTS.md": {
+    "skip": "Y"
+  },
+  "CODE_OF_CONDUCT.md": {
+    "skip": "Y"
+  },
+  "CONTRIBUTING.md": {
+    "skip": "Y"
+  },
+  "Final-Optimization-Checklist.md": {
+    "skip": "Y"
+  },
+  "Final-Productization-Checklist.md": {
+    "skip": "Y"
+  },
+  "README.md": {
+    "skip": "Y"
+  },
+  "config/precommit_store/README.md": {
+    "skip": "Y"
+  },
+  "config/precommit_store/bandit.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/deptry.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/mypy.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/pylint.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/pylint_failures.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/pyright.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/ruff-format.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/ruff-lint.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/unicode-escapes.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/vulture.json": {
+    "skip": "Y"
+  },
+  "docs/release_notes.md": {
+    "skip": "Y"
+  },
+  "pyproject.toml": {
+    "skip": "Y"
+  },
+  "requirements-dev.txt": {
+    "skip": "Y"
+  },
+  "scripts/__init__.py": {
+    "skip": "Y"
+  },
+  "scripts/_automation_shared.py": {
+    "skip": "Y"
+  },
+  "scripts/check_conflicts.py": {
+    "skip": "Y"
+  },
+  "scripts/check_unicode_escapes.py": {
+    "skip": "Y"
+  },
+  "scripts/manual_hook_warning.py": {
+    "skip": "Y"
+  },
+  "scripts/precommit_filter.py": {
+    "skip": "Y"
+  },
+  "scripts/run_precommit_suite.py": {
+    "skip": "Y"
+  },
+  "scripts/run_tests.py": {
+    "skip": "Y"
+  },
+  "scripts/test_profiles/baseline.txt": {
+    "skip": "Y"
+  },
+  "tests/test_check_unicode_escapes.py": {
+    "skip": "Y"
+  },
+  "tests/test_manual_hook_warning.py": {
+    "skip": "Y"
+  },
+  "tests/test_precommit_filter.py": {
+    "skip": "Y"
+  },
+  "tests/test_run_tests.py": {
+    "skip": "Y"
+  }
+}
