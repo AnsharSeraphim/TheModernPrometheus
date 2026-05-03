@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import cast
 
 from scripts.aggregate_project_docstrings import build_catalog
 
@@ -23,11 +24,11 @@ def test_build_catalog_reports_missing_and_flagged_docstrings(tmp_path: Path) ->
 
     payload = build_catalog(root=tmp_path, excluded_roots=set())
 
-    summary = payload["summary"]
-    assert summary["python_files"] == 1
-    assert summary["missing_docstrings"] == 1
-    assert summary["flagged_docstrings"] == 1
-    assert summary["quality_status"] == "needs_review"
+    summary = cast(dict[str, object], payload["summary"])
+    assert summary["python_files"] == 1  # nosec B101
+    assert summary["missing_docstrings"] == 1  # nosec B101
+    assert summary["flagged_docstrings"] == 1  # nosec B101
+    assert summary["quality_status"] == "needs_review"  # nosec B101
 
 
 def test_build_catalog_excludes_requested_roots(tmp_path: Path) -> None:
@@ -42,7 +43,7 @@ def test_build_catalog_excludes_requested_roots(tmp_path: Path) -> None:
     excluded.write_text('"""Excluded module."""\n', encoding="utf-8")
 
     payload = build_catalog(root=tmp_path, excluded_roots={"build"})
-    files = payload["files"]
+    files = cast(list[dict[str, object]], payload["files"])
 
-    assert len(files) == 1
-    assert files[0]["filename"] == "included.py"
+    assert len(files) == 1  # nosec B101
+    assert files[0]["filename"] == "included.py"  # nosec B101

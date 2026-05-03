@@ -14,6 +14,7 @@ This folder is the operational entry point for repository automation.
 - `_automation_shared.py`: Shared helper functions for diff collection, dependency checks, and subprocess execution.
 - `check_unicode_escapes.py`: UTF-8 / Unicode-escape policy validator invoked by the quality suite.
 - `check_conflicts.py`: Lightweight merge-conflict marker detector.
+- `check_checklist_structure.py`: Guards required checklist governance/audit sections from accidental removal.
 - `aggregate_project_docstrings.py`: Exports a JSON catalog of module/class/function docstrings for agent context bootstrapping.
 
 ## Test profile assets

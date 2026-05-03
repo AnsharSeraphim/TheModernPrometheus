@@ -30,7 +30,7 @@ python scripts/run_tests.py
 
 ## Wrapper-first contributor policy
 
-- Quality hooks must be driven by `scripts/run_precommit_suite.py`.
+- Quality hooks must be driven by `scripts/run_precommit_suite.py` (including checklist-structure validation for `Final-Productization-Checklist.md`).
 - Tests must be driven by `scripts/run_tests.py`.
 - Direct/manual invocations (`pre-commit run <hook>`, naked `pytest`) are treated as policy violations because they bypass repository summary artifacts and skip-ledger coordination.
 

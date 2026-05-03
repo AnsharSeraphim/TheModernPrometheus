@@ -20,8 +20,6 @@ if __package__ in {None, ""}:
 
 # pylint: disable=wrong-import-position
 # pylint: enable=wrong-import-position
-from scripts.toml_compat import parse_toml_text
-
 from scripts._automation_shared import (  # noqa: E402
     add_include_untracked_argument,
     build_git_diff_commands,
@@ -32,6 +30,7 @@ from scripts._automation_shared import (  # noqa: E402
     run_command,
 )
 from scripts.precommit_filter import FilterMetadata, FilterMode, PrecommitFilter  # noqa: E402
+from scripts.toml_compat import parse_toml_text
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SUMMARY_DIR = REPO_ROOT / "build" / "automation_contract"
@@ -62,6 +61,7 @@ FILTER_METADATA: dict[str, FilterMetadata] = {
     "vulture": FilterMetadata(hook_id="vulture", global_hook=True),
     "bandit": FilterMetadata(hook_id="bandit", global_hook=True),
     "unicode-escapes": FilterMetadata(hook_id="unicode-escapes"),
+    "checklist-structure": FilterMetadata(hook_id="checklist-structure", global_hook=True),
 }
 
 
@@ -121,7 +121,7 @@ def _load_dev_dependency_specs() -> dict[str, str]:
 def _parse_toml(text: str) -> dict[str, object]:
     """Parse TOML text with the standard-library loader."""
 
-    return parse_toml_text(text)
+    return cast(dict[str, object], parse_toml_text(text))
 
 
 def _ensure_quality_toolchain() -> None:
@@ -349,6 +349,13 @@ def _build_checks(
             title="UTF-8 compliance",
             command=[sys.executable, "scripts/check_unicode_escapes.py"],
             candidates=text_targets,
+        ),
+        Check(
+            key="checklist-structure",
+            title="Checklist structure guard",
+            command=[sys.executable, "scripts/check_checklist_structure.py"],
+            candidates=(Path("Final-Productization-Checklist.md"),),
+            global_hook=True,
         ),
     ]
     return checks

@@ -17,6 +17,9 @@
   "README.md": {
     "skip": "Y"
   },
+  "config/README.md": {
+    "skip": "Y"
+  },
   "config/precommit_store/README.md": {
     "skip": "Y"
   },
@@ -24,6 +27,9 @@
     "skip": "Y"
   },
   "config/precommit_store/deptry.json": {
+    "skip": "Y"
+  },
+  "config/precommit_store/interrogate.json": {
     "skip": "Y"
   },
   "config/precommit_store/mypy.json": {
@@ -50,6 +56,9 @@
   "config/precommit_store/vulture.json": {
     "skip": "Y"
   },
+  "docs/README.md": {
+    "skip": "Y"
+  },
   "docs/release_notes.md": {
     "skip": "Y"
   },
@@ -59,10 +68,19 @@
   "requirements-dev.txt": {
     "skip": "Y"
   },
+  "scripts/README.md": {
+    "skip": "Y"
+  },
   "scripts/__init__.py": {
     "skip": "Y"
   },
   "scripts/_automation_shared.py": {
+    "skip": "Y"
+  },
+  "scripts/aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "scripts/check_checklist_structure.py": {
     "skip": "Y"
   },
   "scripts/check_conflicts.py": {
@@ -83,7 +101,22 @@
   "scripts/run_tests.py": {
     "skip": "Y"
   },
+  "scripts/test_profiles/README.md": {
+    "skip": "Y"
+  },
   "scripts/test_profiles/baseline.txt": {
+    "skip": "Y"
+  },
+  "scripts/toml_compat.py": {
+    "skip": "Y"
+  },
+  "tests/README.md": {
+    "skip": "Y"
+  },
+  "tests/test_aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "tests/test_check_checklist_structure.py": {
     "skip": "Y"
   },
   "tests/test_check_unicode_escapes.py": {
