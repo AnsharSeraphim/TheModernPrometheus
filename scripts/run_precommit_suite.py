@@ -20,7 +20,7 @@ if __package__ in {None, ""}:
 
 # pylint: disable=wrong-import-position
 # pylint: enable=wrong-import-position
-import tomllib
+from scripts.toml_compat import parse_toml_text
 
 from scripts._automation_shared import (  # noqa: E402
     add_include_untracked_argument,
@@ -121,7 +121,7 @@ def _load_dev_dependency_specs() -> dict[str, str]:
 def _parse_toml(text: str) -> dict[str, object]:
     """Parse TOML text with the standard-library loader."""
 
-    return tomllib.loads(text)
+    return parse_toml_text(text)
 
 
 def _ensure_quality_toolchain() -> None:

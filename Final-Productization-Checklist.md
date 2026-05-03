@@ -33,9 +33,19 @@ Poor wording in these entries can keep each checklist entry from being specific,
 
 ## Outstanding Tasks
 
-- None currently
+- [ ] Create `.github/dependabot.yml` with grouped update strategy for ecosystem-specific dependency batching (pip + GitHub Actions), explicit schedules, and reviewer labels so template consumers inherit sane update noise control; DONE WHEN config validates and grouping rules are documented in README/docs.
+- [ ] Implement wrapper-level enforcement for naked `pytest` invocations (parity with manual hook warning strategy) so direct pytest execution exits with a redirect to `python scripts/run_tests.py`; DONE WHEN enforcement path is covered by automated tests and documented in `scripts/README.md` + root README.
+- [ ] Add `context/README.md` and a generated-schemas note for docstring catalog outputs so agents understand expected JSON assets, lifecycle (generated/not committed policy), and bootstrap usage; DONE WHEN the folder exists with lifecycle documentation and references to `scripts/aggregate_project_docstrings.py`.
+- [ ] Create `docs/agent_bootstrap/README.md` plus scoped task list describing how to build skills markdown files, prompt recipes, and task-recipe JSON artifacts from existing repository scripts/workflows; DONE WHEN entries enumerate source files, output locations, acceptance checks, and ownership expectations.
+- [ ] Add granular checklist sub-entries under `Documentation Inventory` for every Markdown file currently tracked in the repository (explicit file path per entry) with concrete `DONE WHEN` criteria so stateless agents can close each audit atomically.
+- [ ] Add checklist hygiene guardrails section with required fields (`Scope`, `Target Files`, `Acceptance`, `Dependencies`) and an example compliant entry template; DONE WHEN `Final-Productization-Checklist.md` itself includes the template and all open entries conform.
+- [ ] Expand `CONTRIBUTING.md` to include a "Template onboarding" path that explains repository purpose, wrapper-first commands, evidence artifacts, and checklist maintenance responsibilities for first-time users; DONE WHEN command examples and failure/remediation flow are documented.
+- [ ] Add a documentation index page in `docs/` linking operational docs, folder READMEs, and checklist files with intended audiences (maintainers vs template consumers vs agents); DONE WHEN index links resolve and avoids duplicate guidance already present in root README.
+- [ ] Evaluate and document `scripts/aggregate_project_docstrings.py` operational modes (full scan, exclusions, output path conventions, and downstream consumption) in `scripts/README.md`; DONE WHEN examples include at least one command that generates context JSON for agent bootstrap.
+- [ ] Audit pyproject tooling constraints for template reproducibility notes (Python pinning rationale, dependency caps, strict checker posture) and capture this rationale in docs; DONE WHEN rationale appears in documentation with links to `pyproject.toml` sections.
     
 ---
+
 
 ## Only Proceed To This Task If No Entries Above Exist
 - [ ] Populate the .md list for the `Create a checklist entry for every .md file in the repository HERE.` entry, below, in the `Documentation Inventory` section, for the `Documentation and Coding Audit` checklist process.
