@@ -137,8 +137,6 @@ def _quality_notes(text: str) -> list[str]:
     return notes
 
 
-
-
 def _evaluate_symbol_docstring(
     symbol: str,
     kind: str,
@@ -152,7 +150,7 @@ def _evaluate_symbol_docstring(
         return None, symbol, None
 
     quality_flags = _quality_notes(docstring)
-    weak_symbol = {"symbol": symbol, "flags": quality_flags} if quality_flags else None
+    weak_symbol: dict[str, object] | None = {"symbol": symbol, "flags": quality_flags} if quality_flags else None
     entry = DocstringEntry(symbol=symbol, kind=kind, line=line, docstring=docstring)
     return entry, None, weak_symbol
 
@@ -179,7 +177,6 @@ def _build_audit_payloads(
     return completeness, quality_audit
 
 
-
 def _collect_symbol_entries(
     symbols: list[tuple[str, str, DocstringNode]],
 ) -> tuple[list[DocstringEntry], list[str], list[dict[str, object]]]:
@@ -199,6 +196,7 @@ def _collect_symbol_entries(
         if entry is not None:
             entries.append(entry)
     return entries, missing_symbols, weak_symbols
+
 
 def _collect_file_record(root: Path, path: Path) -> FileDocstringRecord:
     """Parse one file and return extracted docstrings plus completeness and quality audit."""
@@ -225,8 +223,6 @@ def _is_excluded(path: Path, excluded_roots: set[str]) -> bool:
     """Return True when a path should be skipped from the scan."""
 
     return any(part in excluded_roots for part in path.parts)
-
-
 
 
 def _record_to_payload(record: FileDocstringRecord) -> dict[str, object]:
@@ -260,6 +256,7 @@ def _update_totals(
     missing_total += cast(int, record.completeness["missing_count"])
     flagged_total += cast(int, record.quality_audit["flagged_count"])
     return symbols_total, missing_total, flagged_total
+
 
 def build_catalog(root: Path, excluded_roots: set[str]) -> dict[str, object]:
     """Aggregate all Python docstrings under the repository root into one payload."""
