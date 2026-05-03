@@ -137,30 +137,34 @@ def _quality_notes(text: str) -> list[str]:
     return notes
 
 
-def _collect_file_record(root: Path, path: Path) -> FileDocstringRecord:
-    """Parse one file and return extracted docstrings plus completeness and quality audit."""
 
-    text = path.read_text(encoding="utf-8")
-    tree = ast.parse(text, filename=str(path))
-    symbols = _iter_symbols(tree)
 
-    entries: list[DocstringEntry] = []
-    missing_symbols: list[str] = []
-    weak_symbols: list[dict[str, object]] = []
+def _evaluate_symbol_docstring(
+    symbol: str,
+    kind: str,
+    node: DocstringNode,
+) -> tuple[DocstringEntry | None, str | None, dict[str, object] | None]:
+    """Evaluate one symbol and return extracted entry, missing marker, and quality flags."""
 
-    for symbol, kind, node in symbols:
-        docstring = ast.get_docstring(node, clean=True)
-        line = 1 if kind == "module" else int(getattr(node, "lineno", 1))
-        if docstring is None:
-            missing_symbols.append(symbol)
-            continue
-        quality_flags = _quality_notes(docstring)
-        if quality_flags:
-            weak_symbols.append({"symbol": symbol, "flags": quality_flags})
-        entries.append(DocstringEntry(symbol=symbol, kind=kind, line=line, docstring=docstring))
+    docstring = ast.get_docstring(node, clean=True)
+    line = 1 if kind == "module" else int(getattr(node, "lineno", 1))
+    if docstring is None:
+        return None, symbol, None
 
-    relative_path = str(path.relative_to(root))
-    module_docstring = ast.get_docstring(tree, clean=True)
+    quality_flags = _quality_notes(docstring)
+    weak_symbol = {"symbol": symbol, "flags": quality_flags} if quality_flags else None
+    entry = DocstringEntry(symbol=symbol, kind=kind, line=line, docstring=docstring)
+    return entry, None, weak_symbol
+
+
+def _build_audit_payloads(
+    symbols: list[tuple[str, str, DocstringNode]],
+    entries: list[DocstringEntry],
+    missing_symbols: list[str],
+    weak_symbols: list[dict[str, object]],
+) -> tuple[dict[str, object], dict[str, object]]:
+    """Construct completeness and quality audit payload dictionaries."""
+
     completeness: dict[str, object] = {
         "symbols_total": len(symbols),
         "symbols_with_docstrings": len(entries),
@@ -172,9 +176,45 @@ def _collect_file_record(root: Path, path: Path) -> FileDocstringRecord:
         "flagged_count": len(weak_symbols),
         "status": "pass" if not weak_symbols else "needs_review",
     }
+    return completeness, quality_audit
+
+
+
+def _collect_symbol_entries(
+    symbols: list[tuple[str, str, DocstringNode]],
+) -> tuple[list[DocstringEntry], list[str], list[dict[str, object]]]:
+    """Collect docstring entries, missing symbols, and weak-symbol flags."""
+
+    entries: list[DocstringEntry] = []
+    missing_symbols: list[str] = []
+    weak_symbols: list[dict[str, object]] = []
+
+    for symbol, kind, node in symbols:
+        entry, missing_symbol, weak_symbol = _evaluate_symbol_docstring(symbol, kind, node)
+        if missing_symbol is not None:
+            missing_symbols.append(missing_symbol)
+            continue
+        if weak_symbol is not None:
+            weak_symbols.append(weak_symbol)
+        if entry is not None:
+            entries.append(entry)
+    return entries, missing_symbols, weak_symbols
+
+def _collect_file_record(root: Path, path: Path) -> FileDocstringRecord:
+    """Parse one file and return extracted docstrings plus completeness and quality audit."""
+
+    text = path.read_text(encoding="utf-8")
+    tree = ast.parse(text, filename=str(path))
+    symbols = _iter_symbols(tree)
+    entries, missing_symbols, weak_symbols = _collect_symbol_entries(symbols)
+
+    relative_path = str(path.relative_to(root))
+    module_docstring = ast.get_docstring(tree, clean=True)
+    completeness, quality_audit = _build_audit_payloads(symbols, entries, missing_symbols, weak_symbols)
+    role_description = _module_role_description(module_docstring, relative_path)
     return FileDocstringRecord(
         filename=relative_path,
-        role_description=_module_role_description(module_docstring, relative_path),
+        role_description=role_description,
         docstrings=entries,
         completeness=completeness,
         quality_audit=quality_audit,
@@ -187,49 +227,60 @@ def _is_excluded(path: Path, excluded_roots: set[str]) -> bool:
     return any(part in excluded_roots for part in path.parts)
 
 
+
+
+def _record_to_payload(record: FileDocstringRecord) -> dict[str, object]:
+    """Convert one file record into a JSON-serializable payload entry."""
+
+    return {
+        "filename": record.filename,
+        "role_description": record.role_description,
+        "docstrings": [
+            {
+                "symbol": entry.symbol,
+                "kind": entry.kind,
+                "line": entry.line,
+                "docstring": entry.docstring,
+            }
+            for entry in record.docstrings
+        ],
+        "completeness": record.completeness,
+        "quality_audit": record.quality_audit,
+    }
+
+
+def _update_totals(
+    record: FileDocstringRecord,
+    totals: tuple[int, int, int],
+) -> tuple[int, int, int]:
+    """Accumulate symbol, missing-docstring, and flagged-docstring totals."""
+
+    symbols_total, missing_total, flagged_total = totals
+    symbols_total += cast(int, record.completeness["symbols_total"])
+    missing_total += cast(int, record.completeness["missing_count"])
+    flagged_total += cast(int, record.quality_audit["flagged_count"])
+    return symbols_total, missing_total, flagged_total
+
 def build_catalog(root: Path, excluded_roots: set[str]) -> dict[str, object]:
     """Aggregate all Python docstrings under the repository root into one payload."""
 
     files = sorted(path for path in root.rglob("*.py") if not _is_excluded(path, excluded_roots))
     records = [_collect_file_record(root, path) for path in files]
 
-    payload_records: list[dict[str, object]] = []
-    total_symbols = 0
-    total_missing = 0
-    total_flagged = 0
-
+    payload_records = [_record_to_payload(record) for record in records]
+    totals = (0, 0, 0)
     for record in records:
-        payload_records.append(
-            {
-                "filename": record.filename,
-                "role_description": record.role_description,
-                "docstrings": [
-                    {
-                        "symbol": entry.symbol,
-                        "kind": entry.kind,
-                        "line": entry.line,
-                        "docstring": entry.docstring,
-                    }
-                    for entry in record.docstrings
-                ],
-                "completeness": record.completeness,
-                "quality_audit": record.quality_audit,
-            }
-        )
-        total_symbols += cast(int, record.completeness["symbols_total"])
-        total_missing += cast(int, record.completeness["missing_count"])
-        total_flagged += cast(int, record.quality_audit["flagged_count"])
+        totals = _update_totals(record, totals)
 
-    return {
-        "summary": {
-            "python_files": len(records),
-            "symbols_total": total_symbols,
-            "missing_docstrings": total_missing,
-            "flagged_docstrings": total_flagged,
-            "quality_status": "pass" if total_flagged == 0 else "needs_review",
-        },
-        "files": payload_records,
+    total_symbols, total_missing, total_flagged = totals
+    summary = {
+        "python_files": len(records),
+        "symbols_total": total_symbols,
+        "missing_docstrings": total_missing,
+        "flagged_docstrings": total_flagged,
+        "quality_status": "pass" if total_flagged == 0 else "needs_review",
     }
+    return {"summary": summary, "files": payload_records}
 
 
 def main() -> int:

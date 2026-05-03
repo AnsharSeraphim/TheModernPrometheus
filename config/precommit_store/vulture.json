@@ -5,6 +5,12 @@
   "scripts/_automation_shared.py": {
     "skip": "Y"
   },
+  "scripts/aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "scripts/check_checklist_structure.py": {
+    "skip": "Y"
+  },
   "scripts/check_conflicts.py": {
     "skip": "Y"
   },
@@ -21,6 +27,15 @@
     "skip": "Y"
   },
   "scripts/run_tests.py": {
+    "skip": "Y"
+  },
+  "scripts/toml_compat.py": {
+    "skip": "Y"
+  },
+  "tests/test_aggregate_project_docstrings.py": {
+    "skip": "Y"
+  },
+  "tests/test_check_checklist_structure.py": {
     "skip": "Y"
   },
   "tests/test_check_unicode_escapes.py": {

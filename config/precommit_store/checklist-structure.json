@@ -1,36 +1,36 @@
 {
-  "scripts/__init__.py": {
+  "Final-Productization-Checklist.md": {
     "skip": "Y"
+  },
+  "scripts/__init__.py": {
+    "skip": "N"
   },
   "scripts/_automation_shared.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/aggregate_project_docstrings.py": {
-    "skip": "Y"
-  },
-  "scripts/check_checklist_structure.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/check_conflicts.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/check_unicode_escapes.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/manual_hook_warning.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/precommit_filter.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/run_precommit_suite.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/run_tests.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "scripts/toml_compat.py": {
-    "skip": "Y"
+    "skip": "N"
   },
   "tests/test_aggregate_project_docstrings.py": {
     "skip": "N"
