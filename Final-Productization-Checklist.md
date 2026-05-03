@@ -49,7 +49,6 @@ Example format:
   - DONE WHEN: <verifiable outcome>
 ```
 
-- [ ] **Replace this entry when you are ready to assign tasks.**
 
 ---
 
@@ -82,61 +81,16 @@ Example format:
 ##### Documentation Inventory
 > Create entries for the `Documentation Audit` here. Don't forget to follow the rubric above. If you discover issues, remediate them, or create new actionable granular tasks under `Outstanding Tasks / Gaps (Open Work Only)` if you cannot remediate in-session for some reason.
 
-- [ ] **Documentation audit: AGENTS.md**
-  - Scope: Validate policy language matches current wrapper commands and checklist governance behavior.
-  - Target Files: `AGENTS.md`
-  - Dependencies: None
-  - DONE WHEN: Commands, policy directives, and referenced file paths remain accurate against implementation.
-- [ ] **Documentation audit: README.md**
-  - Scope: Verify quickstart and policy claims match current scripts and enforcement behavior.
-  - Target Files: `README.md`, `scripts/run_tests.py`, `tests/conftest.py`
-  - Dependencies: Documentation audit: AGENTS.md
-  - DONE WHEN: README command guidance and enforcement language are implementation-true.
-- [ ] **Documentation audit: CONTRIBUTING.md**
-  - Scope: Audit contributor workflow for wrapper-first parity and evidence capture.
-  - Target Files: `CONTRIBUTING.md`, `scripts/README.md`
-  - Dependencies: Documentation audit: README.md
-  - DONE WHEN: Onboarding and remediation instructions are complete and non-duplicative.
 - [ ] **Documentation audit: docs/release_notes.md**
   - Scope: Ensure release-note entries reflect current behavior changes and omit stale claims.
   - Target Files: `docs/release_notes.md`
   - Dependencies: None
   - DONE WHEN: Release notes capture all user-facing/tooling-facing changes from latest merged work.
-- [ ] **Documentation audit: docs/README.md**
-  - Scope: Validate documentation index links and audience segmentation.
-  - Target Files: `docs/README.md`
-  - Dependencies: Documentation audit: README.md
-  - DONE WHEN: Every listed link resolves and index avoids duplicating canonical command instructions.
 - [ ] **Documentation audit: docs/agent_bootstrap/README.md**
   - Scope: Validate bootstrap task list against script capabilities and artifact policy.
   - Target Files: `docs/agent_bootstrap/README.md`, `scripts/aggregate_project_docstrings.py`, `scripts/audit_docstrings.py`
   - Dependencies: Documentation audit: docs/README.md
   - DONE WHEN: Source files, output paths, and acceptance checks are executable and accurate.
-- [ ] **Documentation audit: scripts/README.md**
-  - Scope: Confirm script inventory and command examples match current automation behavior.
-  - Target Files: `scripts/README.md`, `scripts/run_precommit_suite.py`, `scripts/run_tests.py`
-  - Dependencies: None
-  - DONE WHEN: Every listed utility exists and wrapper guidance reflects enforced behavior.
-- [ ] **Documentation audit: scripts/test_profiles/README.md**
-  - Scope: Verify profile format guidance aligns with parser behavior in test wrapper.
-  - Target Files: `scripts/test_profiles/README.md`, `scripts/run_tests.py`
-  - Dependencies: Documentation audit: scripts/README.md
-  - DONE WHEN: Profile syntax rules match runtime parsing and error handling.
-- [ ] **Documentation audit: tests/README.md**
-  - Scope: Validate test inventory and execution guidance against current tests and wrappers.
-  - Target Files: `tests/README.md`, `tests/`
-  - Dependencies: Documentation audit: scripts/README.md
-  - DONE WHEN: File list and command guidance reflect actual test modules and policy hooks.
-- [ ] **Documentation audit: config/README.md**
-  - Scope: Verify config folder descriptions and ledger behavior remain correct.
-  - Target Files: `config/README.md`, `config/precommit_store/README.md`, `scripts/precommit_filter.py`
-  - Dependencies: None
-  - DONE WHEN: Config docs accurately describe manifests, caches, and maintenance expectations.
-- [ ] **Documentation audit: config/precommit_store/README.md**
-  - Scope: Audit skip-ledger and pylint failure cache explanations for accuracy.
-  - Target Files: `config/precommit_store/README.md`, `config/precommit_store/pylint_failures.json`
-  - Dependencies: Documentation audit: config/README.md
-  - DONE WHEN: Documentation matches live JSON ledger roles and update workflow.
 - [ ] **Documentation audit: Final-Productization-Checklist.md**
   - Scope: Ensure checklist wording remains actionable and policy-compliant.
   - Target Files: `Final-Productization-Checklist.md`

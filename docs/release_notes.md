@@ -8,6 +8,8 @@
 - Added `.github/dependabot.yml` with grouped weekly update strategies for pip and GitHub Actions dependencies, explicit labels, reviewer defaults, and bounded open-PR limits.
 
 ### Changed
+- Completed a first-pass documentation parity audit across root, scripts, tests, and config READMEs; removed the corresponding completed audit tasks from `Final-Productization-Checklist.md` so only unresolved documentation entries remain.
+- Clarified `CONTRIBUTING.md` local setup guidance to match the repository runtime pin (`>=3.13,<3.14`) by explicitly instructing contributors to use Python 3.13 virtual environments.
 - Documented the pyproject reproducibility rationale in `README.md`, including Python pinning (`>=3.13,<3.14`), bounded dependency caps, and strict checker posture expectations.
 - Enforced wrapper-first pytest execution via a repository-level pytest session guard and wrapper-managed environment variable handshake, with tests covering the warning contract.
 - Added `context/README.md` and `docs/agent_bootstrap/README.md` to document docstring-catalog artifact lifecycle, bootstrap outputs, and acceptance checks.

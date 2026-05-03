@@ -6,7 +6,7 @@ All contributors must follow [AGENTS.md](AGENTS.md) and the [Code of Conduct](CO
 
 ## Local setup
 
-1. Create and activate a Python 3.13+ virtual environment.
+1. Create and activate a Python 3.13 virtual environment (the repository pins `>=3.13,<3.14`).
 2. Install the shared development tooling:
    ```bash
    python -m pip install --upgrade pip
