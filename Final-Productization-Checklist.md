@@ -25,14 +25,9 @@ etc
 Poor wording in these entries can keep each checklist entry from being specific, actionable, and granular in scope, and encourage iterative churn, annotations of incremental progress, and multiple executions inside of a single entry.
 
 ## Permanent Checklist Entry - *NEVER CLOSE THIS*
+> Use the Checklist Entry Template to create new tasks.
 - [ ] For checklist entries that are worded in these nonspecific terms, above, *unless the checklist entry is a scoped audit*, perform the relevant audit so the entry can be expanded with EXACT SCOPE AND STEPS, AFFECTED FILES, AND `DONE WHEN` CRITERIA, each having their OWN entry. You may only proceed to other tasks when this condition is fulfilled. If all entries in this checklist currently adhere to this policy above the `Only Proceed To This Task If No Entries Above Exist` line, then proceed to address entries, as directed.
 
-> CHECK FOR VIOLATIONS OF THE ABOVE ENTRY BEFORE ADVANCING TO ANY OTHER CHECKLIST ENTRIES IN OTHER SECTIONS.
-
----
-
-## Outstanding Tasks
-> Use the Checklist Entry Template to create new tasks.
 ### Checklist Entry Template (Use for every new actionable item)
 ```
 - Required fields for each entry:
@@ -49,6 +44,15 @@ Example format:
   - DONE WHEN: <verifiable outcome>
 ```
 
+
+> CHECK FOR VIOLATIONS OF THE ABOVE ENTRY BEFORE ADVANCING TO ANY OTHER CHECKLIST ENTRIES IN OTHER SECTIONS.
+
+---
+
+## Outstanding Tasks
+
+- **INSTRUCTIONS FOR USER:** REPLACE THIS LINE WITH YOUR FIRST DIRECTIVES FOR CODING-AGENT DEVELOPMENT. 
+  - Example: - [ ] Ingest `XYZ-Conversation-Log-About-Project-Design.txt` to understand the project vision and create exhaustive maximal actionable granular checklist entries, following the template above, to outline a development plan to create it in the project.
 
 ---
 
@@ -81,36 +85,7 @@ Example format:
 ##### Documentation Inventory
 > Create entries for the `Documentation Audit` here. Don't forget to follow the rubric above. If you discover issues, remediate them, or create new actionable granular tasks under `Outstanding Tasks / Gaps (Open Work Only)` if you cannot remediate in-session for some reason.
 
-- [ ] **Documentation audit: docs/release_notes.md**
-  - Scope: Ensure release-note entries reflect current behavior changes and omit stale claims.
-  - Target Files: `docs/release_notes.md`
-  - Dependencies: None
-  - DONE WHEN: Release notes capture all user-facing/tooling-facing changes from latest merged work.
-- [ ] **Documentation audit: docs/agent_bootstrap/README.md**
-  - Scope: Validate bootstrap task list against script capabilities and artifact policy.
-  - Target Files: `docs/agent_bootstrap/README.md`, `scripts/aggregate_project_docstrings.py`, `scripts/audit_docstrings.py`
-  - Dependencies: Documentation audit: docs/README.md
-  - DONE WHEN: Source files, output paths, and acceptance checks are executable and accurate.
-- [ ] **Documentation audit: Final-Productization-Checklist.md**
-  - Scope: Ensure checklist wording remains actionable and policy-compliant.
-  - Target Files: `Final-Productization-Checklist.md`
-  - Dependencies: None
-  - DONE WHEN: Open items are explicit, scoped, and free of session-journal phrasing.
-- [ ] **Documentation audit: Final-Optimization-Checklist.md**
-  - Scope: Confirm optimization ledger entries remain actionable and latency-policy aligned.
-  - Target Files: `Final-Optimization-Checklist.md`
-  - Dependencies: None
-  - DONE WHEN: Every open entry has scope, rationale, and measurable completion conditions.
-- [ ] **Documentation audit: CODE_OF_CONDUCT.md**
-  - Scope: Verify policy references and contact/conduct language remain current.
-  - Target Files: `CODE_OF_CONDUCT.md`
-  - Dependencies: None
-  - DONE WHEN: Conduct guidance is internally consistent and free of stale links.
-- [ ] **Documentation audit: context/README.md**
-  - Scope: Validate generated-artifact lifecycle guidance and bootstrap command parity.
-  - Target Files: `context/README.md`, `scripts/aggregate_project_docstrings.py`
-  - Dependencies: Documentation audit: docs/agent_bootstrap/README.md
-  - DONE WHEN: Lifecycle policy and command examples remain accurate.
+- **PLACEHOLDER FOR CHECKLIST ENTRIES FOR DOCUMENTATION AUDIT.** This line will be replaced with entries for all your project documentation when there are no other entries in the checklist. This process will automatically direct Coding-Agents to audit your documentation against your implementation, along with your code, remediating issues as they encounter them or creating entries to correct issues they cannot address in the same session.
 
 ---
 
