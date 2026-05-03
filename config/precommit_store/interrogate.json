@@ -26,6 +26,9 @@
   "scripts/precommit_filter.py": {
     "skip": "Y"
   },
+  "scripts/pytest_guard.py": {
+    "skip": "Y"
+  },
   "scripts/run_precommit_suite.py": {
     "skip": "Y"
   },

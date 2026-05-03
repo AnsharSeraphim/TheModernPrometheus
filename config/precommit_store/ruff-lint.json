@@ -26,6 +26,9 @@
   "scripts/precommit_filter.py": {
     "skip": "Y"
   },
+  "scripts/pytest_guard.py": {
+    "skip": "Y"
+  },
   "scripts/run_precommit_suite.py": {
     "skip": "Y"
   },
@@ -33,6 +36,9 @@
     "skip": "Y"
   },
   "scripts/toml_compat.py": {
+    "skip": "Y"
+  },
+  "tests/conftest.py": {
     "skip": "Y"
   },
   "tests/test_aggregate_project_docstrings.py": {
@@ -51,6 +57,9 @@
     "skip": "Y"
   },
   "tests/test_precommit_filter.py": {
+    "skip": "Y"
+  },
+  "tests/test_pytest_guard.py": {
     "skip": "Y"
   },
   "tests/test_run_tests.py": {

@@ -7,6 +7,10 @@
 - Added an `interrogate` hook to the unified pre-commit suite with `--fail-under=100` so docstring coverage enforcement is explicit and automated.
 
 ### Changed
+- Enforced wrapper-first pytest execution via a repository-level pytest session guard and wrapper-managed environment variable handshake, with tests covering the warning contract.
+- Added `context/README.md` and `docs/agent_bootstrap/README.md` to document docstring-catalog artifact lifecycle, bootstrap outputs, and acceptance checks.
+- Reworked `docs/README.md` into an audience-based documentation index and expanded `CONTRIBUTING.md` onboarding/remediation flow for template consumers.
+- Expanded `scripts/README.md` with `aggregate_project_docstrings.py` operational modes (full scan, exclusions, output conventions, downstream consumers).
 - Added a checklist structure guard script (`scripts/check_checklist_structure.py`) and integrated it into the pre-commit wrapper to prevent accidental removal of mandatory checklist policy/audit sections.
 - Converted repository documentation to generic scaffold language suitable for use as a pre-setup baseline for new repositories.
 - Aligned `pyproject.toml` quality-tool settings with the standardized hook profile (line width 120, Python target 3.13, strict lint/type tooling defaults).
