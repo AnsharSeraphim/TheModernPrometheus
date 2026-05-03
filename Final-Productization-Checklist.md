@@ -32,8 +32,9 @@ Poor wording in these entries can keep each checklist entry from being specific,
 ---
 
 ## Outstanding Tasks
-    
+> Use the Checklist Entry Template to create new tasks.
 ### Checklist Entry Template (Use for every new actionable item)
+```
 - Required fields for each entry:
   - `Scope:` exact problem boundary.
   - `Target Files:` explicit relative paths to edit or audit.
@@ -46,6 +47,9 @@ Example format:
   - Target Files: `<path1>`, `<path2>`
   - Dependencies: <entry title or `None`>
   - DONE WHEN: <verifiable outcome>
+```
+
+- [ ] **Replace this entry when you are ready to assign tasks.**
 
 ---
 
@@ -155,7 +159,16 @@ Example format:
 
 ---
 
-## Only Proceed Below This Checklist Area If No Entries Above Exist
-> Entries and instructions below this section are for iterative improvement as needed by Agents with no pending tasks.
+## Coding-Agent-Surfaced Execution Friction / What Will Make Agents Able To Navigate Your Project More Easily
+> **INSTRUCTIONS:** Surface Coding-Agent Execution Friction Entries Here for User Approval. User will migrate entries to higher in the checklist if your suggestions are approved.
+
+**USER INSTRUCTIONS:** You will need to add an entry to `AGENTS.md` authorizing Coding-Agents to make entries in this section, should you choose to allow Agenets to make their own checklist entry suggestions for common problems they encounter. This is **NOT ENABLED BY DEFAULT**.
+
+Example addition to `AGENTS.md`:
+```
+Agents are expected to create actionable granular scoped checklist entries that follow the checklist template in `Final-Productization-Checklist.md` in the `Coding-Agent-Surfaced Execution Friction` section of the checklist when they encounter problems/friction specific to Agent navigation, script invocation syntax, needed context without investigation, needed prompt recipes, task recipes, workflow diagrams, bootstrapping for context, or other assets that will make project use smoother for Coding Agents. The user agrees to review all checklist entries in that section and move them to actionable tasks, if approved.
+```
+
+- Create suggestion checklist entries here, if directed by `AGENTS.md`
 
 ---
