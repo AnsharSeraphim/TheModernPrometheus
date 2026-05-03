@@ -1,5 +1,5 @@
 # The Modern Prometheus
-> **A GitHub Repository Template Designed For Work With Coding Agents**
+> **A GitHub Repository Template Designed For Working With Coding Agents**
 
 **Initial Design:** Anshar Seraphim  
 **ORCID:** [0009-0001-9104-4812](https://orcid.org/0009-0001-9104-4812)
