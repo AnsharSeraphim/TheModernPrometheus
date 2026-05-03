@@ -4,8 +4,11 @@
 **Initial Design:** Anshar Seraphim  
 **ORCID:** [0009-0001-9104-4812](https://orcid.org/0009-0001-9104-4812)
 
+---
 **New here?** Start with [New User Onboarding](docs/new_user_onboarding.md) for a plain-language tour of the repository's purpose, wrapper-first workflow, quality gates, checklist discipline, and coding-agent operating model.
+---
 
+## Welcome to The Modern Prometheus - Project Description
 This GitHub Repository Starter is a reusable repository-bootstrap system for creating agent-ready, quality-controlled Python projects. It packages the instructions, scripts, ledgers, checklists, policies, and automation needed for a repository to begin with disciplined execution rather than acquiring rules later through preventable execution failures.
 
 The starter includes coding-agent directives, contributor instructions, unified pre-commit orchestration, unified test orchestration, strict lint/type/security/docstring checks, UTF-8 policy, release-note practices, checklist templates, and per-hook JSON skip ledgers. The skip-ledger design allows quality-assurance hooks to avoid rechecking the whole repository on every iteration by focusing on touched or not-yet-cleared files.
