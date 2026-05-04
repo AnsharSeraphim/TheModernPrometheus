@@ -22,7 +22,7 @@ The following re-usable prompt can be used to iteratively prompt Coding-LLMs, li
 # Execute tasks and ensure no precommit script hook violations in project, maintain parity with documentation
 * Address tasks described in `Final-Productization-Checklist.md` through remediation/implementation of described issues/goals to the maximum extent allowed by your session (no minimal executions, genuinely address a significant scope, not just checklist updates or diagnostics)  
 
-## Following directives in AGENTS.md about pre-commit syntax, perform tasks as below
+## Following directives in `AGENTS.md` about pre-commit syntax, perform tasks as below
 * Address tasks in `Final-Productization-Checklist.md`, starting with the tasks that must be completed before future tasks and implementation can be addressed.
 * Diagnose/Resolve any surfacing failures/warnings/errors related to your execution to keep our progress momentum on any backlog of pre-commit violations.
 * If you see multiple checklist entries or items that are easily combined into a single execution, it's helpful to address as many as you can in order to reduce the total number of needed sessions. 
