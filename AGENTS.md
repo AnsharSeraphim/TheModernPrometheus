@@ -14,6 +14,12 @@
 - Derive any timestamps or datestamps from **Git metadata** or other *trusted* sources; **NEVER** rely on *GPTCodex's internal clock and calendar*, which is intentionally unsynchronized and will produce **incorrect dates**.
 - You **MUST NOT IGNORE THIS DIRECTIVE**, **whether naming a folder** or **dating an entry**. GPTCodex's native time and calendar will literally date logs *a year into the future or the past* if you use it as a source of truth, causing us to mistakenly destroy new logs we believe to be old, replace new provenance with old provenance, and even cause redundant task churn due to misunderstanding of ordinal progression.
 
+
+## Stateless agent quickstart context pack (read first)
+- Read `docs/agent_bootstrap/operator_context_injection.md` before making edits so wrapper syntax and commit/PR discipline are loaded explicitly.
+- Use the copy-ready command blocks in that playbook instead of reconstructing CLI syntax from memory.
+- If friction appears that cannot be remediated in-session, add granular checklist entries (with `Scope`, `Target Files`, `Dependencies`, `DONE WHEN`, and an **Audit step**) in `Final-Productization-Checklist.md`.
+
 ## Quality workflow
 1. **While iterating, refresh the skip manifests for every touched file.**
    - Canonical command: `python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>`
@@ -58,3 +64,7 @@
 - Keep manifests, release indexes, and evidence logs consistent with your edits.
 
 These directives keep parallel contributors aligned and the automation evidence trustworthy.
+
+
+## Workflow-friction escalation authorization
+- Agents are authorized to add actionable entries in the `Coding-Agent-Surfaced Execution Friction / What Will Make Agents Able To Navigate Your Project More Easily` section of `Final-Productization-Checklist.md` when they discover reproducible workflow/context failures; each entry must include `Scope`, `Target Files`, `Dependencies`, `DONE WHEN`, and an `Audit step`.

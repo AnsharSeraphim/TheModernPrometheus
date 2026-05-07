@@ -29,3 +29,8 @@ This folder documents how to create agent-bootstrap artifacts from existing repo
 - Skills markdown should reference wrapper-first commands and checklist governance from `AGENTS.md`.
 - Prompt recipes should include required quality gates and instructions to attach summary blocks from `build/automation_contract/`.
 - Task-recipe JSON should include explicit `scope`, `target_files`, and `done_when` fields mirroring checklist policy.
+
+
+## Operational context injection asset
+
+- `operator_context_injection.md`: mandatory stateless-agent playbook for wrapper syntax, commit/PR discipline, timestamp hygiene, and friction escalation.

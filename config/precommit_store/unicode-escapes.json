@@ -71,6 +71,9 @@
   "docs/agent_bootstrap/README.md": {
     "skip": "Y"
   },
+  "docs/agent_bootstrap/operator_context_injection.md": {
+    "skip": "Y"
+  },
   "docs/new_user_onboarding.md": {
     "skip": "Y"
   },
