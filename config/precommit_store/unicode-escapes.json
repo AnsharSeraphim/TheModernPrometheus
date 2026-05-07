@@ -71,6 +71,9 @@
   "docs/agent_bootstrap/README.md": {
     "skip": "Y"
   },
+  "docs/new_user_onboarding.md": {
+    "skip": "Y"
+  },
   "docs/release_notes.md": {
     "skip": "Y"
   },

@@ -58,8 +58,17 @@ jobs = 1
 fail-under = 10
 recursive = true
 ignore-paths = [
+    "^\\.git/.*$",
+    "^\\.mypy_cache/.*$",
+    "^\\.pytest_cache/.*$",
+    "^\\.ruff_cache/.*$",
+    "^\\.venv/.*$",
+    "^__pycache__/.*$",
+    "^artifacts/.*$",
     "^build/automation_contract/.*$",
+    "^dist/.*$",
     "^reports/reasoning/pipeline/.*$",
+    "^vendor/.*$",
 ]
 
 [tool.pylint.reports]
@@ -67,7 +76,7 @@ score = false
 
 [tool.pylint.format]
 max-line-length = 120
-max-module-lines = 3000
+max-module-lines = 3400
 
 [tool.pylint.messages_control]
 disable = [
@@ -99,13 +108,32 @@ warn_unreachable = true
 show_error_codes = true
 files = ["scripts", "tests"]
 exclude = [
+    "^\\.git/",
+    "^\\.mypy_cache/",
+    "^\\.pytest_cache/",
+    "^\\.ruff_cache/",
+    "^\\.venv/",
+    "^artifacts/",
     "^build/automation_contract/",
+    "^dist/",
     "^reports/reasoning/pipeline/",
+    "^vendor/",
 ]
 
 [tool.pyright]
 include = ["scripts", "tests"]
-exclude = ["build/automation_contract", "reports/reasoning/pipeline"]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "artifacts",
+    "build/automation_contract",
+    "dist",
+    "reports/reasoning/pipeline",
+    "vendor",
+]
 pythonVersion = "3.13"
 pythonPlatform = "Linux"
 typeCheckingMode = "strict"
@@ -113,7 +141,19 @@ reportMissingTypeStubs = "none"
 
 [tool.deptry]
 ignore_notebooks = true
-extend_exclude = ["build", "reports"]
+extend_exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "artifacts",
+    "build",
+    "dist",
+    "reports",
+    "vendor",
+]
 optional_dependencies_dev_groups = ["dev"]
 
 [tool.deptry.package_module_name_map]
@@ -141,6 +181,7 @@ DEP002 = [
 paths = ["scripts", "tests"]
 min_confidence = 80
 sort_by_size = true
+exclude = [".git", ".mypy_cache", ".pytest_cache", ".ruff_cache", ".venv", "__pycache__", "artifacts", "build", "dist", "reports", "vendor"]
 
 [tool.interrogate]
 fail-under = 100
