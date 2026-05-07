@@ -8,6 +8,8 @@
 - Added `.github/dependabot.yml` with grouped weekly update strategies for pip and GitHub Actions dependencies, explicit labels, reviewer defaults, and bounded open-PR limits.
 
 ### Changed
+- Added explicit commit/PR phase-splitting thresholds and per-phase validation evidence requirements to `CONTRIBUTING.md`, `docs/new_user_onboarding.md`, and `docs/agent_bootstrap/operator_context_injection.md` to prevent oversized single-diff workflows.
+- Completed timestamp/UTF-8 policy parity updates across onboarding/context docs by adding missing guidance in `README.md` and harmonizing friction-entry instructions in `Final-Productization-Checklist.md`.
 - Added `context/recipes/quality_remediation_session.md` and `context/recipes/checklist_audit_session.md`, linked from bootstrap docs, and recorded a wrapper-help parity audit in `docs/agent_bootstrap/operator_context_injection.md`.
 - Completed a first-pass documentation parity audit across root, scripts, tests, and config READMEs; removed the corresponding completed audit tasks from `Final-Productization-Checklist.md` so only unresolved documentation entries remain.
 - Clarified `CONTRIBUTING.md` local setup guidance to match the repository runtime pin (`>=3.13,<3.14`) by explicitly instructing contributors to use Python 3.13 virtual environments.
@@ -30,4 +32,3 @@
 
 - Added `docs/agent_bootstrap/operator_context_injection.md` to centralize stateless-agent bootstrap context for wrapper syntax, commit/PR discipline, timestamp hygiene, and checklist escalation paths.
 - Updated `AGENTS.md` with a quickstart context-pack requirement so agents load operational constraints before editing.
-

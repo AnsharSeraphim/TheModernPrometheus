@@ -56,8 +56,24 @@ python scripts/run_tests.py --scope paths --select <pytest-selector>
 - Never commit binary artifacts (images, video, archives).
 - If changed quality-ledger JSON files under `config/precommit_store/` are produced by wrapper runs, include them in the commit.
 - Do not hand-edit skip manifests or pylint cache files.
-- Large workflow changes must be phased when diffs approach repository/platform limits (for example near 100k changed lines).
+- Phase large changes proactively using repository thresholds:
+  - split when a work unit exceeds 25 changed files, or
+  - split when net line churn exceeds 1,200 changed lines.
+- For hosting/platform hard limits (for example around 100k changed lines), split further into smaller, independently validated phases.
 - A session that commits must also produce a PR message with test evidence summaries.
+
+### Per-phase validation and PR evidence
+
+- Before each phase commit:
+  - `python scripts/run_precommit_suite.py --scope paths --paths <touched-file1> <touched-file2>`
+  - `python scripts/run_tests.py --scope paths --select <relevant-selector>`
+- Before PR publication/final phase handoff:
+  - `python scripts/run_precommit_suite.py`
+  - `python scripts/run_tests.py`
+- PR notes must include:
+  - the final summary blocks from `build/automation_contract/`,
+  - scoped remediation commands executed,
+  - explicit references to unresolved checklist entries if any work is deferred.
 
 ## Data and timestamp hygiene
 
