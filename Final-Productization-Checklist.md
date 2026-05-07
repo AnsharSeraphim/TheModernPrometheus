@@ -51,19 +51,7 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Audit and harden context-injection coverage for wrappers and workflow syntax**
-  - Scope: Validate that agent-facing context assets consistently document `scripts/run_precommit_suite.py` and `scripts/run_tests.py` invocation syntax, targeting modes, and wrapper-first policy across onboarding and bootstrap docs.
-  - Target Files: `docs/new_user_onboarding.md`, `docs/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `docs/agent_bootstrap/operator_context_injection.md`
-  - Dependencies: `None`
-  - DONE WHEN: A scoped audit section is added to one canonical document (or checklist follow-up) enumerating all context-bearing files, parity gaps found, remediations applied, and any remaining follow-up entries with owners.
-  - Audit step: Compare documented commands against live `--help` output from both wrappers and add new checklist entries for any syntax drift.
 
-- [ ] **Create SKILLS/task-recipe context assets for operational sessions**
-  - Scope: Introduce repository-local prompt/task recipes that tell stateless agents how to execute remediation loops, checklist updates, and evidence capture without violating wrapper or checklist policy.
-  - Target Files: `context/README.md`, `context/recipes/` (new), `docs/agent_bootstrap/README.md`
-  - Dependencies: `Audit and harden context-injection coverage for wrappers and workflow syntax`
-  - DONE WHEN: At least one committed recipe template exists for (1) quality-remediation sessions and (2) checklist-audit sessions, each with explicit command syntax, stop conditions, and escalation instructions.
-  - Audit step: Run a dry-run walkthrough against an intentionally simple change and record whether a stateless agent could complete the session using only the recipe.
 
 - [ ] **Add commit/PR segmentation and large-diff phasing guidance**
   - Scope: Document operational limits and phasing strategy (binary prohibition, JSON ledger inclusion, chunking strategy for large diffs) in contributor-facing docs so agents do not create unreviewable commits.

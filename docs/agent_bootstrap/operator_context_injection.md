@@ -81,3 +81,12 @@ python scripts/run_tests.py --scope paths --select <pytest-selector>
 - Capture final result blocks emitted under `build/automation_contract/`.
 - Avoid copying progress percentages or partial logs.
 - Report exact commands used and outcomes in final session summary.
+
+## Context-injection parity audit (2026-05-07)
+
+Canonical audit scope: `docs/new_user_onboarding.md`, `docs/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, and this playbook.
+
+- Wrapper syntax parity: confirmed command parity against `python scripts/run_precommit_suite.py --help` and `python scripts/run_tests.py --help`; no syntax drift detected.
+- Wrapper-first policy parity: each scoped document now points contributors to wrapper surfaces instead of direct hook/test calls.
+- Recipe coverage remediation: added repository-local recipes for quality remediation and checklist audits under `context/recipes/` and linked them from bootstrap docs.
+- Remaining follow-up: none from this parity sweep; create a new checklist entry if future wrapper help output changes.
