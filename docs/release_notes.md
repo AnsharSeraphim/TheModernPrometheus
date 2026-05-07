@@ -24,3 +24,9 @@
 - Added coverage tests for `scripts/aggregate_project_docstrings.py` to verify missing-docstring accounting and excluded-directory behavior.
 - Expanded root README orientation with wrapper-first execution policy, repository map, and docstring automation context.
 - Repurposed `scripts/audit_docstrings.py` for this repository with default scan roots (`scripts/`, `tests/`), excluded-directory handling, and Markdown inventory documentation in `scripts/README.md`.
+
+## 2026-05-07
+
+- Added `docs/agent_bootstrap/operator_context_injection.md` to centralize stateless-agent bootstrap context for wrapper syntax, commit/PR discipline, timestamp hygiene, and checklist escalation paths.
+- Updated `AGENTS.md` with a quickstart context-pack requirement so agents load operational constraints before editing.
+

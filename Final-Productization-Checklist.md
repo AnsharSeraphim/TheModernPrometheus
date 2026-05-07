@@ -51,8 +51,40 @@ Example format:
 
 ## Outstanding Tasks
 
-- **INSTRUCTIONS FOR USER:** REPLACE THIS LINE WITH YOUR FIRST DIRECTIVES FOR CODING-AGENT DEVELOPMENT. 
-  - Example: - [ ] Ingest `XYZ-Conversation-Log-About-Project-Design.txt` to understand the project vision and create exhaustive maximal actionable granular checklist entries, following the template above, to outline a development plan to create it in the project.
+- [ ] **Audit and harden context-injection coverage for wrappers and workflow syntax**
+  - Scope: Validate that agent-facing context assets consistently document `scripts/run_precommit_suite.py` and `scripts/run_tests.py` invocation syntax, targeting modes, and wrapper-first policy across onboarding and bootstrap docs.
+  - Target Files: `docs/new_user_onboarding.md`, `docs/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `docs/agent_bootstrap/operator_context_injection.md`
+  - Dependencies: `None`
+  - DONE WHEN: A scoped audit section is added to one canonical document (or checklist follow-up) enumerating all context-bearing files, parity gaps found, remediations applied, and any remaining follow-up entries with owners.
+  - Audit step: Compare documented commands against live `--help` output from both wrappers and add new checklist entries for any syntax drift.
+
+- [ ] **Create SKILLS/task-recipe context assets for operational sessions**
+  - Scope: Introduce repository-local prompt/task recipes that tell stateless agents how to execute remediation loops, checklist updates, and evidence capture without violating wrapper or checklist policy.
+  - Target Files: `context/README.md`, `context/recipes/` (new), `docs/agent_bootstrap/README.md`
+  - Dependencies: `Audit and harden context-injection coverage for wrappers and workflow syntax`
+  - DONE WHEN: At least one committed recipe template exists for (1) quality-remediation sessions and (2) checklist-audit sessions, each with explicit command syntax, stop conditions, and escalation instructions.
+  - Audit step: Run a dry-run walkthrough against an intentionally simple change and record whether a stateless agent could complete the session using only the recipe.
+
+- [ ] **Add commit/PR segmentation and large-diff phasing guidance**
+  - Scope: Document operational limits and phasing strategy (binary prohibition, JSON ledger inclusion, chunking strategy for large diffs) in contributor-facing docs so agents do not create unreviewable commits.
+  - Target Files: `CONTRIBUTING.md`, `docs/new_user_onboarding.md`, `docs/agent_bootstrap/operator_context_injection.md`
+  - Dependencies: `None`
+  - DONE WHEN: Docs include explicit thresholds/triggers for split-phase work and define required per-phase validation commands and PR evidence expectations.
+  - Audit step: Add a checklist follow-up if any workflow doc still permits ambiguous “single massive diff” execution.
+
+- [ ] **Audit timestamp/data hygiene context and enforce UTF-8 guidance parity**
+  - Scope: Ensure every primary onboarding/context asset repeats trusted timestamp sourcing and UTF-8 file handling expectations without contradictions.
+  - Target Files: `AGENTS.md`, `README.md`, `docs/new_user_onboarding.md`, `context/README.md`, `docs/agent_bootstrap/operator_context_injection.md`
+  - Dependencies: `None`
+  - DONE WHEN: A parity sweep confirms all listed assets reference trusted timestamp sources and UTF-8 policy; gaps are remediated or split into actionable tasks.
+  - Audit step: Validate examples do not use model-relative dates or locale-dependent encodings, and add targeted follow-ups for any violation.
+
+- [ ] **Establish workflow-friction capture protocol for stateless operators**
+  - Scope: Authorize and standardize how agents record new execution-friction entries so issues discovered mid-session become actionable checklist work instead of narrative notes.
+  - Target Files: `AGENTS.md`, `Final-Productization-Checklist.md`
+  - Dependencies: `None`
+  - DONE WHEN: `AGENTS.md` explicitly permits friction-entry creation in the checklist section and defines required entry fields and quality bar.
+  - Audit step: Add a self-check instruction requiring agents to review whether newly observed friction is already tracked before creating duplicates.
 
 ---
 
