@@ -46,6 +46,37 @@ python scripts/run_tests.py
 
 Each runner writes a copy-ready summary block under `build/automation_contract/`. Use those blocks in PR notes or review summaries instead of copying incomplete progress logs.
 
+## Commit and PR segmentation policy
+
+To keep reviews tractable, split work into phases instead of submitting a single oversized diff.
+
+- Never commit binary evidence artifacts (screenshots, videos, archives).
+- Commit wrapper-managed ledger changes in `config/precommit_store/*.json` whenever the wrapper updates them.
+- Trigger phased execution when either threshold is met:
+  - more than 25 files changed in one work unit, or
+  - more than 1,200 net changed lines (additions + deletions) in one work unit.
+- Keep each phase centered on one checklist task (or one direct prerequisite + dependent pair).
+
+Per-phase validation before each phase commit:
+
+```bash
+python scripts/run_precommit_suite.py --scope paths --paths <touched-file1> <touched-file2>
+python scripts/run_tests.py --scope paths --select <relevant-selector>
+```
+
+Final validation before PR publication:
+
+```bash
+python scripts/run_precommit_suite.py
+python scripts/run_tests.py
+```
+
+PR evidence expectations:
+
+- Include the final summary blocks from `build/automation_contract/`.
+- List the scoped remediation commands executed for the phase.
+- If anything remains unresolved, add a checklist entry in `Final-Productization-Checklist.md` and link it in the PR notes.
+
 ## Tooling inventory
 
 The pre-commit suite currently orchestrates:

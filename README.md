@@ -72,6 +72,12 @@ python scripts/run_tests.py
 - Tests must be driven by `scripts/run_tests.py`.
 - Direct/manual invocations (`pre-commit run <hook>`, naked `pytest`) are treated as policy violations because they bypass repository summary artifacts and skip-ledger coordination.
 
+## Timestamp and UTF-8 policy
+
+- Save repository text assets as UTF-8.
+- Derive dates/timestamps from trusted sources (for example Git metadata, filesystem metadata, or wrapper output), not model-relative/internal clocks.
+- When documenting execution timelines, prefer explicit absolute dates from those trusted sources.
+
 ## Dependency and tooling reproducibility posture
 
 - Python runtime is intentionally pinned to `>=3.13,<3.14` in `pyproject.toml` so contributors and automation runners execute under a single interpreter target that matches Ruff, MyPy, Pyright, and Pylint settings.

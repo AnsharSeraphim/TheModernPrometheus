@@ -67,6 +67,33 @@ python scripts/run_tests.py
 
 Those wrapper commands matter. Do not replace them with naked `pre-commit`, direct hook aliases, or bare `pytest` unless the repository documentation explicitly authorizes that path.
 
+## Commit and PR phasing thresholds
+
+When a change gets large, split it into reviewable phases instead of pushing one monolithic commit/PR update.
+
+- Phase your work when either threshold is reached:
+  - more than 25 changed files, or
+  - more than 1,200 net changed lines.
+- Keep each phase tied to one checklist task or one immediate dependency chain.
+- Include wrapper-generated `config/precommit_store/*.json` changes in the same phase commit when they are updated by your remediation runs.
+- Never commit binary evidence artifacts; keep them out of Git and reference them externally if needed.
+
+Per-phase validation:
+
+```bash
+python scripts/run_precommit_suite.py --scope paths --paths <touched-file1> <touched-file2>
+python scripts/run_tests.py --scope paths --select <relevant-selector>
+```
+
+PR-close validation:
+
+```bash
+python scripts/run_precommit_suite.py
+python scripts/run_tests.py
+```
+
+Evidence packaging expectation: copy the final summary blocks from `build/automation_contract/` and include command history plus any unresolved checklist links.
+
 ## The wrapper-first rule
 
 The most important operating rule in this repository is wrapper-first execution.
