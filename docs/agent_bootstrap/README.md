@@ -34,3 +34,12 @@ This folder documents how to create agent-bootstrap artifacts from existing repo
 ## Operational context injection asset
 
 - `operator_context_injection.md`: mandatory stateless-agent playbook for wrapper syntax, commit/PR discipline, timestamp hygiene, and friction escalation.
+
+## Repository-local task recipes
+
+Use the context recipes when running stateless sessions:
+
+- `context/recipes/quality_remediation_session.md` for implementation + remediation loops.
+- `context/recipes/checklist_audit_session.md` for checklist dependency/actionability audits.
+
+Both recipes are wrapper-first and include escalation instructions for unresolved work.

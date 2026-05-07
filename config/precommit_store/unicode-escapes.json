@@ -65,6 +65,12 @@
   "context/README.md": {
     "skip": "Y"
   },
+  "context/recipes/checklist_audit_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/quality_remediation_session.md": {
+    "skip": "Y"
+  },
   "docs/README.md": {
     "skip": "Y"
   },
