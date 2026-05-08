@@ -18,9 +18,10 @@ def test_collect_docstrings_skips_excluded_directories(tmp_path: Path) -> None:
     included.write_text('"""Included module."""\n', encoding="utf-8")
     excluded.write_text('"""Excluded module."""\n', encoding="utf-8")
 
-    collected = collect_docstrings(roots=(tmp_path,))
+    collected, missing = collect_docstrings(roots=(tmp_path,))
 
     assert list(collected) == ["module.py"]  # nosec B101
+    assert not missing  # nosec B101
 
 
 def test_build_inventory_markdown_includes_symbol_table(tmp_path: Path) -> None:
@@ -32,8 +33,8 @@ def test_build_inventory_markdown_includes_symbol_table(tmp_path: Path) -> None:
         encoding="utf-8",
     )
 
-    collected = collect_docstrings(roots=(tmp_path,))
-    markdown = build_inventory_markdown(collected=collected)
+    collected, missing = collect_docstrings(roots=(tmp_path,))
+    markdown = build_inventory_markdown(collected=collected, missing=missing)
 
     assert "| `sample.py` | `sample` | module | 1 | Example module. |" in markdown  # nosec B101
     assert "| `sample.py` | `sample.helper` | function | 3 | Return one. |" in markdown  # nosec B101

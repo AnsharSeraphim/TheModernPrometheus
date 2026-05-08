@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import tempfile
-from collections.abc import Iterable, Iterator, Mapping, MutableMapping, Sequence
+from collections.abc import Generator, Iterable, Mapping, MutableMapping, Sequence
 from contextlib import contextmanager
 from dataclasses import dataclass
 from enum import Enum
@@ -71,7 +71,7 @@ class PrecommitFilter:
         self._load_existing_manifests()
 
     @contextmanager
-    def session_guard(self) -> Iterator[PrecommitFilter]:
+    def session_guard(self) -> Generator[PrecommitFilter]:
         """Provide rollback-safe mutation for a single suite execution."""
 
         runtime = self._state
