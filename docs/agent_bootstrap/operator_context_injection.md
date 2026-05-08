@@ -45,10 +45,10 @@ Interrogate is intentionally surfaced as a concise violation in pre-commit outpu
 When `python scripts/run_precommit_suite.py` reports an interrogate violation, agents must immediately run:
 
 ```bash
-python scripts/audit_docstrings.py --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md
+python scripts/audit_docstrings.py --scan-root scripts --output build/automation_contract/docstring_inventory.md
 ```
 
-Use the `## Missing docstrings` table in that report to drive remediation scope:
+Use the `## Missing docstrings` table in that report to drive remediation scope for the same interrogate target set (`scripts/`):
 
 1. If missing docstrings are in files touched during the current session, remediate in-session and rerun the wrapper in scoped mode.
 2. If remediation is genuinely out-of-scope for one session (for example required refactors across multiple modules), add granular checklist entries in `Final-Productization-Checklist.md` that include `Scope`, `Target Files`, `Dependencies`, `DONE WHEN`, and an explicit audit step.
