@@ -26,6 +26,15 @@ class DocstringEntry:
     docstring: str
 
 
+@dataclass(frozen=True)
+class MissingDocstringEntry:
+    """Represent one module/class/function symbol that lacks a docstring."""
+
+    symbol: str
+    kind: str
+    line_number: int
+
+
 class _DocstringCollector(ast.NodeVisitor):
     """Collect module, class, and function docstrings from an AST."""
 
@@ -35,6 +44,7 @@ class _DocstringCollector(ast.NodeVisitor):
         self._module_path = module_path
         self._stack: list[str] = []
         self.entries: list[DocstringEntry] = []
+        self.missing_entries: list[MissingDocstringEntry] = []
 
     def visit_Module(self, node: ast.Module) -> None:  # noqa: N802  # pylint: disable=invalid-name
         """Visit a module node and capture its docstring."""
@@ -73,6 +83,9 @@ class _DocstringCollector(ast.NodeVisitor):
 
         docstring = ast.get_docstring(node)
         if not docstring:
+            self.missing_entries.append(
+                MissingDocstringEntry(symbol=name, kind=kind, line_number=getattr(node, "lineno", 1))
+            )
             return
         self.entries.append(
             DocstringEntry(
@@ -118,10 +131,13 @@ def _relative_display_path(*, file_path: Path, roots: tuple[Path, ...]) -> str:
     return file_path.as_posix()
 
 
-def collect_docstrings(*, roots: tuple[Path, ...]) -> dict[str, list[DocstringEntry]]:
-    """Collect all docstring entries grouped by relative Python file path."""
+def collect_docstrings(
+    *, roots: tuple[Path, ...]
+) -> tuple[dict[str, list[DocstringEntry]], dict[str, list[MissingDocstringEntry]]]:
+    """Collect present and missing docstring entries grouped by relative Python file path."""
 
     collected: dict[str, list[DocstringEntry]] = {}
+    missing: dict[str, list[MissingDocstringEntry]] = {}
     for file_path in _iter_python_files(roots=roots):
         relative_path = _relative_display_path(file_path=file_path, roots=roots)
         tree = ast.parse(file_path.read_text(encoding="utf-8"), filename=relative_path)
@@ -130,11 +146,17 @@ def collect_docstrings(*, roots: tuple[Path, ...]) -> dict[str, list[DocstringEn
         collector.visit(tree)
         if collector.entries:
             collected[relative_path] = collector.entries
-    return collected
+        if collector.missing_entries:
+            missing[relative_path] = collector.missing_entries
+    return collected, missing
 
 
-def build_inventory_markdown(*, collected: dict[str, list[DocstringEntry]]) -> str:
-    """Render the docstring inventory as Markdown with stable section ordering."""
+def build_inventory_markdown(
+    *,
+    collected: dict[str, list[DocstringEntry]],
+    missing: dict[str, list[MissingDocstringEntry]],
+) -> str:
+    """Render docstring inventory markdown with present/missing coverage context."""
 
     lines = [
         "# Programmatic Docstring Inventory",
@@ -142,20 +164,53 @@ def build_inventory_markdown(*, collected: dict[str, list[DocstringEntry]]) -> s
         "Generated for documentation parity audits. Delete or regenerate this file after the audit session.",
         "",
     ]
-    if not collected:
-        lines.append("No docstrings were found in the selected scan roots.")
-        return "\n".join(lines) + "\n"
+    total_documented = sum(len(entries) for entries in collected.values())
+    total_missing = sum(len(entries) for entries in missing.values())
+    total_symbols = total_documented + total_missing
 
     lines.extend(
         [
-            "| File | Symbol | Kind | Line | Summary |",
-            "| --- | --- | --- | ---: | --- |",
+            f"Coverage summary: documented {total_documented}/{total_symbols} symbols "
+            f"({(total_documented / total_symbols * 100) if total_symbols else 100:.2f}%).",
+            "",
         ]
     )
-    for relative_path, entries in sorted(collected.items()):
-        for entry in entries:
-            summary = entry.docstring.splitlines()[0].replace("|", "\\|")
-            lines.append(f"| `{relative_path}` | `{entry.symbol}` | {entry.kind} | {entry.line_number} | {summary} |")
+
+    if not collected:
+        lines.append("No docstrings were found in the selected scan roots.")
+    else:
+        lines.extend(
+            [
+                "| File | Symbol | Kind | Line | Summary |",
+                "| --- | --- | --- | ---: | --- |",
+            ]
+        )
+        for relative_path, entries in sorted(collected.items()):
+            for entry in entries:
+                summary = entry.docstring.splitlines()[0].replace("|", "\\|")
+                lines.append(
+                    f"| `{relative_path}` | `{entry.symbol}` | {entry.kind} | {entry.line_number} | {summary} |"
+                )
+        lines.append("")
+
+    lines.append("## Missing docstrings")
+    lines.append("")
+    if not missing:
+        lines.append("No missing module/class/function docstrings were detected.")
+        lines.append("")
+        return "\n".join(lines)
+
+    lines.extend(["| File | Symbol | Kind | Line |", "| --- | --- | --- | ---: |"])
+    for relative_path, missing_entries in sorted(missing.items()):
+        for missing_entry in missing_entries:
+            lines.append(
+                f"| `{relative_path}` | `{missing_entry.symbol}` | {missing_entry.kind} | {missing_entry.line_number} |"
+            )
+    lines.append("")
+    lines.append(
+        "When interrogate fails in the pre-commit wrapper, rerun this script and convert the missing-symbol rows into "
+        "granular checklist remediation entries in `Final-Productization-Checklist.md`."
+    )
     lines.append("")
     return "\n".join(lines)
 
@@ -185,10 +240,10 @@ def main() -> int:
 
     args = _parse_args()
     roots = tuple(Path(path).resolve() for path in args.scan_roots) if args.scan_roots else DEFAULT_SCAN_ROOTS
-    collected = collect_docstrings(roots=roots)
+    collected, missing = collect_docstrings(roots=roots)
     output_path = args.output.resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(build_inventory_markdown(collected=collected), encoding="utf-8")
+    output_path.write_text(build_inventory_markdown(collected=collected, missing=missing), encoding="utf-8")
     print(f"Wrote docstring inventory to {output_path}")
     return 0
 

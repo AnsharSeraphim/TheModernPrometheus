@@ -32,3 +32,8 @@
 
 - Added `docs/agent_bootstrap/operator_context_injection.md` to centralize stateless-agent bootstrap context for wrapper syntax, commit/PR discipline, timestamp hygiene, and checklist escalation paths.
 - Updated `AGENTS.md` with a quickstart context-pack requirement so agents load operational constraints before editing.
+
+- Enhanced `scripts/audit_docstrings.py` to include documented/missing coverage summaries so interrogate wrapper failures can be converted into scoped remediation checklists without ad-hoc investigation.
+- Expanded `docs/agent_bootstrap/operator_context_injection.md` with an explicit interrogate-failure response workflow that prioritizes in-session docstring remediation and defines checklist fallback requirements.
+
+- Aligned interrogate remediation guidance so `operator_context_injection.md` invokes `audit_docstrings.py` with `--scan-root scripts`, matching the wrapper interrogate target scope and avoiding non-actionable `tests/` findings during interrogate triage.
