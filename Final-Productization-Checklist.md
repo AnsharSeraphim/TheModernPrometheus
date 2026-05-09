@@ -51,20 +51,6 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Make task-recipe validation reproducible from declared dependencies**
-  - Scope: Fix the mismatch where `context/task_recipes/README.md` documents a `jsonschema`-based validation workflow, but a fresh environment created from `requirements-dev.txt` cannot import `jsonschema`. This currently makes the published validation contract non-reproducible.
-  - Target Files: `requirements-dev.txt`, `pyproject.toml`, `context/task_recipes/README.md`, `docs/task_recipe_schema.md`, optionally `tests/` if regression coverage is added
-  - Dependencies: `None`
-  - DONE WHEN: A fresh environment created strictly from documented setup can execute the published task-recipe validation flow without missing-module errors, and the dependency surface is documented where operators are told to validate recipes.
-  - Audit step: Create a clean virtual environment, install only the repo’s declared development dependencies, run the validation snippet from `context/task_recipes/README.md`, and confirm it succeeds without relying on ambient/global packages.
-
-- [ ] **Reconcile skill assets with actual runtime-consumption semantics**
-  - Scope: Resolve the current mismatch between runtime documentation that treats `skills/*/SKILL.md` as directly consumable by Codex-style agent runtimes and the actual implementation, where skills are stored only under `skills/`, lack runtime-spec metadata/front matter, and do not document any vendor-specific mirror or adapter path. The same pass should also clarify shell/tool prerequisites because current skill and task assets rely on `sed`, `cat`, and `rg` without declaring a POSIX/Bash or ripgrep requirement.
-  - Target Files: `docs/runtime_target_support_matrix.md`, `skills/README.md`, `skills/checklist-audit/SKILL.md`, `skills/documentation-parity-audit/SKILL.md`, `skills/quality-remediation/SKILL.md`, `skills/template-bootstrap/SKILL.md`, `docs/agent_bootstrap/README.md`, `context/task_recipes/checklist_audit.json`, `docs/new_user_onboarding.md`
-  - Dependencies: `None`
-  - DONE WHEN: The repo either (a) provides vendor-compliant skill delivery with documented discovery paths/metadata and explicit shell-tool prerequisites, or (b) clearly reclassifies `skills/` as human/advisory workflow assets instead of claiming direct runtime consumption; command assets no longer assume undeclared shell tooling.
-  - Audit step: Verify the declared supported runtime can discover or consume the skill assets exactly as documented on a fresh checkout, and verify non-POSIX/non-ripgrep environments are either supported with documented fallbacks or explicitly marked out of scope.
-
 
 ---
 

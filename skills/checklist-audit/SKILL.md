@@ -11,6 +11,10 @@ Audit and normalize `Final-Productization-Checklist.md` entries so remaining wor
 - You are primarily implementing code behavior (use `quality-remediation`).
 - You are running documentation parity checks for specific docs (use `documentation-parity-audit`).
 
+## Environment prerequisites
+- POSIX-compatible shell.
+- `rg` (`ripgrep`) available on `PATH`.
+
 ## Required inputs
 - Current `Final-Productization-Checklist.md` content.
 - Related implementation/docs paths referenced by target entries.

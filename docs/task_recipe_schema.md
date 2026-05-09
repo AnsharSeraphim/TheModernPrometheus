@@ -46,6 +46,8 @@ Do not encode direct hook aliases or bare `pytest` calls unless a repository pol
 3. Reject assets with unknown keys (schema sets `additionalProperties: false`).
 4. Keep recipe `done_when` semantics aligned with checklist `DONE WHEN` expectations.
 
+The reference validation snippet imports `jsonschema.Draft202012Validator`; install repository development dependencies before running it.
+
 ## Maintenance notes
 
 - Update this document when schema keys, constraints, or workflow expectations change.

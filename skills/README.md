@@ -1,6 +1,7 @@
 # Repository Skill Pack
 
 This directory contains repository-local `SKILL.md` assets for high-frequency stateless workflows.
+These files are human-readable/advisory playbooks stored in source control, not runtime plugin manifests.
 
 ## Available skills
 
@@ -13,6 +14,11 @@ This directory contains repository-local `SKILL.md` assets for high-frequency st
 
 These skills are designed for human contributors and terminal coding agents that can read Markdown instructions and execute repository commands.
 Runtime support boundaries are defined in `docs/runtime_target_support_matrix.md`.
+
+## Environment prerequisites
+
+- POSIX-compatible shell (examples use `bash` syntax).
+- `rg` (`ripgrep`) installed and available on `PATH`.
 
 ## Usage contract
 

@@ -45,6 +45,8 @@ Use the repository skills and context recipes when running stateless sessions:
 - `skills/documentation-parity-audit/SKILL.md`: documentation parity audit skill.
 - `skills/template-bootstrap/SKILL.md`: template-consumer bootstrap skill.
 
+Skill files in `skills/*/SKILL.md` are repository-authored Markdown guidance assets (advisory execution playbooks), not vendor plugin packages.
+
 
 - `context/recipes/quality_remediation_session.md` for implementation + remediation loops.
 - `context/recipes/checklist_audit_session.md` for checklist dependency/actionability audits.

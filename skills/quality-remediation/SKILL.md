@@ -11,6 +11,10 @@ Run implementation changes and quality remediation loops while preserving reposi
 - You are only auditing checklist wording without changing code or docs.
 - You need a documentation parity audit flow (use `documentation-parity-audit`).
 
+## Environment prerequisites
+- POSIX-compatible shell.
+- `rg` (`ripgrep`) available on `PATH`.
+
 ## Required inputs
 - Target files being edited.
 - Relevant pytest selectors for changed behavior.
