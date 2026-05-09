@@ -33,3 +33,9 @@ This document defines repository contracts for generated artifacts so contributo
   - **Action:** discard manual edits, rerun `python scripts/run_precommit_suite.py` in appropriate scope so ledgers are regenerated from tool output.
 - **Symptom:** Docstring catalog exists but appears stale relative to Python source.
   - **Action:** rerun `scripts/aggregate_project_docstrings.py` and commit the refreshed JSON.
+
+## Related calibration examples
+
+- See `docs/examples/good_summary_block_usage.md` for canonical summary-block evidence packaging.
+- See `docs/examples/bad_evidence_packaging.md` for anti-patterns that should not appear in PR notes or final session summaries.
+- See `docs/examples/good_checklist_entry.md` and `docs/examples/good_friction_entry.md` for checklist and friction-entry quality expectations.
