@@ -62,3 +62,6 @@
 - Added `context/recipes/release_prep_session.md` and `context/recipes/pr_evidence_packaging_session.md` to make release-prep and PR evidence policy executable via copy-ready workflow steps.
 - Added `context/recipes/documentation_parity_audit_session.md` and linked it from docs indexes so documentation parity audits follow a reusable implementation-check workflow.
 - Updated `context/README.md`, `docs/README.md`, and `CONTRIBUTING.md` with links to the new recipe assets.
+- Added calibration examples under `docs/examples/` covering good/bad checklist entries, evidence packaging, and friction entries for stateless-agent output quality baselining.
+- Linked `docs/generated_artifact_contracts.md` to the new examples so evidence-contract guidance points to concrete exemplar/anti-exemplar patterns.
+- Removed the completed `Create exemplar and anti-exemplar package for agent calibration` entry from `Final-Productization-Checklist.md`.

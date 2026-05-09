@@ -131,6 +131,24 @@
   "docs/context_trigger_matrix.md": {
     "skip": "Y"
   },
+  "docs/examples/README.md": {
+    "skip": "Y"
+  },
+  "docs/examples/bad_checklist_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/bad_evidence_packaging.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_checklist_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_friction_entry.md": {
+    "skip": "Y"
+  },
+  "docs/examples/good_summary_block_usage.md": {
+    "skip": "Y"
+  },
   "docs/generated_artifact_contracts.md": {
     "skip": "Y"
   },

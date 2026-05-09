@@ -52,13 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Create exemplar and anti-exemplar package for agent calibration**
-  - Scope: Add concrete examples of good and bad outputs so agent contributors can see what high-fidelity checklist entries, evidence packaging, and friction reports look like without inferring the target shape from prose alone.
-  - Target Files: `docs/examples/README.md`, `docs/examples/good_checklist_entry.md`, `docs/examples/bad_checklist_entry.md`, `docs/examples/good_summary_block_usage.md`, `docs/examples/bad_evidence_packaging.md`, `docs/examples/good_friction_entry.md`, `docs/generated_artifact_contracts.md`
-  - Dependencies: `Document generated-artifact contracts and source boundaries`, `Create reusable context prompt library for stateless repo workflows`
-  - DONE WHEN: The examples directory exists; the listed positive and negative examples are present; the README explains what invariant or failure mode each file demonstrates; linked docs can point to these examples when describing expected output quality.
-  - Audit step: Inspect `docs/examples/README.md` and verify that every example has a clearly stated “why this is good/bad” note instead of leaving the calibration burden implicit.
-
 - [ ] **Add machine-readable task-recipe schema with starter assets**
   - Scope: Create a machine-readable task-recipe format so future routers or advanced stateless agents can consume high-frequency workflows without parsing prose alone.
   - Target Files: `context/task_recipes/README.md`, `context/task_recipes/schema.json`, `context/task_recipes/quality_remediation.json`, `context/task_recipes/checklist_audit.json`, `docs/task_recipe_schema.md`, `docs/agent_bootstrap/README.md`
