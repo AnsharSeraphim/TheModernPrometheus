@@ -48,3 +48,9 @@
 - Added a reusable prompt-library under `context/prompts/` with five workflow-specific prompt assets and a dedicated index.
 - Updated `README.md` and `context/README.md` to route operators to prompt assets instead of a single embedded metaprompt.
 - Removed the now-completed prompt-library backlog entry from `Final-Productization-Checklist.md`.
+
+## 2026-05-09
+
+- Added `context/recipes/release_prep_session.md` and `context/recipes/pr_evidence_packaging_session.md` to make release-prep and PR evidence policy executable via copy-ready workflow steps.
+- Added `context/recipes/documentation_parity_audit_session.md` and linked it from docs indexes so documentation parity audits follow a reusable implementation-check workflow.
+- Updated `context/README.md`, `docs/README.md`, and `CONTRIBUTING.md` with links to the new recipe assets.

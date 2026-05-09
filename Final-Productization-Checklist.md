@@ -52,20 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Add release-prep and PR-evidence session recipes**
-  - Scope: Add missing workflow recipes for release-prep and PR evidence packaging so release-note policy and review evidence expectations become operational sessions rather than prose-only instructions.
-  - Target Files: `context/recipes/release_prep_session.md`, `context/recipes/pr_evidence_packaging_session.md`, `CONTRIBUTING.md`, `docs/README.md`, `docs/release_notes.md`
-  - Dependencies: `Create reusable context prompt library for stateless repo workflows`
-  - DONE WHEN: Both recipes exist; they define prerequisites, canonical commands, expected evidence artifacts, unresolved-work handoff rules, and session-close checks; contributing/docs pages link to them where the repo currently discusses release notes or PR evidence.
-  - Audit step: Inspect the new recipe files and confirm they specify how to gather wrapper summary blocks and where unresolved work should be logged.
-
-- [ ] **Add documentation parity audit session recipe**
-  - Scope: Turn the checklist’s documentation parity rubric into a first-class session recipe so doc audits become repeatable workflow assets rather than instructions buried inside the backlog.
-  - Target Files: `context/recipes/documentation_parity_audit_session.md`, `context/README.md`, `docs/README.md`, `Final-Productization-Checklist.md`
-  - Dependencies: `Create reusable context prompt library for stateless repo workflows`
-  - DONE WHEN: The recipe exists; it specifies ingestion order, parity checks, command/path validation, implementation cross-checks, link/anchor review, follow-up checklist rules, and wrapper/test rerun expectations; `context/README.md` and `docs/README.md` index it.
-  - Audit step: Inspect the recipe and confirm its steps cover the current documentation parity rubric without requiring a reader to reconstruct hidden procedure from the checklist.
-
 - [ ] **Create template-customization checklist for new repos**
   - Scope: Add a concrete post-clone checklist so template consumers can turn the scaffold into a project without leaving placeholder metadata, stale policy references, or accidental template residue.
   - Target Files: `docs/template_customization_checklist.md`, `README.md`, `docs/new_user_onboarding.md`, `docs/README.md`

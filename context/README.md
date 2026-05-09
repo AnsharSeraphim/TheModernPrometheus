@@ -21,6 +21,9 @@ This folder stores repository-local context payloads and reusable session recipe
 - `prompts/pr_evidence_packaging_prompt.md`: prompt for preparing PR summaries with wrapper evidence blocks.
 - `recipes/quality_remediation_session.md`: wrapper-first implementation/remediation workflow with explicit stop conditions.
 - `recipes/checklist_audit_session.md`: checklist-governance audit workflow for dependency ordering and actionable-entry hygiene.
+- `recipes/release_prep_session.md`: release-prep workflow for release-note updates, full-suite closure, and unresolved-work handoff.
+- `recipes/pr_evidence_packaging_session.md`: PR evidence packaging workflow for summary-block capture and unresolved-work escalation.
+- `recipes/documentation_parity_audit_session.md`: repeatable documentation parity audit workflow with command/path and implementation checks.
 
 ## Recipe usage contract
 
