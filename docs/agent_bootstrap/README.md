@@ -56,3 +56,5 @@ Both recipes are wrapper-first and include escalation instructions for unresolve
 
 - `../runtime_target_support_matrix.md` defines runtime support status and instruction-surface boundaries.
 - `../context_trigger_matrix.md` maps workflow triggers to minimum context ingestion order.
+- `../generated_artifact_contracts.md` defines generated-artifact producers, consumers, commit policy, and schema stability expectations.
+- `../source_boundary_manifest.md` defines what is hand-authored source, generated committed ledger, and local-only evidence.

@@ -7,6 +7,8 @@
 
 ### Changed
 - Linked the template-customization checklist from `README.md`, `docs/new_user_onboarding.md`, and `docs/README.md` so new template consumers discover it in all primary onboarding paths.
+- Added generated-artifact governance documentation via `docs/generated_artifact_contracts.md` and `docs/source_boundary_manifest.md`, then linked those assets from root/bootstrap/scripts/config READMEs so commit boundaries are explicit.
+- Removed the completed `Document generated-artifact contracts and source boundaries` entry from `Final-Productization-Checklist.md` so open-work tracking only contains unresolved tasks.
 
 ### Added
 - Added a UTF-8 compliance hook (`scripts/check_unicode_escapes.py`) to the unified pre-commit suite so text assets are validated for UTF-8 decoding and symbolic Unicode escape literals.

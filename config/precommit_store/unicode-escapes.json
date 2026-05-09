@@ -131,6 +131,9 @@
   "docs/context_trigger_matrix.md": {
     "skip": "Y"
   },
+  "docs/generated_artifact_contracts.md": {
+    "skip": "Y"
+  },
   "docs/new_user_onboarding.md": {
     "skip": "Y"
   },
@@ -138,6 +141,9 @@
     "skip": "Y"
   },
   "docs/runtime_target_support_matrix.md": {
+    "skip": "Y"
+  },
+  "docs/source_boundary_manifest.md": {
     "skip": "Y"
   },
   "docs/template_customization_checklist.md": {
