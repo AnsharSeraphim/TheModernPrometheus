@@ -49,7 +49,7 @@
  - Each suite writes a ready-to-copy snippet under `build/automation_contract/` (e.g., `precommit_summary_block.txt`, `test_summary_block.txt`).
   - When copying directly from the terminal, start at the final line (`Pre-commit suite …` / `Pytest suite …`) and select upward until you include the banner and table. Do **not** clip intermediate progress (percentages, hook streaming, etc.).
   - Paste these exact blocks into PR summaries, testing notes, and final responses.
-- Keep the automation output directories (`build/automation_contract/` and `reports/reasoning/pipeline/`) untracked. They are local evidence caches, not source assets. If they appear in `git status`, delete the tracked files and ensure the `.gitignore` coverage stays intact.
+- Keep the automation output directories (`build/automation_contract/` and `reports/reasoning/pipeline/`) untracked. They are local evidence caches, not source assets. If they appear in `git status`, delete the tracked files and ensure the root `.gitignore` coverage stays intact.
 
 ## Testing expectations
 - Run the pytest scope that covers the code you changed (e.g., `python scripts/run_tests.py --scope paths --select <pattern>` or `--scope changed`).

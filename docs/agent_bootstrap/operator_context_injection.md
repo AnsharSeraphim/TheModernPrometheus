@@ -71,6 +71,7 @@ python scripts/run_tests.py --scope paths --select <pytest-selector>
 ## Commit/PR discipline contract
 
 - Never commit binary artifacts (images, video, archives).
+- Keep local evidence/cache outputs untracked through the root `.gitignore`; validate new local-only paths with `git check-ignore -v <path>`.
 - If changed quality-ledger JSON files under `config/precommit_store/` are produced by wrapper runs, include them in the commit.
 - Do not hand-edit skip manifests or pylint cache files.
 - Phase large changes proactively using repository thresholds:

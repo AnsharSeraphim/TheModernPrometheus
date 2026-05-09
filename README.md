@@ -46,6 +46,7 @@ Use this re-usable prompt after adding checklist entries for needed work to `Fin
 - `tests/`: Verification of wrapper behavior and policy enforcement helpers.
 - `config/precommit_store/`: Pre-commit skip ledgers plus cached pylint diagnostics used by wrapper flows.
 - `docs/`: Narrative documentation and release history.
+- `.gitignore`: Ignore policy for local evidence caches, Python-generated artifacts, virtual environments, and editor-local state.
 - `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.
 - `Final-Optimization-Checklist.md`: Tracking for tests above the latency budget with explicit rationale.
 
@@ -94,4 +95,5 @@ python scripts/run_tests.py
 ## Documentation expectations for template consumers
 
 - Keep folder-level `README.md` files current so new users and stateless agents can navigate assets without hidden context.
+- Keep local evidence and local Python runtime artifacts out of source control by relying on the root `.gitignore`; use `git check-ignore -v <path>` when verifying new local-only paths.
 - Update `docs/release_notes.md` whenever tooling behavior, quality workflow, or user-facing repository operation changes.
