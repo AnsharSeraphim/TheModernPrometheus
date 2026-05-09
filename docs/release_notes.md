@@ -41,3 +41,10 @@
 - Added a root `.gitignore` to enforce local evidence and Python artifact ignore boundaries, including wrapper evidence directories and virtualenv/cache paths.
 - Updated contributor/bootstrap guidance to reference the root ignore policy and `git check-ignore -v` verification workflow.
 
+
+
+## 2026-05-09
+
+- Added a reusable prompt-library under `context/prompts/` with five workflow-specific prompt assets and a dedicated index.
+- Updated `README.md` and `context/README.md` to route operators to prompt assets instead of a single embedded metaprompt.
+- Removed the now-completed prompt-library backlog entry from `Final-Productization-Checklist.md`.
