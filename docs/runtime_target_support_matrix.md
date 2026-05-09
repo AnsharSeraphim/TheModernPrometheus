@@ -17,7 +17,7 @@ This matrix defines which contributor runtimes are explicitly supported in this 
 | Codex-style agents (Codex/GPT Codex compatible wrappers) | Supported | `AGENTS.md`, `docs/agent_bootstrap/README.md`, `skills/*/SKILL.md`, `context/recipes/*`, `scripts/README.md` | Must use repository wrappers and commit ledger JSON changes produced by wrapper runs when applicable. | Runtime-specific proprietary tool features beyond repository files are not guaranteed. |
 | Claude Code | Conditionally supported | `CLAUDE.md`, `.claude/README.md`, `AGENTS.md`, wrapper docs | Claude sessions must follow same wrapper/checklist/evidence rules; no alternate check runner allowed. | Claude cloud configuration/policy management outside repo files is out of scope. |
 | GitHub Copilot (IDE + GitHub-native agent modes) | Conditionally supported | `.github/copilot-instructions.md`, `.github/instructions/*.instructions.md`, `AGENTS.md`, `scripts/README.md` | Copilot-generated changes remain subject to repository wrappers/checklists and manual review. | Proprietary Copilot routing/model-selection behavior is not controlled by this repo. |
-| GitHub PR validation (Actions) | Supported | `.github/workflows/*` (when present), `README.md`, `CONTRIBUTING.md` | Validation must run wrapper scripts, not ad hoc tool commands. | Organization-wide reusable workflow governance is out of scope for template baseline. |
+| GitHub PR validation (Actions) | Supported | `.github/workflows/*`, `README.md`, `CONTRIBUTING.md` | Validation must run wrapper scripts, not ad hoc tool commands. | Organization-wide reusable workflow governance is out of scope for template baseline. |
 
 ## Instruction-surface precedence
 

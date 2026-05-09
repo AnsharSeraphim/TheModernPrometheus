@@ -86,6 +86,9 @@
   "context/README.md": {
     "skip": "Y"
   },
+  "context/project_docstrings_catalog.json": {
+    "skip": "Y"
+  },
   "context/prompts/README.md": {
     "skip": "Y"
   },
