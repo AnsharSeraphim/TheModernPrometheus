@@ -51,8 +51,41 @@ Example format:
 
 ## Outstanding Tasks
 
-- **INSTRUCTIONS FOR USER:** REPLACE THIS LINE WITH YOUR FIRST DIRECTIVES FOR CODING-AGENT DEVELOPMENT. 
-  - Example: - [ ] Ingest `XYZ-Conversation-Log-About-Project-Design.txt` to understand the project vision and create exhaustive maximal actionable granular checklist entries, following the template above, to outline a development plan to create it in the project.
+- [ ] **Make CI wrapper validation run in full-check mode instead of skip-ledger no-op mode**
+  - Scope: Update remote validation so `.github/workflows/quality-gates.yml` does not rely on committed skip-ledger state for repository-wide checks. The current clean-checkout execution path can report success while every pre-commit hook is skipped because tracked files are already marked passed in `config/precommit_store/*.json`.
+  - Target Files: `.github/workflows/quality-gates.yml`, `README.md`, `CONTRIBUTING.md`, `docs/runtime_target_support_matrix.md`, `docs/troubleshooting.md`
+  - Dependencies: `None`
+  - DONE WHEN: GitHub Actions runs the pre-commit wrapper in an explicit full-validation mode (`--reset-baseline`, `--filter-mode full`, or an equivalent repo-sanctioned mechanism) and the documented remote-validation contract matches actual behavior; a clean-checkout run no longer produces an all-`SKIPPED` hook summary for repository-wide validation.
+  - Audit step: Run the exact CI command sequence from a clean checkout and confirm the pre-commit summary shows actual hook execution instead of `All tracked files already passed ...; skipping.` for every hook.
+  - Ensure this does *not* affect other types of operations that *do* want to use the Skip Filter by default to not rescan currently passing untouched files.
+
+- [ ] **Commit or explicitly downgrade the missing docstring-catalog bootstrap asset**
+  - Scope: Resolve the mismatch between documentation/contracts that treat `context/project_docstrings_catalog.json` as a committed machine-consumable bootstrap asset and the current repository state where that file is absent. Either generate and commit the asset, or revise the contracts/docs so the asset is clearly on-demand rather than baseline-present.
+  - Target Files: `context/project_docstrings_catalog.json`, `context/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, `README.md`
+  - Dependencies: `None`
+  - DONE WHEN: The repo either contains a current `context/project_docstrings_catalog.json` generated from the canonical script, or all documentation/contract language is revised so contributors are not told a committed bootstrap asset exists when it does not.
+  - Audit step: Run `python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json`, verify the JSON parses cleanly, and then confirm that repo docs and commit-policy text match the chosen committed-vs-on-demand behavior.
+
+- [ ] **Make task-recipe validation reproducible from declared dependencies**
+  - Scope: Fix the mismatch where `context/task_recipes/README.md` documents a `jsonschema`-based validation workflow, but a fresh environment created from `requirements-dev.txt` cannot import `jsonschema`. This currently makes the published validation contract non-reproducible.
+  - Target Files: `requirements-dev.txt`, `pyproject.toml`, `context/task_recipes/README.md`, `docs/task_recipe_schema.md`, optionally `tests/` if regression coverage is added
+  - Dependencies: `None`
+  - DONE WHEN: A fresh environment created strictly from documented setup can execute the published task-recipe validation flow without missing-module errors, and the dependency surface is documented where operators are told to validate recipes.
+  - Audit step: Create a clean virtual environment, install only the repo’s declared development dependencies, run the validation snippet from `context/task_recipes/README.md`, and confirm it succeeds without relying on ambient/global packages.
+
+- [ ] **Reconcile skill assets with actual runtime-consumption semantics**
+  - Scope: Resolve the current mismatch between runtime documentation that treats `skills/*/SKILL.md` as directly consumable by Codex-style agent runtimes and the actual implementation, where skills are stored only under `skills/`, lack runtime-spec metadata/front matter, and do not document any vendor-specific mirror or adapter path. The same pass should also clarify shell/tool prerequisites because current skill and task assets rely on `sed`, `cat`, and `rg` without declaring a POSIX/Bash or ripgrep requirement.
+  - Target Files: `docs/runtime_target_support_matrix.md`, `skills/README.md`, `skills/checklist-audit/SKILL.md`, `skills/documentation-parity-audit/SKILL.md`, `skills/quality-remediation/SKILL.md`, `skills/template-bootstrap/SKILL.md`, `docs/agent_bootstrap/README.md`, `context/task_recipes/checklist_audit.json`, `docs/new_user_onboarding.md`
+  - Dependencies: `None`
+  - DONE WHEN: The repo either (a) provides vendor-compliant skill delivery with documented discovery paths/metadata and explicit shell-tool prerequisites, or (b) clearly reclassifies `skills/` as human/advisory workflow assets instead of claiming direct runtime consumption; command assets no longer assume undeclared shell tooling.
+  - Audit step: Verify the declared supported runtime can discover or consume the skill assets exactly as documented on a fresh checkout, and verify non-POSIX/non-ripgrep environments are either supported with documented fallbacks or explicitly marked out of scope.
+
+- [ ] **Remove stale pre-implementation wording from the context/runtime matrices**
+  - Scope: Clean up matrix rows that still describe recipe/workflow assets as existing only “when added” or workflows as present only “when present,” even though the current template now ships those assets directly. This is a documentation-truthfulness issue, not a missing-asset issue.
+  - Target Files: `docs/context_trigger_matrix.md`, `docs/runtime_target_support_matrix.md`
+  - Dependencies: `None`
+  - DONE WHEN: Both matrices describe the shipped asset set truthfully and use conditional wording only for genuinely optional, external, or organization-specific components.
+  - Audit step: Read both matrices against the current tree and confirm every conditional phrase maps to an actually optional/external asset rather than a file already shipped in the repository.
 
 ---
 
