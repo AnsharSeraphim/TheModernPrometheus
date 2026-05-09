@@ -18,10 +18,11 @@ def test_collect_docstrings_skips_excluded_directories(tmp_path: Path) -> None:
     included.write_text('"""Included module."""\n', encoding="utf-8")
     excluded.write_text('"""Excluded module."""\n', encoding="utf-8")
 
-    collected, missing = collect_docstrings(roots=(tmp_path,))
+    collected, missing, failures = collect_docstrings(roots=(tmp_path,))
 
     assert list(collected) == ["module.py"]  # nosec B101
     assert not missing  # nosec B101
+    assert not failures  # nosec B101
 
 
 def test_build_inventory_markdown_includes_symbol_table(tmp_path: Path) -> None:
@@ -33,8 +34,24 @@ def test_build_inventory_markdown_includes_symbol_table(tmp_path: Path) -> None:
         encoding="utf-8",
     )
 
-    collected, missing = collect_docstrings(roots=(tmp_path,))
-    markdown = build_inventory_markdown(collected=collected, missing=missing)
+    collected, missing, failures = collect_docstrings(roots=(tmp_path,))
+    markdown = build_inventory_markdown(collected=collected, missing=missing, failures=failures)
 
     assert "| `sample.py` | `sample` | module | 1 | Example module. |" in markdown  # nosec B101
     assert "| `sample.py` | `sample.helper` | function | 3 | Return one. |" in markdown  # nosec B101
+    assert "## Scan failures" in markdown  # nosec B101
+
+
+def test_build_inventory_markdown_marks_incomplete_when_scan_failures_exist(tmp_path: Path) -> None:
+    """Coverage summary marks inventory incomplete when scan failures are present."""
+
+    good_path = tmp_path / "good.py"
+    bad_path = tmp_path / "bad.py"
+    good_path.write_text('"""Good module."""\n', encoding="utf-8")
+    bad_path.write_text("def broken(:\n", encoding="utf-8")
+
+    collected, missing, failures = collect_docstrings(roots=(tmp_path,))
+    markdown = build_inventory_markdown(collected=collected, missing=missing, failures=failures)
+
+    assert "Coverage status: INCOMPLETE" in markdown  # nosec B101
+    assert "`bad.py`" in markdown  # nosec B101

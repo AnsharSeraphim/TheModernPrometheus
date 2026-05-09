@@ -6,6 +6,9 @@
 - Added `docs/template_customization_checklist.md` with a concrete post-clone hardening checklist covering metadata replacement, runtime/dependency decisions, ignore-policy verification, checklist seeding, docs parity, and initial wrapper validation.
 
 ### Changed
+- Updated `scripts/run_precommit_suite.py` so interrogate failures now auto-trigger `scripts/audit_docstrings.py` for the same script scope and log the follow-up inventory guidance directly in pre-commit output.
+- Hardened `scripts/audit_docstrings.py` with scan-failure reporting (read/syntax errors) so coverage remediation does not silently skip unparseable files.
+- Updated docstring-remediation guidance in `scripts/README.md`, `docs/troubleshooting.md`, and `docs/agent_bootstrap/operator_context_injection.md` to reflect wrapper-integrated audit follow-up and scan-failure triage order.
 - Updated `.github/workflows/quality-gates.yml` to run pre-commit in explicit repository-wide full-check mode (`--scope all --reset-baseline --filter-mode full`) so CI cannot pass by reusing committed skip-ledger state.
 - Aligned remote-validation documentation in `README.md`, `CONTRIBUTING.md`, `docs/runtime_target_support_matrix.md`, and `docs/troubleshooting.md` with the new CI full-check contract.
 - Removed the completed `Make CI wrapper validation run in full-check mode instead of skip-ledger no-op mode` entry from `Final-Productization-Checklist.md`.
