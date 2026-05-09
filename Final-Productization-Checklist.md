@@ -51,14 +51,6 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Make CI wrapper validation run in full-check mode instead of skip-ledger no-op mode**
-  - Scope: Update remote validation so `.github/workflows/quality-gates.yml` does not rely on committed skip-ledger state for repository-wide checks. The current clean-checkout execution path can report success while every pre-commit hook is skipped because tracked files are already marked passed in `config/precommit_store/*.json`.
-  - Target Files: `.github/workflows/quality-gates.yml`, `README.md`, `CONTRIBUTING.md`, `docs/runtime_target_support_matrix.md`, `docs/troubleshooting.md`
-  - Dependencies: `None`
-  - DONE WHEN: GitHub Actions runs the pre-commit wrapper in an explicit full-validation mode (`--reset-baseline`, `--filter-mode full`, or an equivalent repo-sanctioned mechanism) and the documented remote-validation contract matches actual behavior; a clean-checkout run no longer produces an all-`SKIPPED` hook summary for repository-wide validation.
-  - Audit step: Run the exact CI command sequence from a clean checkout and confirm the pre-commit summary shows actual hook execution instead of `All tracked files already passed ...; skipping.` for every hook.
-  - Ensure this does *not* affect other types of operations that *do* want to use the Skip Filter by default to not rescan currently passing untouched files.
-
 - [ ] **Commit or explicitly downgrade the missing docstring-catalog bootstrap asset**
   - Scope: Resolve the mismatch between documentation/contracts that treat `context/project_docstrings_catalog.json` as a committed machine-consumable bootstrap asset and the current repository state where that file is absent. Either generate and commit the asset, or revise the contracts/docs so the asset is clearly on-demand rather than baseline-present.
   - Target Files: `context/project_docstrings_catalog.json`, `context/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, `README.md`

@@ -27,8 +27,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
-      - name: Run pre-commit wrapper suite
-        run: python scripts/run_precommit_suite.py
+      - name: Run pre-commit wrapper suite (full validation mode)
+        run: python scripts/run_precommit_suite.py --scope all --reset-baseline --filter-mode full
 
       - name: Run test wrapper suite
         run: python scripts/run_tests.py
