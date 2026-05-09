@@ -105,13 +105,13 @@ Interrogate enforces 100% docstring coverage. Hook output is concise by design.
 
 ### Remediation
 
-Immediately generate the inventory report:
+The pre-commit wrapper automatically generates the inventory report when interrogate fails. Manual regeneration command:
 
 ```bash
 python scripts/audit_docstrings.py --scan-root scripts --output build/automation_contract/docstring_inventory.md
 ```
 
-Use the `## Missing docstrings` table to remediate impacted files, then rerun targeted wrapper checks:
+Resolve `## Scan failures` rows first (if any), then use `## Missing docstrings` to remediate impacted files and rerun targeted wrapper checks:
 
 ```bash
 python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>

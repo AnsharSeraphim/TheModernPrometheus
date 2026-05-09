@@ -36,6 +36,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SUMMARY_DIR = REPO_ROOT / "build" / "automation_contract"
 PRECOMMIT_RAW_LOG = SUMMARY_DIR / "precommit_output.log"
 PRECOMMIT_SUMMARY = SUMMARY_DIR / "precommit_summary_block.txt"
+DOCSTRING_AUDIT_OUTPUT = SUMMARY_DIR / "docstring_inventory.md"
 PYLINT_FAILURE_STORE = REPO_ROOT / "config" / "precommit_store" / "pylint_failures.json"
 SUMMARY_WIDTH = 118
 _DEFAULT_TARGET_GLOBS: tuple[str, ...] = ("scripts", "tests")
@@ -441,6 +442,33 @@ def _run_check(check: Check) -> tuple[int, str, float]:
     return completed.returncode, output, duration
 
 
+def _run_interrogate_followup(*, failed_check: Check, precommit_lines: list[str]) -> None:
+    """Generate a docstring inventory report when the interrogate hook fails."""
+
+    scan_roots = sorted({path.parts[0] for path in failed_check.candidates if path.parts})
+    if not scan_roots:
+        scan_roots = ["scripts"]
+    command = [
+        sys.executable,
+        "scripts/audit_docstrings.py",
+        *[argument for scan_root in scan_roots for argument in ("--scan-root", scan_root)],
+        "--output",
+        str(DOCSTRING_AUDIT_OUTPUT),
+    ]
+    completed = run_command(command, cwd=REPO_ROOT, check=False)
+    output = (completed.stdout or "") + (completed.stderr or "")
+    status = "PASSED" if completed.returncode == 0 else "FAILED"
+    guidance = (
+        "Use the generated `## Missing docstrings` table to remediate coverage gaps or create granular "
+        "checklist follow-up entries."
+    )
+    _log_block(
+        precommit_lines,
+        f"Interrogate follow-up audit {status}",
+        f"{output.rstrip()}\n{guidance}".strip(),
+    )
+
+
 def _log_block(lines: list[str], label: str, body: str) -> None:
     """Append a labeled output block to the pre-commit raw log buffer."""
 
@@ -532,6 +560,8 @@ def _execute_checks(
         _log_block(precommit_lines, f"{check.title} {status}", output)
         if not success:
             exit_code = current_exit or 1
+            if check.key == "interrogate":
+                _run_interrogate_followup(failed_check=applicable_check, precommit_lines=precommit_lines)
     return results, exit_code
 
 
