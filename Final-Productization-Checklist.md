@@ -52,13 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Create initial skill pack for high-frequency workflows**
-  - Scope: Add an explicit skill directory with reusable `SKILL.md` assets for the repo’s highest-frequency stateless workflows so agents can load focused operational context instead of dragging the full root context into every session.
-  - Target Files: `skills/README.md`, `skills/quality-remediation/SKILL.md`, `skills/checklist-audit/SKILL.md`, `skills/documentation-parity-audit/SKILL.md`, `skills/template-bootstrap/SKILL.md`, `docs/agent_bootstrap/README.md`, `docs/runtime_target_support_matrix.md`, `context/README.md`
-  - Dependencies: `Create runtime-target support matrix`
-  - DONE WHEN: The skill directory strategy is documented; the four named skills exist; every skill file includes name, description, when to use, when not to use, required inputs, canonical commands, and closure criteria; docs link to the skill pack and state which runtimes can consume it.
-  - Audit step: Inspect `skills/` and verify that every `SKILL.md` has clear trigger language and references canonical repo commands rather than reconstructed syntax.
-
 - [ ] **Add release-prep and PR-evidence session recipes**
   - Scope: Add missing workflow recipes for release-prep and PR evidence packaging so release-note policy and review evidence expectations become operational sessions rather than prose-only instructions.
   - Target Files: `context/recipes/release_prep_session.md`, `context/recipes/pr_evidence_packaging_session.md`, `CONTRIBUTING.md`, `docs/README.md`, `docs/release_notes.md`

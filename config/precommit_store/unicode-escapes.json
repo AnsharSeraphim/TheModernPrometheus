@@ -179,6 +179,21 @@
   "scripts/toml_compat.py": {
     "skip": "Y"
   },
+  "skills/README.md": {
+    "skip": "Y"
+  },
+  "skills/checklist-audit/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/documentation-parity-audit/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/quality-remediation/SKILL.md": {
+    "skip": "Y"
+  },
+  "skills/template-bootstrap/SKILL.md": {
+    "skip": "Y"
+  },
   "tests/README.md": {
     "skip": "Y"
   },

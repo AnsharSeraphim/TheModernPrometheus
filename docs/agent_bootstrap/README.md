@@ -35,9 +35,16 @@ This folder documents how to create agent-bootstrap artifacts from existing repo
 
 - `operator_context_injection.md`: mandatory stateless-agent playbook for wrapper syntax, commit/PR discipline, timestamp hygiene, and friction escalation.
 
-## Repository-local task recipes
+## Repository-local task recipes and skills
 
-Use the context recipes when running stateless sessions:
+Use the repository skills and context recipes when running stateless sessions:
+
+- `skills/README.md`: index of high-frequency `SKILL.md` workflows for stateless execution.
+- `skills/quality-remediation/SKILL.md`: implementation/remediation skill using wrapper-first loops.
+- `skills/checklist-audit/SKILL.md`: checklist dependency/actionability audit skill.
+- `skills/documentation-parity-audit/SKILL.md`: documentation parity audit skill.
+- `skills/template-bootstrap/SKILL.md`: template-consumer bootstrap skill.
+
 
 - `context/recipes/quality_remediation_session.md` for implementation + remediation loops.
 - `context/recipes/checklist_audit_session.md` for checklist dependency/actionability audits.
