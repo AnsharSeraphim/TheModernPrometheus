@@ -140,6 +140,9 @@
   "docs/runtime_target_support_matrix.md": {
     "skip": "Y"
   },
+  "docs/template_customization_checklist.md": {
+    "skip": "Y"
+  },
   "pyproject.toml": {
     "skip": "Y"
   },
