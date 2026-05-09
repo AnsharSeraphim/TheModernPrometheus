@@ -78,6 +78,8 @@ PR evidence expectations:
 - List the scoped remediation commands executed for the phase.
 - If anything remains unresolved, add a checklist entry in `Final-Productization-Checklist.md` and link it in the PR notes.
 
+Use `context/recipes/pr_evidence_packaging_session.md` for a copy-ready evidence packaging workflow, and `context/recipes/release_prep_session.md` when the session includes release-note updates.
+
 ## Tooling inventory
 
 The pre-commit suite currently orchestrates:

@@ -101,7 +101,16 @@
   "context/recipes/checklist_audit_session.md": {
     "skip": "Y"
   },
+  "context/recipes/documentation_parity_audit_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/pr_evidence_packaging_session.md": {
+    "skip": "Y"
+  },
   "context/recipes/quality_remediation_session.md": {
+    "skip": "Y"
+  },
+  "context/recipes/release_prep_session.md": {
     "skip": "Y"
   },
   "docs/README.md": {

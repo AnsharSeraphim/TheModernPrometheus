@@ -22,6 +22,9 @@ Use this index to find operational guidance by audience.
 - [`agent_bootstrap/README.md`](agent_bootstrap/README.md): recipe for generating bootstrap JSON/markdown artifacts.
 - [`../scripts/README.md`](../scripts/README.md): wrapper command surfaces and utility behavior.
 - [`../tests/README.md`](../tests/README.md): test suite coverage map.
+- [`../context/recipes/documentation_parity_audit_session.md`](../context/recipes/documentation_parity_audit_session.md): repeatable rubric for documentation parity audits.
+- [`../context/recipes/release_prep_session.md`](../context/recipes/release_prep_session.md): release-prep workflow with release-note and closure checks.
+- [`../context/recipes/pr_evidence_packaging_session.md`](../context/recipes/pr_evidence_packaging_session.md): PR evidence packaging workflow for wrapper summary blocks.
 
 ## Notes
 
