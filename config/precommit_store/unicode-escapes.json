@@ -80,6 +80,24 @@
   "context/README.md": {
     "skip": "Y"
   },
+  "context/prompts/README.md": {
+    "skip": "Y"
+  },
+  "context/prompts/checklist_audit_prompt.md": {
+    "skip": "Y"
+  },
+  "context/prompts/pr_evidence_packaging_prompt.md": {
+    "skip": "Y"
+  },
+  "context/prompts/quality_remediation_prompt.md": {
+    "skip": "Y"
+  },
+  "context/prompts/repo_audit_prompt.md": {
+    "skip": "Y"
+  },
+  "context/prompts/template_bootstrap_prompt.md": {
+    "skip": "Y"
+  },
   "context/recipes/checklist_audit_session.md": {
     "skip": "Y"
   },

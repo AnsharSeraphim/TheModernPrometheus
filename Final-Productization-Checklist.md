@@ -59,13 +59,6 @@ Example format:
   - DONE WHEN: The skill directory strategy is documented; the four named skills exist; every skill file includes name, description, when to use, when not to use, required inputs, canonical commands, and closure criteria; docs link to the skill pack and state which runtimes can consume it.
   - Audit step: Inspect `skills/` and verify that every `SKILL.md` has clear trigger language and references canonical repo commands rather than reconstructed syntax.
 
-- [ ] **Create reusable context prompt library for stateless repo workflows**
-  - Scope: Move recurring workflow prompts out of scattered prose and into named prompt assets so operators and agents stop reconstructing long instructions from the root README.
-  - Target Files: `context/prompts/README.md`, `context/prompts/repo_audit_prompt.md`, `context/prompts/quality_remediation_prompt.md`, `context/prompts/checklist_audit_prompt.md`, `context/prompts/template_bootstrap_prompt.md`, `context/prompts/pr_evidence_packaging_prompt.md`, `context/README.md`, `README.md`
-  - Dependencies: `Create runtime-target support matrix`, `Create task-to-context trigger matrix`
-  - DONE WHEN: The prompt library exists under `context/prompts/`; the listed prompt assets are present; every prompt specifies purpose, ingestion order, canonical commands, evidence requirements, and closure criteria; `context/README.md` indexes the library; the root README no longer relies on a single embedded metaprompt as the only reusable prompt asset.
-  - Audit step: Inspect `context/prompts/README.md` and verify that every linked prompt file exists and references repository-authoritative wrapper syntax.
-
 - [ ] **Add release-prep and PR-evidence session recipes**
   - Scope: Add missing workflow recipes for release-prep and PR evidence packaging so release-note policy and review evidence expectations become operational sessions rather than prose-only instructions.
   - Target Files: `context/recipes/release_prep_session.md`, `context/recipes/pr_evidence_packaging_session.md`, `CONTRIBUTING.md`, `docs/README.md`, `docs/release_notes.md`
