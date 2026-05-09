@@ -1,7 +1,7 @@
 {
   "summary": {
     "python_files": 22,
-    "symbols_total": 178,
+    "symbols_total": 181,
     "missing_docstrings": 13,
     "flagged_docstrings": 42,
     "quality_status": "needs_review"
@@ -341,99 +341,105 @@
           "docstring": "Represent one module/class/function symbol that lacks a docstring."
         },
         {
+          "symbol": "ScanFailureEntry",
+          "kind": "class",
+          "line": 39,
+          "docstring": "Represent one file-level parse/read failure encountered during scanning."
+        },
+        {
           "symbol": "_DocstringCollector",
           "kind": "class",
-          "line": 38,
+          "line": 47,
           "docstring": "Collect module, class, and function docstrings from an AST."
         },
         {
           "symbol": "_DocstringCollector.__init__",
           "kind": "function",
-          "line": 41,
+          "line": 50,
           "docstring": "Initialize collector state for one module path."
         },
         {
           "symbol": "_DocstringCollector.visit_Module",
           "kind": "function",
-          "line": 49,
+          "line": 58,
           "docstring": "Visit a module node and capture its docstring."
         },
         {
           "symbol": "_DocstringCollector.visit_ClassDef",
           "kind": "function",
-          "line": 55,
+          "line": 64,
           "docstring": "Visit a class node and capture class-level docstrings."
         },
         {
           "symbol": "_DocstringCollector.visit_FunctionDef",
           "kind": "function",
-          "line": 60,
+          "line": 69,
           "docstring": "Visit a function node and capture function docstrings."
         },
         {
           "symbol": "_DocstringCollector.visit_AsyncFunctionDef",
           "kind": "function",
-          "line": 65,
+          "line": 74,
           "docstring": "Visit an async function node and capture function docstrings."
         },
         {
           "symbol": "_DocstringCollector._visit_symbol_node",
           "kind": "function",
-          "line": 70,
+          "line": 79,
           "docstring": "Capture one non-module symbol and recurse into its children."
         },
         {
           "symbol": "_DocstringCollector._record_docstring",
           "kind": "function",
-          "line": 81,
+          "line": 90,
           "docstring": "Record a docstring entry for the provided AST node when present."
         },
         {
           "symbol": "_is_excluded",
           "kind": "function",
-          "line": 100,
+          "line": 109,
           "docstring": "Return True when the path includes an excluded directory name."
         },
         {
           "symbol": "_iter_python_files",
           "kind": "function",
-          "line": 106,
+          "line": 115,
           "docstring": "Return sorted Python files found beneath the configured scan roots."
         },
         {
           "symbol": "_relative_display_path",
           "kind": "function",
-          "line": 121,
+          "line": 130,
           "docstring": "Return a stable display path relative to repository or requested scan roots."
         },
         {
           "symbol": "collect_docstrings",
           "kind": "function",
-          "line": 134,
+          "line": 143,
           "docstring": "Collect present and missing docstring entries grouped by relative Python file path."
         },
         {
           "symbol": "build_inventory_markdown",
           "kind": "function",
-          "line": 154,
+          "line": 174,
           "docstring": "Render docstring inventory markdown with present/missing coverage context."
         },
         {
           "symbol": "_parse_args",
           "kind": "function",
-          "line": 218,
+          "line": 265,
           "docstring": "Parse CLI flags for scan roots and output path overrides."
         },
         {
           "symbol": "main",
           "kind": "function",
-          "line": 238,
+          "line": 285,
           "docstring": "Generate a Markdown inventory of discovered docstrings."
         }
       ],
       "completeness": {
-        "symbols_total": 18,
-        "symbols_with_docstrings": 18,
+        "symbols_total": 19,
+        "symbols_with_docstrings": 19,
         "missing_symbols": [],
         "missing_count": 0
       },
@@ -967,211 +973,217 @@
         {
           "symbol": "Scope",
           "kind": "class",
-          "line": 68,
+          "line": 69,
           "docstring": "Supported execution scopes for the quality suite."
         },
         {
           "symbol": "Check",
           "kind": "class",
-          "line": 77,
+          "line": 78,
           "docstring": "Metadata describing a single quality check."
         },
         {
           "symbol": "CheckResult",
           "kind": "class",
-          "line": 88,
+          "line": 89,
           "docstring": "Execution metadata for a completed check."
         },
         {
           "symbol": "_format_banner",
           "kind": "function",
-          "line": 98,
+          "line": 99,
           "docstring": "Render a centered summary banner line."
         },
         {
           "symbol": "_load_dev_dependency_specs",
           "kind": "function",
-          "line": 110,
+          "line": 111,
           "docstring": "Load the development dependency map from ``pyproject.toml``."
         },
         {
           "symbol": "_parse_toml",
           "kind": "function",
-          "line": 121,
+          "line": 122,
           "docstring": "Parse TOML text with the standard-library loader."
         },
         {
           "symbol": "_ensure_quality_toolchain",
           "kind": "function",
-          "line": 127,
+          "line": 128,
           "docstring": "Install missing quality-tool dependencies declared in the dev group."
         },
         {
           "symbol": "_collect_changed_paths",
           "kind": "function",
-          "line": 143,
+          "line": 144,
           "docstring": "Collect changed repository paths from git diff and optional untracked output."
         },
         {
           "symbol": "_normalize_cli_paths",
           "kind": "function",
-          "line": 153,
+          "line": 154,
           "docstring": "Normalize user-supplied path arguments to repository-relative paths."
         },
         {
           "symbol": "_collect_python_files",
           "kind": "function",
-          "line": 169,
+          "line": 170,
           "docstring": "Collect Python files from the provided file and directory paths."
         },
         {
           "symbol": "_default_python_candidates",
           "kind": "function",
-          "line": 182,
+          "line": 183,
           "docstring": "Return default Python candidates for full-suite runs."
         },
         {
           "symbol": "_script_python_targets",
           "kind": "function",
-          "line": 188,
+          "line": 189,
           "docstring": "Return Python files under ``scripts/`` from the current path selection."
         },
         {
           "symbol": "_default_script_candidates",
           "kind": "function",
-          "line": 202,
+          "line": 203,
           "docstring": "Return default script-module candidates for interrogate checks."
         },
         {
           "symbol": "_collect_text_files",
           "kind": "function",
-          "line": 208,
+          "line": 209,
           "docstring": "Collect text-like files covered by the UTF-8 compliance hook."
         },
         {
           "symbol": "_default_text_candidates",
           "kind": "function",
-          "line": 227,
+          "line": 228,
           "docstring": "Return tracked text-like files for the UTF-8 compliance hook."
         },
         {
           "symbol": "resolve_targeted_paths",
           "kind": "function",
-          "line": 237,
+          "line": 238,
           "docstring": "Resolve CLI scope arguments into a concrete scope and selected repository paths."
         },
         {
           "symbol": "_python_targets_for_scope",
           "kind": "function",
-          "line": 256,
+          "line": 257,
           "docstring": "Resolve Python-target candidates for the current scope."
         },
         {
           "symbol": "_text_targets_for_scope",
           "kind": "function",
-          "line": 262,
+          "line": 263,
           "docstring": "Resolve text-target candidates for the current scope."
         },
         {
           "symbol": "_script_targets_for_scope",
           "kind": "function",
-          "line": 268,
+          "line": 269,
           "docstring": "Resolve script-target candidates for interrogate coverage checks."
         },
         {
           "symbol": "_build_checks",
           "kind": "function",
-          "line": 274,
+          "line": 275,
           "docstring": "Build check definitions for the current execution scope."
         },
         {
           "symbol": "_targeted_command",
           "kind": "function",
-          "line": 364,
+          "line": 365,
           "docstring": "Return ``check.command`` narrowed to ``selected_paths`` when appropriate."
         },
         {
           "symbol": "_filtered_checks",
           "kind": "function",
-          "line": 379,
+          "line": 380,
           "docstring": "Filter check definitions to a single hook when ``--only`` is provided."
         },
         {
           "symbol": "_load_pylint_failures",
           "kind": "function",
-          "line": 390,
+          "line": 391,
           "docstring": "Load cached pylint failures from disk."
         },
         {
           "symbol": "_save_pylint_failures",
           "kind": "function",
-          "line": 412,
+          "line": 413,
           "docstring": "Persist pylint failure cache entries to disk."
         },
         {
           "symbol": "_update_pylint_failure_store",
           "kind": "function",
-          "line": 419,
+          "line": 420,
           "docstring": "Update cached pylint failures for the paths covered by ``check``."
         },
         {
           "symbol": "_run_check",
           "kind": "function",
-          "line": 434,
+          "line": 435,
           "docstring": "Run a single check command and return exit code, output, and duration."
+        },
+        {
+          "symbol": "_run_interrogate_followup",
+          "kind": "function",
+          "line": 445,
+          "docstring": "Generate a docstring inventory report when the interrogate hook fails."
         },
         {
           "symbol": "_log_block",
           "kind": "function",
-          "line": 444,
+          "line": 472,
           "docstring": "Append a labeled output block to the pre-commit raw log buffer."
         },
         {
           "symbol": "parse_args",
           "kind": "function",
-          "line": 452,
+          "line": 480,
           "docstring": "Parse CLI arguments for the pre-commit suite runner."
         },
         {
           "symbol": "_should_skip_global_hook",
           "kind": "function",
-          "line": 485,
+          "line": 513,
           "docstring": "Return ``True`` when a global hook should be skipped for this run."
         },
         {
           "symbol": "_prepare_check",
           "kind": "function",
-          "line": 491,
+          "line": 519,
           "docstring": "Return the executable check definition for the current path selection."
         },
         {
           "symbol": "_execute_checks",
           "kind": "function",
-          "line": 505,
+          "line": 533,
           "docstring": "Run the configured checks and return their results plus an aggregate exit code."
         },
         {
           "symbol": "_resolve_scope_targets",
           "kind": "function",
-          "line": 538,
+          "line": 568,
           "docstring": "Return Python, text, and script target sets for the requested ``scope``."
         },
         {
           "symbol": "_run_suite",
           "kind": "function",
-          "line": 551,
+          "line": 581,
           "docstring": "Execute checks for parsed args and return results, log lines, and exit code."
         },
         {
           "symbol": "main",
           "kind": "function",
-          "line": 581,
+          "line": 611,
           "docstring": "Run the pre-commit suite and write summary artifacts."
         }
       ],
       "completeness": {
-        "symbols_total": 35,
-        "symbols_with_docstrings": 35,
+        "symbols_total": 36,
+        "symbols_with_docstrings": 36,
         "missing_symbols": [],
         "missing_count": 0
       },
@@ -1498,13 +1510,19 @@
         {
           "symbol": "test_build_inventory_markdown_includes_symbol_table",
           "kind": "function",
-          "line": 27,
+          "line": 28,
           "docstring": "Rendered inventory contains stable Markdown rows for discovered symbols."
+        },
+        {
+          "symbol": "test_build_inventory_markdown_marks_incomplete_when_scan_failures_exist",
+          "kind": "function",
+          "line": 45,
+          "docstring": "Coverage summary marks inventory incomplete when scan failures are present."
         }
       ],
       "completeness": {
-        "symbols_total": 3,
-        "symbols_with_docstrings": 3,
+        "symbols_total": 4,
+        "symbols_with_docstrings": 4,
         "missing_symbols": [],
         "missing_count": 0
       },
