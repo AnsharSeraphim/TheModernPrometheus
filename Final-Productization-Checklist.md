@@ -51,6 +51,8 @@ Example format:
 
 ## Outstanding Tasks
 
+- **INSTRUCTIONS FOR USER:** REPLACE THIS LINE WITH YOUR FIRST DIRECTIVES FOR CODING-AGENT DEVELOPMENT. 
+  - Example: - [ ] Ingest `XYZ-Conversation-Log-About-Project-Design.txt` to understand the project vision and create exhaustive maximal actionable granular checklist entries, following the template above, to outline a development plan to create it in the project.
 
 ---
 
