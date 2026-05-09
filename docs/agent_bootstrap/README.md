@@ -28,7 +28,7 @@ This folder documents how to create agent-bootstrap artifacts from existing repo
 
 - Skills markdown should reference wrapper-first commands and checklist governance from `AGENTS.md`.
 - Prompt recipes should include required quality gates and instructions to attach summary blocks from `build/automation_contract/`.
-- Task-recipe JSON should include explicit `scope`, `target_files`, and `done_when` fields mirroring checklist policy.
+- Task-recipe JSON should include explicit `scope`, `target_files`, `dependencies`, wrapper `commands`, `validations`, and `done_when` fields mirroring checklist policy and `context/task_recipes/schema.json`.
 
 
 ## Operational context injection asset
@@ -58,3 +58,11 @@ Both recipes are wrapper-first and include escalation instructions for unresolve
 - `../context_trigger_matrix.md` maps workflow triggers to minimum context ingestion order.
 - `../generated_artifact_contracts.md` defines generated-artifact producers, consumers, commit policy, and schema stability expectations.
 - `../source_boundary_manifest.md` defines what is hand-authored source, generated committed ledger, and local-only evidence.
+
+
+## Task-recipe schema assets
+
+- `../../context/task_recipes/schema.json`: canonical machine-readable schema.
+- `../../context/task_recipes/quality_remediation.json`: starter quality-remediation recipe.
+- `../../context/task_recipes/checklist_audit.json`: starter checklist-audit recipe.
+- `../task_recipe_schema.md`: required fields and maintenance guidance for recipe authors.

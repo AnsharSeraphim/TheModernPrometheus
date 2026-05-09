@@ -1,0 +1,49 @@
+{
+  "task_id": "checklist_audit",
+  "title": "Audit checklist entries for dependency order and closeable scope",
+  "scope": "Convert vague or dependency-unsafe checklist entries into explicit tasks with verifiable completion conditions.",
+  "target_files": [
+    "Final-Productization-Checklist.md",
+    "docs/agent_bootstrap/operator_context_injection.md"
+  ],
+  "dependencies": [],
+  "context_sources": [
+    "AGENTS.md",
+    "context/recipes/checklist_audit_session.md",
+    "docs/context_trigger_matrix.md"
+  ],
+  "commands": [
+    {
+      "name": "inspect_checklist",
+      "command": "cat Final-Productization-Checklist.md",
+      "purpose": "Review ordering, dependencies, and entry specificity before implementation work."
+    },
+    {
+      "name": "targeted_precommit",
+      "command": "python scripts/run_precommit_suite.py --scope paths --paths Final-Productization-Checklist.md",
+      "purpose": "Validate checklist structure and markdown integrity after updates."
+    },
+    {
+      "name": "closeout_precommit",
+      "command": "python scripts/run_precommit_suite.py",
+      "purpose": "Ensure session-close quality gates pass after checklist edits."
+    }
+  ],
+  "validations": [
+    {
+      "name": "entry_template_compliance",
+      "method": "Manual checklist audit",
+      "pass_condition": "Every new or rewritten entry contains scope, target files, dependencies, and DONE WHEN fields."
+    },
+    {
+      "name": "dependency_order",
+      "method": "Manual checklist audit",
+      "pass_condition": "Entries with prerequisites are not executed before prerequisite tasks are complete."
+    }
+  ],
+  "done_when": [
+    "Checklist entries are actionable and closeable without session-journal wording.",
+    "Completed entries are removed and partial work is rewritten as remaining explicit steps.",
+    "Checklist passes wrapper validation after edits."
+  ]
+}
