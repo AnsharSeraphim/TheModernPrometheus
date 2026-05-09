@@ -52,13 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Document generated-artifact contracts and source boundaries**
-  - Scope: Add explicit contracts for machine-consumable/generated artifacts and distinguish hand-authored source assets from generated local evidence, caches, and committed ledgers.
-  - Target Files: `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, `README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `config/README.md`
-  - Dependencies: `Add root ignore rules for local evidence and Python-generated artifacts`
-  - DONE WHEN: The contract doc names producers, consumers, commit policy, schema notes, and stability expectations for `context/project_docstrings_catalog.json`, `build/automation_contract/` summary blocks, `build/automation_contract/docstring_inventory.md`, and `config/precommit_store/*.json`; the source-boundary manifest distinguishes hand-authored source, generated local evidence, generated committed ledgers, and caches.
-  - Audit step: Inspect the contract/source-boundary docs and confirm that every generated artifact family already mentioned in repo docs appears with an explicit commit/use boundary.
-
 - [ ] **Create exemplar and anti-exemplar package for agent calibration**
   - Scope: Add concrete examples of good and bad outputs so agent contributors can see what high-fidelity checklist entries, evidence packaging, and friction reports look like without inferring the target shape from prose alone.
   - Target Files: `docs/examples/README.md`, `docs/examples/good_checklist_entry.md`, `docs/examples/bad_checklist_entry.md`, `docs/examples/good_summary_block_usage.md`, `docs/examples/bad_evidence_packaging.md`, `docs/examples/good_friction_entry.md`, `docs/generated_artifact_contracts.md`

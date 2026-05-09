@@ -36,6 +36,8 @@ This keeps operational prompts versioned and close to the workflows they describ
 - `docs/`: Narrative documentation and release history.
 - `docs/runtime_target_support_matrix.md`: runtime-by-runtime support boundary, instruction surfaces, and caveats for humans and coding-agent platforms.
 - `docs/context_trigger_matrix.md`: workflow-to-context load-order matrix for stateless sessions.
+- `docs/generated_artifact_contracts.md`: producer/consumer contracts, commit boundaries, and schema expectations for generated artifacts used by wrappers and audits.
+- `docs/source_boundary_manifest.md`: source-of-truth boundary map for hand-authored files vs generated committed ledgers vs local-only evidence.
 - `docs/template_customization_checklist.md`: post-clone checklist for replacing template defaults with project-specific governance and metadata.
 - `.gitignore`: Ignore policy for local evidence caches, Python-generated artifacts, virtual environments, and editor-local state.
 - `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.

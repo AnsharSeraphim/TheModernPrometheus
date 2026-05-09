@@ -38,6 +38,12 @@ This folder is the operational entry point for repository automation.
 
 Use the JSON catalog when downstream tooling expects structured machine-readable metadata, and use the Markdown inventory when reviewers need a line-by-line audit table they can quickly compare against implementation notes.
 
+## Generated artifact boundaries
+
+- Artifact contracts and commit policies are documented in `docs/generated_artifact_contracts.md`.
+- Source-vs-generated boundaries are documented in `docs/source_boundary_manifest.md`.
+- Treat `config/precommit_store/*.json` as generated committed ledgers and `build/automation_contract/*` as local evidence caches.
+
 
 ## Docstring aggregation operational modes
 
