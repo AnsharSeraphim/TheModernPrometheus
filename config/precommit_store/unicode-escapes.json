@@ -1,8 +1,23 @@
 {
+  ".claude/README.md": {
+    "skip": "Y"
+  },
+  ".github/copilot-instructions.md": {
+    "skip": "Y"
+  },
   ".github/dependabot.yml": {
     "skip": "Y"
   },
+  ".github/instructions/docs.instructions.md": {
+    "skip": "Y"
+  },
+  ".github/instructions/scripts.instructions.md": {
+    "skip": "Y"
+  },
   "AGENTS.md": {
+    "skip": "Y"
+  },
+  "CLAUDE.md": {
     "skip": "Y"
   },
   "CODE_OF_CONDUCT.md": {
@@ -80,10 +95,16 @@
   "docs/agent_bootstrap/operator_context_injection.md": {
     "skip": "Y"
   },
+  "docs/context_trigger_matrix.md": {
+    "skip": "Y"
+  },
   "docs/new_user_onboarding.md": {
     "skip": "Y"
   },
   "docs/release_notes.md": {
+    "skip": "Y"
+  },
+  "docs/runtime_target_support_matrix.md": {
     "skip": "Y"
   },
   "pyproject.toml": {

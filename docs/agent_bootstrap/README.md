@@ -43,3 +43,9 @@ Use the context recipes when running stateless sessions:
 - `context/recipes/checklist_audit_session.md` for checklist dependency/actionability audits.
 
 Both recipes are wrapper-first and include escalation instructions for unresolved work.
+
+
+## Runtime and context targeting references
+
+- `../runtime_target_support_matrix.md` defines runtime support status and instruction-surface boundaries.
+- `../context_trigger_matrix.md` maps workflow triggers to minimum context ingestion order.

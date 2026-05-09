@@ -46,6 +46,8 @@ Use this re-usable prompt after adding checklist entries for needed work to `Fin
 - `tests/`: Verification of wrapper behavior and policy enforcement helpers.
 - `config/precommit_store/`: Pre-commit skip ledgers plus cached pylint diagnostics used by wrapper flows.
 - `docs/`: Narrative documentation and release history.
+- `docs/runtime_target_support_matrix.md`: runtime-by-runtime support boundary, instruction surfaces, and caveats for humans and coding-agent platforms.
+- `docs/context_trigger_matrix.md`: workflow-to-context load-order matrix for stateless sessions.
 - `.gitignore`: Ignore policy for local evidence caches, Python-generated artifacts, virtual environments, and editor-local state.
 - `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.
 - `Final-Optimization-Checklist.md`: Tracking for tests above the latency budget with explicit rationale.
