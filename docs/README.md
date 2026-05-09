@@ -7,6 +7,8 @@ Use this index to find operational guidance by audience.
 - [`../AGENTS.md`](../AGENTS.md): authoritative execution policy, quality gates, and session-close workflow.
 - [`../Final-Productization-Checklist.md`](../Final-Productization-Checklist.md): open work backlog for unresolved hardening tasks.
 - [`../Final-Optimization-Checklist.md`](../Final-Optimization-Checklist.md): latency exceptions and optimization follow-up.
+- [`../.github/workflows/quality-gates.yml`](../.github/workflows/quality-gates.yml): CI enforcement for wrapper-driven pre-commit and test suites.
+- [`../.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md): PR evidence template requiring scoped commands and summary blocks.
 - [`release_notes.md`](release_notes.md): user/tooling change history.
 
 ## Template consumers

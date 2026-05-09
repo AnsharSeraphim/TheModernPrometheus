@@ -2,6 +2,9 @@
   ".claude/README.md": {
     "skip": "Y"
   },
+  ".github/PULL_REQUEST_TEMPLATE.md": {
+    "skip": "Y"
+  },
   ".github/copilot-instructions.md": {
     "skip": "Y"
   },
@@ -12,6 +15,9 @@
     "skip": "Y"
   },
   ".github/instructions/scripts.instructions.md": {
+    "skip": "Y"
+  },
+  ".github/workflows/quality-gates.yml": {
     "skip": "Y"
   },
   "AGENTS.md": {
