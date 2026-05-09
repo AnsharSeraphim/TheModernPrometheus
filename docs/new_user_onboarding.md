@@ -1,337 +1,354 @@
 # New User Onboarding: The Modern Prometheus
 
-The Modern Prometheus is a reusable GitHub repository template for creating Python projects that are ready for both human contributors and coding agents from the first commit. It is not just a folder scaffold. It is a repository-governance system: a project starter that brings execution discipline, quality gates, documentation expectations, agent operating rules, and carry-forward task memory into the repository itself.
+The Modern Prometheus is a reusable Python repository template designed for mixed human + coding-agent delivery. It is intentionally opinionated about *execution hygiene*: quality gates, checklist discipline, documentation parity, evidence packaging, and carry-forward operational memory are treated as first-class implementation requirements.
 
-Most starter repositories give you files and then leave you to discover the missing process later, usually at the exact moment something breaks and everyone begins practicing folk archaeology in Slack threads. This template takes the opposite approach. It encodes the operating model directly into the repository so contributors and stateless coding agents can find the rules, run the correct commands, preserve evidence, and hand off work cleanly.
+If you are new to this repository, this guide explains:
 
-## Who this is for
+- what this project is for,
+- why key controls (wrapper scripts and skip manifests) exist,
+- how to run work sessions correctly,
+- how to collaborate effectively with coding agents such as **GPT Codex**, **GitHub Copilot**, and **Claude Code**,
+- and how to adapt the template for your own multi-contributor context.
 
-Use this template when you want a new Python project to begin with serious operational discipline rather than improvised habits.
+---
 
-It is especially useful for:
+## Table of Contents
 
-- agent-driven development workflows using tools such as GPT Codex, Claude Code, or other coding agents;
-- research repositories that need reproducible checks, documentation parity, and audit trails;
-- internal tools that may be modified by many short-lived contributor sessions;
-- compliance-sensitive prototypes where quality, security, and documentation cannot be treated as decorative confetti;
-- documentation-heavy systems where future maintainers need clear context without interviewing the original author;
-- projects where checklists, release notes, docstrings, and automation artifacts matter as much as raw feature code.
+- [1) What this repository is and why it exists](#1-what-this-repository-is-and-why-it-exists)
+- [2) Quick orientation map](#2-quick-orientation-map)
+- [3) Read-first sequence (mandatory bootstrap)](#3-read-first-sequence-mandatory-bootstrap)
+- [4) Environment setup and first-run commands](#4-environment-setup-and-first-run-commands)
+- [5) Wrapper-first execution model](#5-wrapper-first-execution-model)
+- [6) Quality gates and what they enforce](#6-quality-gates-and-what-they-enforce)
+- [7) Skip manifests (`config/precommit_store/*.json`) explained](#7-skip-manifests-configprecommit_storejson-explained)
+- [8) Session workflow (from task pickup to handoff)](#8-session-workflow-from-task-pickup-to-handoff)
+- [9) Checklist system and task ordination](#9-checklist-system-and-task-ordination)
+- [10) Agent-specific operating guidance](#10-agent-specific-operating-guidance)
+  - [10.1 GPT Codex](#101-gpt-codex)
+  - [10.2 GitHub Copilot (Chat/Agent)](#102-github-copilot-chatagent)
+  - [10.3 Claude Code](#103-claude-code)
+  - [10.4 Other coding agents](#104-other-coding-agents)
+- [11) Time/date reliability and timestamp hygiene](#11-timedate-reliability-and-timestamp-hygiene)
+- [12) Documentation parity and release-note discipline](#12-documentation-parity-and-release-note-discipline)
+- [13) Template customization guidance (single vs multi-contributor)](#13-template-customization-guidance-single-vs-multi-contributor)
+- [14) Common mistakes to avoid](#14-common-mistakes-to-avoid)
+- [15) What success looks like](#15-what-success-looks-like)
 
-This template does not impose a product architecture. It gives a project an execution skeleton: the rules for how work should be modified, checked, documented, reviewed, and handed off.
+---
 
-## The core idea
+## 1) What this repository is and why it exists
 
-Modern repositories are increasingly operated by stateless or semi-stateless coding agents. These agents do not automatically know the maintainer's preferences, hidden scripts, quality expectations, release-note habits, or test conventions. If the repository does not make those rules explicit, the agent will infer, improvise, bypass, or minimize. Humanity, having learned nothing from every process failure ever, will then pretend this was surprising.
+Most starter repositories give you a directory tree. The Modern Prometheus gives you an **operating model**.
 
-The Modern Prometheus makes the repository self-orienting by including:
+This matters because modern delivery increasingly involves stateless or semi-stateless coding agents. Those agents can produce large amounts of code quickly, but without repository-local policy they also amplify process drift quickly: stale docs, skipped checks, unverifiable claims, and checklist churn.
 
-- a root `AGENTS.md` charter that defines coding-agent operating rules;
-- canonical wrapper scripts for quality and test execution;
-- strict lint, type, security, dependency, docstring, and encoding gates;
-- checklist files that preserve open work as scoped, closeable tasks;
-- skip-ledger state for efficient quality checks across sessions;
-- documentation expectations for humans and agents;
-- docstring aggregation tools for fast implementation audit;
-- release-note and dependency-maintenance practices;
-- repository maps and folder-level orientation conventions.
+This template addresses that with explicit, versioned controls for:
 
-The result is a template where project law is not trapped in one person's head. It lives in the repo.
+- quality and security gates,
+- deterministic wrapper entry points,
+- scoped remediation and evidence capture,
+- checklist-based carry-forward memory,
+- documentation parity,
+- and reliable handoff between contributors.
 
-## What to read first
+Related high-level references:
 
-Start with these files in this order:
+- Main project overview: [`README.md`](../README.md)
+- Agent charter and mandatory policy: [`AGENTS.md`](../AGENTS.md)
+- Operator bootstrap sequence: [`docs/agent_bootstrap/operator_context_injection.md`](agent_bootstrap/operator_context_injection.md)
 
-1. `README.md` gives the main project summary, repository map, setup commands, and reusable coding-agent prompt pattern.
-2. `AGENTS.md` defines the operating rules for coding agents and contributors working in the repository.
-3. `docs/security_hygiene.md` defines secret handling, local evidence boundaries, and deny-path commit guidance.
-4. `Final-Productization-Checklist.md` tracks unresolved quality, tooling, documentation, or release-readiness work.
-5. `Final-Optimization-Checklist.md`, when present, tracks tests that exceed the latency budget and explains why they are temporarily accepted.
-6. `docs/release_notes.md`, when present, records user-facing or workflow-relevant changes.
-7. `docs/runtime_target_support_matrix.md` defines runtime support boundaries and instruction surfaces.
-8. `docs/context_trigger_matrix.md` maps workflows to minimum context packs and command expectations.
-9. `docs/template_customization_checklist.md` provides the post-clone hardening checklist before project-specific feature work starts.
+## 2) Quick orientation map
 
-A new contributor should not begin by randomly running tools or editing files. Read the operating law first. It is cheaper than fixing the preventable mess later, allegedly.
+Use this map to find the right surface quickly:
 
-## First setup
+- **Repository charter/policy**
+  - [`AGENTS.md`](../AGENTS.md)
+- **Core docs index**
+  - [`docs/README.md`](README.md)
+- **Wrapper scripts and usage contracts**
+  - [`scripts/README.md`](../scripts/README.md)
+- **Checklists**
+  - Productization backlog: [`Final-Productization-Checklist.md`](../Final-Productization-Checklist.md)
+  - Test-latency exceptions: [`Final-Optimization-Checklist.md`](../Final-Optimization-Checklist.md)
+- **Security and boundaries**
+  - [`docs/security_hygiene.md`](security_hygiene.md)
+  - [`docs/source_boundary_manifest.md`](source_boundary_manifest.md)
+- **Context/recipe assets for agents**
+  - [`context/README.md`](../context/README.md)
+  - [`context/recipes/`](../context/recipes)
+  - [`context/prompts/`](../context/prompts)
+- **Release-change tracking**
+  - [`docs/release_notes.md`](release_notes.md)
 
-Create and activate a virtual environment, then install the development dependencies:
+## 3) Read-first sequence (mandatory bootstrap)
+
+Before editing code, load context in this order:
+
+1. [`AGENTS.md`](../AGENTS.md)
+2. [`scripts/README.md`](../scripts/README.md)
+3. [`Final-Productization-Checklist.md`](../Final-Productization-Checklist.md)
+4. [`docs/agent_bootstrap/operator_context_injection.md`](agent_bootstrap/operator_context_injection.md)
+5. [`docs/new_user_onboarding.md`](new_user_onboarding.md) (this guide)
+
+Why this order: it prioritizes policy and wrapper semantics before feature work, reducing avoidable rework and preventing accidental policy violations.
+
+## 4) Environment setup and first-run commands
+
+Install development dependencies:
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 ```
 
-Environment assumptions for documented command snippets:
-
-- POSIX-compatible shell (examples use Bash-style syntax and heredocs).
-- `rg` (`ripgrep`) installed and available on `PATH`.
-
-After setup, the canonical closing checks are:
+Canonical session-close checks:
 
 ```bash
 python scripts/run_precommit_suite.py
 python scripts/run_tests.py
 ```
 
-Those wrapper commands matter. Do not replace them with naked `pre-commit`, direct hook aliases, or bare `pytest` unless the repository documentation explicitly authorizes that path.
-
-## Commit and PR phasing thresholds
-
-When a change gets large, split it into reviewable phases instead of pushing one monolithic commit/PR update.
-
-- Phase your work when either threshold is reached:
-  - more than 25 changed files, or
-  - more than 1,200 net changed lines.
-- Keep each phase tied to one checklist task or one immediate dependency chain.
-- Include wrapper-generated `config/precommit_store/*.json` changes in the same phase commit when they are updated by your remediation runs.
-- Never commit binary evidence artifacts; keep them out of Git and reference them externally if needed.
-
-Per-phase validation:
+While iterating on specific files:
 
 ```bash
-python scripts/run_precommit_suite.py --scope paths --paths <touched-file1> <touched-file2>
-python scripts/run_tests.py --scope paths --select <relevant-selector>
+python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>
+python scripts/run_tests.py --scope paths --select <pytest-selector>
 ```
 
-PR-close validation:
+These wrapper commands are the supported control surfaces. Direct tool invocation is secondary and should not replace wrapper flows.
 
-```bash
-python scripts/run_precommit_suite.py
-python scripts/run_tests.py
-```
+## 5) Wrapper-first execution model
 
-Evidence packaging expectation: copy the final summary blocks from `build/automation_contract/` and include command history plus any unresolved checklist links.
+Primary wrappers:
 
-## The wrapper-first rule
+- Quality/lint/type/security/docstring orchestration: `python scripts/run_precommit_suite.py`
+- Test orchestration: `python scripts/run_tests.py`
 
-The most important operating rule in this repository is wrapper-first execution.
+Why wrappers exist (instead of raw tool-by-tool calls):
 
-Quality checks must run through:
+- keep pre-commit skip-ledger state authoritative,
+- ensure scoped resets are done correctly for touched files,
+- preserve consistent failure reporting and summary artifacts,
+- align contributor behavior with repository policy,
+- reduce “green locally, broken in handoff” outcomes.
 
-```bash
-python scripts/run_precommit_suite.py
-```
+See command syntax and wrapper variants in [`scripts/README.md`](../scripts/README.md).
 
-Tests must run through:
+## 6) Quality gates and what they enforce
 
-```bash
-python scripts/run_tests.py
-```
+The repository enforces a strict quality stack that typically includes:
 
-These wrappers are the repository's control surface. Individual tools such as Ruff, Pylint, MyPy, Pyright, Bandit, Vulture, Deptry, Interrogate, and pytest are implementation details underneath that surface.
+- Ruff format + lint,
+- Pylint,
+- Interrogate (docstrings),
+- MyPy,
+- Pyright,
+- Deptry,
+- Vulture,
+- Bandit,
+- and repository-specific policy checks.
 
-Direct tool calls are discouraged because they can bypass repository-specific behavior, including:
+This stack is intentionally redundant in places. The overlap is a feature: each tool catches different classes of defects or hygiene drift.
 
-- scoped file handling;
-- skip-ledger refresh logic;
-- cached Pylint diagnostics;
-- summary artifact generation;
-- policy-aware test invocation;
-- checklist validation;
-- wrapper-level enforcement against stale or incomplete evidence.
+For quality-remediation context recipes, see:
 
-If a tool fails, remediate the issue. Do not weaken settings, hand-edit skip ledgers, silence checks, or route around the wrapper. The point of the suite is to surface problems while they are still cheap enough to fix.
+- [`context/recipes/quality_remediation_session.md`](../context/recipes/quality_remediation_session.md)
 
-## Quality gates included in the template
+## 7) Skip manifests (`config/precommit_store/*.json`) explained
 
-The scaffold is configured for strict Python quality expectations. Depending on the current project state, the quality suite may coordinate:
+The `config/precommit_store/` ledger exists to make strict quality gates practical in frequent, short sessions.
 
-- Ruff formatting;
-- Ruff linting;
-- Pylint;
-- Interrogate docstring coverage;
-- MyPy;
-- Pyright;
-- Deptry;
-- Vulture;
-- Bandit;
-- merge-conflict checks;
-- checklist-structure validation;
-- UTF-8 and Unicode-escape validation.
+High-level behavior:
 
-The default posture treats lint, type safety, docstring coverage, dependency hygiene, security scanning, and text-encoding health as ordinary project hygiene. They are not final-week polish. They are part of how the repository stays usable by future humans and agents.
+- each hook tracks per-file state,
+- touched paths are reset to be re-evaluated,
+- passing files are marked to avoid unnecessary repeated scans,
+- wrapper runs maintain consistency across contributors and sessions.
 
-## Skip ledgers: why quality checks can stay usable
+Why this matters:
 
-Strict tooling can become expensive if every short session must recheck an entire repository. The Modern Prometheus addresses that with per-hook JSON skip ledgers under:
+- **performance** for iterative workflows,
+- **continuity** for stateless agents,
+- **auditability** of what has been revalidated,
+- **predictable remediation loops** without manual JSON editing.
 
-```text
-config/precommit_store/
-```
+Reference docs:
 
-Each major hook can track whether a file has already passed. When a file is touched, the wrapper can reset its skip flag and revalidate it. When that file passes, the ledger records the passing state so later sessions do not have to repeat unnecessary work.
+- [`config/precommit_store/README.md`](../config/precommit_store/README.md)
+- [`docs/generated_artifact_contracts.md`](generated_artifact_contracts.md)
 
-This design is especially useful for coding-agent workflows because agents often operate in short, iterative sessions. The ledger lets the project preserve audit state without pretending that every agent should repeatedly scan everything forever, which is a fine way to turn software quality into performance art.
+### Notes for template adopters (single vs multi-contributor)
 
-Important rules:
+If you reuse this template, think about whether current ledger metadata is sufficient for your team topology.
 
-- use the wrapper to refresh ledgers;
-- do not hand-edit `config/precommit_store/*.json`;
-- commit relevant updated JSON state when the wrapper changes it;
-- treat `config/precommit_store/pylint_failures.json` as the source of truth for current cached Pylint diagnostics;
-- run a full suite before session close unless the repository gives a narrower approved closure rule.
+- In **single-contributor** projects, richer ledger metadata (for example mtime/blob/sha bookkeeping) may add JSON growth with little collaboration benefit.
+- In **multi-contributor** or heavily agentized projects, adding stronger identity signals (such as content-hash or blob-based provenance) can improve correctness when contributors share branches or rebase frequently.
 
-## Checklist hygiene
+Tradeoff framing:
 
-`Final-Productization-Checklist.md` is carry-forward memory for open work. It is not a journal, not a vibes board, and not a graveyard for vague intentions.
+- simpler manifest schema -> smaller files, less complexity,
+- richer manifest schema -> higher confidence in cross-session validity, but more storage/noise.
 
-Good checklist entries are:
+Use your project’s branch strategy and contributor concurrency as the deciding factor.
 
-- scoped;
-- actionable;
-- tied to explicit target files;
-- ordered around dependencies;
-- verifiable through clear `DONE WHEN` criteria;
-- removed when complete;
-- rewritten when only part of the work remains.
+## 8) Session workflow (from task pickup to handoff)
 
-Bad checklist entries use vague terms such as "all," "continue," "every," "each," "remaining," "across," or "etc." in ways that make the task impossible to close cleanly. These entries create task churn because every future agent can "make progress" without actually finishing the work. Apparently ambiguity can be renewable energy if you feed it to enough agents.
+Recommended execution flow:
 
-When creating new checklist work, use the required template:
+1. Load read-first context and open checklist dependencies.
+2. Pick the highest-priority entry that is actually unblocked.
+3. Implement targeted changes.
+4. Run scoped wrapper checks for touched files.
+5. Run scoped tests for changed behavior.
+6. Update docs/release notes/checklist entries affected by the change.
+7. Run full closeout suites:
+   - `python scripts/run_precommit_suite.py`
+   - `python scripts/run_tests.py`
+8. Package evidence from generated summary blocks (not partial progress logs).
+9. Commit cleanly and hand off with explicit unresolved items if any.
 
-```markdown
-- [ ] **Task title**
-  - Scope: <one bounded task>
-  - Target Files: `<path1>`, `<path2>`
-  - Dependencies: <entry title or `None`>
-  - DONE WHEN: <verifiable outcome>
-```
+Helpful supporting references:
 
-If an issue is discovered during implementation and cannot be completed in the same session, create a new scoped checklist entry. If the issue is completed, do not leave a fossilized note pretending it is still open.
+- [`docs/examples/good_summary_block_usage.md`](examples/good_summary_block_usage.md)
+- [`docs/examples/bad_evidence_packaging.md`](examples/bad_evidence_packaging.md)
 
-## Documentation parity
+## 9) Checklist system and task ordination
 
-Documentation in this template is operational. It should help a human or coding agent execute, validate, audit, or continue work without hidden context.
+Checklists are not status journals; they are an execution queue.
 
-Good documentation should answer:
+- Product work, quality debt, and documentation debt should be captured as actionable entries in [`Final-Productization-Checklist.md`](../Final-Productization-Checklist.md).
+- Tests exceeding latency budget should be documented in [`Final-Optimization-Checklist.md`](../Final-Optimization-Checklist.md).
 
-- What does this file, folder, script, or workflow do?
-- When should someone use it?
-- What command should they run?
-- What inputs and outputs should they expect?
-- What failure modes matter?
-- What implementation paths or tests support the claim?
-- What should be updated when behavior changes?
+Strong checklist entries include:
 
-Folder-level `README.md` files should stay current. Release notes should be updated when tooling behavior, quality workflow, or user-facing repository operation changes. Documentation should not claim future behavior as implemented fact; speculative plans belong in roadmap language or checklist entries.
+- **Scope**
+- **Target Files**
+- **Dependencies**
+- **DONE WHEN**
+- **Audit step**
 
-## Docstring automation
+Reference examples:
 
-The template includes docstring tooling so a project can expose its implementation claims in a compact, reviewable format.
+- Good entry: [`docs/examples/good_checklist_entry.md`](examples/good_checklist_entry.md)
+- Bad entry: [`docs/examples/bad_checklist_entry.md`](examples/bad_checklist_entry.md)
+- Good friction entry: [`docs/examples/good_friction_entry.md`](examples/good_friction_entry.md)
 
-The aggregation script:
+## 10) Agent-specific operating guidance
 
-```bash
-python scripts/aggregate_project_docstrings.py
-```
+### 10.1 GPT Codex
 
-exports a monolithic JSON catalog of module, class, and function docstrings. This is useful for LLM context bootstrapping, reviewer orientation, documentation generation, and conceptual audits.
+Use GPT Codex most effectively by:
 
-The audit script:
+- explicitly assigning a bounded checklist entry,
+- requiring wrapper-first commands in the prompt,
+- requiring end-of-session evidence (pre-commit/test summary blocks),
+- requiring documentation parity updates when behavior changes.
 
-```bash
-python scripts/audit_docstrings.py
-```
+Helpful assets:
 
-can produce a human-readable Markdown inventory of discovered docstrings. Reviewers can use that inventory to compare what the implementation claims against what the surrounding documentation says.
+- [`context/prompts/repo_audit_prompt.md`](../context/prompts/repo_audit_prompt.md)
+- [`context/prompts/quality_remediation_prompt.md`](../context/prompts/quality_remediation_prompt.md)
+- [`context/prompts/pr_evidence_packaging_prompt.md`](../context/prompts/pr_evidence_packaging_prompt.md)
 
-The practical point is simple: docstrings become a project-understanding substrate, not just polite decoration glued above functions because a linter demanded tribute.
+### 10.2 GitHub Copilot (Chat/Agent)
 
-## How a normal work session should flow
+Copilot can be effective for implementation acceleration, but maintainers should still anchor process in repository policy:
 
-A disciplined session usually follows this shape:
+- paste or link the required wrapper commands and do not accept “raw pytest/pre-commit only” flows,
+- request explicit checklist updates,
+- require citations to changed files and tests in summaries,
+- use repository docs as authoritative context to avoid chat-only drift.
 
-1. Read `AGENTS.md` and the relevant checklist entries.
-2. Identify the highest-priority open task that can be completed without violating dependency order.
-3. Edit the target files.
-4. Run the targeted wrapper command for touched files when appropriate, for example:
+Start context from:
 
-   ```bash
-   python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>
-   ```
+- [`README.md`](../README.md)
+- [`AGENTS.md`](../AGENTS.md)
+- [`docs/README.md`](README.md)
 
-5. Run relevant tests through the test wrapper, for example:
+### 10.3 Claude Code
 
-   ```bash
-   python scripts/run_tests.py --scope changed
-   ```
+Claude Code sessions generally benefit from strong up-front instruction packets. Provide:
 
-6. Update docs, release notes, checklists, or manifests affected by the change.
-7. Run the full closing suites:
+- read order,
+- exact wrapper commands,
+- checklist dependency constraints,
+- and explicit “do not hand-edit skip manifests” language.
 
-   ```bash
-   python scripts/run_precommit_suite.py
-   python scripts/run_tests.py
-   ```
+If using repo-local Claude guidance, align with:
 
-8. Capture the final result blocks from the automation summaries, not partial progress output.
-9. Delete completed checklist entries or rewrite partially completed entries into explicit remaining work.
+- [`CLAUDE.md`](../CLAUDE.md)
 
-That flow gives the next contributor or coding agent a clean continuation point.
+### 10.4 Other coding agents
 
-## Guidance for coding agents
+For any agent platform:
 
-Coding agents should treat the repository as the source of truth. Do not infer a different process because it is shorter.
+- treat repository files as source of truth,
+- enforce wrapper-first quality and testing,
+- require checklist hygiene and closeable scope,
+- require docs parity and release-note updates for workflow/user-facing changes.
 
-A coding agent working in this template should:
+Use [`docs/context_trigger_matrix.md`](context_trigger_matrix.md) to map workflows to required context.
 
-- read `AGENTS.md` before acting;
-- respect checklist ordination and dependencies;
-- use wrapper commands rather than direct tool calls;
-- wait for wrapper completion instead of interrupting based on progress percentages;
-- fix surfaced failures instead of weakening gates;
-- update release notes when user-facing or workflow-facing behavior changes;
-- preserve generated JSON or manifest changes when the repository expects them;
-- avoid editing automation evidence directories that are meant to remain untracked;
-- leave the checklist cleaner than it found it.
+## 11) Time/date reliability and timestamp hygiene
 
-The goal is not to make agents obedient in some theatrical sense. The goal is to make agent work reproducible, auditable, and less likely to collapse into "I changed something and the terminal looked green for three seconds."
+Coding-agent environments are often ephemeral (for example boot-from-image, remote container snapshots, or partially synchronized virtual workspaces). This can produce inaccurate local time perceptions in-session.
 
-## Guidance for human maintainers
+Therefore:
 
-Human maintainers should use this template by making the desired operating model explicit before feature work begins.
+- do **not** trust agent-assumed date/time for provenance,
+- derive dates/timestamps from trusted sources such as Git metadata,
+- use explicit absolute dates in user-facing notes when ambiguity is possible.
 
-At minimum, customize:
+This policy protects logs, release notes, and checklist chronology from false aging or future-dated noise.
 
-- project name and description in `README.md`;
-- package metadata in `pyproject.toml`;
-- first actionable tasks in `Final-Productization-Checklist.md`;
-- release-note conventions in `docs/release_notes.md`;
-- any folder-level `README.md` files that need project-specific orientation;
-- agent instructions in `AGENTS.md` if the project has special constraints.
+Related policy references:
 
-For agent-driven work, seed the checklist with clear project-building tasks. Then direct coding agents to address those entries in order while following `AGENTS.md`. The reusable metaprompt in `README.md` is designed for that iterative workflow.
+- [`AGENTS.md`](../AGENTS.md)
+- [`docs/agent_bootstrap/operator_context_injection.md`](agent_bootstrap/operator_context_injection.md)
 
-## Common mistakes to avoid
+## 12) Documentation parity and release-note discipline
 
-Do not use bare `pytest` as the normal test surface. Use `python scripts/run_tests.py`.
+When behavior changes, docs should change in the same session. Typical touchpoints:
 
-Do not call individual hooks directly as the normal quality surface. Use `python scripts/run_precommit_suite.py`.
+- update folder-level README files,
+- update onboarding/process docs when workflow changes,
+- update [`docs/release_notes.md`](release_notes.md) for user-facing/tooling behavior changes.
 
-Do not interrupt the pre-commit wrapper because a progress percentage looks stuck. The percentage is informational and may be stale.
+Supporting guidance:
 
-Do not hand-edit skip ledgers to hide failures. Use the wrapper and fix the underlying issue.
+- [`docs/troubleshooting.md`](troubleshooting.md)
+- [`docs/template_customization_checklist.md`](template_customization_checklist.md)
 
-Do not leave vague checklist entries for future agents to reinterpret. Make the scope explicit or split the work into smaller entries.
+## 13) Template customization guidance (single vs multi-contributor)
 
-Do not update optimization checklists for unchanged tests just to look productive. That is not execution; it is administrative fog.
+When adapting this template:
 
-Do not let documentation drift away from implementation. If behavior changes, update the relevant docs and release notes.
+1. Define contributor model early (single maintainer, team, agent-heavy, or hybrid).
+2. Decide how strict ledger metadata should be for your concurrency profile.
+3. Keep wrapper entry points intact unless you have a documented replacement with equivalent guarantees.
+4. Customize prompts/recipes under `context/` for your domain workflows.
+5. Keep checklist standards strict to avoid long-term task churn.
 
-Do not commit binary assets unless the repository specifically allows them. Share screenshots, videos, and archives separately when needed.
+This keeps the template’s main benefit intact: reproducible execution quality across contributors with minimal hidden context.
 
-## What makes this strategically useful
+## 14) Common mistakes to avoid
 
-The value of The Modern Prometheus is the operating pattern it makes reusable:
+- Running bare `pytest` as the standard surface instead of wrapper flows.
+- Running direct hook aliases instead of `scripts/run_precommit_suite.py`.
+- Hand-editing `config/precommit_store/*.json`.
+- Treating checklist files as journals rather than closeable work queues.
+- Ignoring dependency order in checklist execution.
+- Letting documentation or release notes drift from implementation reality.
+- Committing local evidence/cache outputs that should remain untracked.
 
-- encode project law in `AGENTS.md`;
-- route execution through wrappers;
-- preserve quality state in ledgers;
-- maintain closeable checklists;
-- enforce documentation parity;
-- export docstring context for LLM ingestion;
-- capture release-facing changes;
-- make every session easier for the next operator.
+## 15) What success looks like
 
-This turns a GitHub template into a cloneable repository-control system for serious coding-agent-compatible projects. The repository does not merely tell agents what to build. It teaches them how not to damage the project while building it, which is tragically necessary and therefore useful.
+A successful onboarding outcome means a new contributor can read this guide and then:
+
+- navigate the repository confidently,
+- run the correct wrapper commands without guesswork,
+- understand why strict gates and skip manifests exist,
+- collaborate with coding agents without process collapse,
+- and leave each session easier for the next contributor to continue.
+
+That is the core promise of The Modern Prometheus: not just scaffolding code, but scaffolding reliable execution.
