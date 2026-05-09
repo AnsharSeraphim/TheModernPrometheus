@@ -59,12 +59,6 @@ Example format:
   - Audit step: Run the exact CI command sequence from a clean checkout and confirm the pre-commit summary shows actual hook execution instead of `All tracked files already passed ...; skipping.` for every hook.
   - Ensure this does *not* affect other types of operations that *do* want to use the Skip Filter by default to not rescan currently passing untouched files.
 
-- [ ] **Commit or explicitly downgrade the missing docstring-catalog bootstrap asset**
-  - Scope: Resolve the mismatch between documentation/contracts that treat `context/project_docstrings_catalog.json` as a committed machine-consumable bootstrap asset and the current repository state where that file is absent. Either generate and commit the asset, or revise the contracts/docs so the asset is clearly on-demand rather than baseline-present.
-  - Target Files: `context/project_docstrings_catalog.json`, `context/README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, `README.md`
-  - Dependencies: `None`
-  - DONE WHEN: The repo either contains a current `context/project_docstrings_catalog.json` generated from the canonical script, or all documentation/contract language is revised so contributors are not told a committed bootstrap asset exists when it does not.
-  - Audit step: Run `python scripts/aggregate_project_docstrings.py --root . --output context/project_docstrings_catalog.json`, verify the JSON parses cleanly, and then confirm that repo docs and commit-policy text match the chosen committed-vs-on-demand behavior.
 
 - [ ] **Make task-recipe validation reproducible from declared dependencies**
   - Scope: Fix the mismatch where `context/task_recipes/README.md` documents a `jsonschema`-based validation workflow, but a fresh environment created from `requirements-dev.txt` cannot import `jsonschema`. This currently makes the published validation contract non-reproducible.
@@ -80,12 +74,6 @@ Example format:
   - DONE WHEN: The repo either (a) provides vendor-compliant skill delivery with documented discovery paths/metadata and explicit shell-tool prerequisites, or (b) clearly reclassifies `skills/` as human/advisory workflow assets instead of claiming direct runtime consumption; command assets no longer assume undeclared shell tooling.
   - Audit step: Verify the declared supported runtime can discover or consume the skill assets exactly as documented on a fresh checkout, and verify non-POSIX/non-ripgrep environments are either supported with documented fallbacks or explicitly marked out of scope.
 
-- [ ] **Remove stale pre-implementation wording from the context/runtime matrices**
-  - Scope: Clean up matrix rows that still describe recipe/workflow assets as existing only “when added” or workflows as present only “when present,” even though the current template now ships those assets directly. This is a documentation-truthfulness issue, not a missing-asset issue.
-  - Target Files: `docs/context_trigger_matrix.md`, `docs/runtime_target_support_matrix.md`
-  - Dependencies: `None`
-  - DONE WHEN: Both matrices describe the shipped asset set truthfully and use conditional wording only for genuinely optional, external, or organization-specific components.
-  - Audit step: Read both matrices against the current tree and confirm every conditional phrase maps to an actually optional/external asset rather than a file already shipped in the repository.
 
 ---
 
