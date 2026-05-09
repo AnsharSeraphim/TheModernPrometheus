@@ -11,6 +11,8 @@ Use this index to find operational guidance by audience.
 
 ## Template consumers
 
+- [`runtime_target_support_matrix.md`](runtime_target_support_matrix.md): runtime coverage, status, and instruction surfaces.
+- [`context_trigger_matrix.md`](context_trigger_matrix.md): task-to-context load-order mapping for stateless workflows.
 - [`../README.md`](../README.md): repository purpose and quickstart.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md): onboarding workflow, wrappers, and remediation expectations.
 - [`../config/README.md`](../config/README.md): precommit-store artifacts and governance.

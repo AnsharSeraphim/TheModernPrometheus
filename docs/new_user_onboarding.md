@@ -46,6 +46,8 @@ Start with these files in this order:
 3. `Final-Productization-Checklist.md` tracks unresolved quality, tooling, documentation, or release-readiness work.
 4. `Final-Optimization-Checklist.md`, when present, tracks tests that exceed the latency budget and explains why they are temporarily accepted.
 5. `docs/release_notes.md`, when present, records user-facing or workflow-relevant changes.
+6. `docs/runtime_target_support_matrix.md` defines runtime support boundaries and instruction surfaces.
+7. `docs/context_trigger_matrix.md` maps workflows to minimum context packs and command expectations.
 
 A new contributor should not begin by randomly running tools or editing files. Read the operating law first. It is cheaper than fixing the preventable mess later, allegedly.
 

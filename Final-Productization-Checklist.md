@@ -51,33 +51,6 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Create runtime-target support matrix**
-  - Scope: Add a canonical document that states which contributor/agent runtimes this template supports, what repo-local assets they consume, what they ignore, and which runtimes are explicitly out of scope.
-  - Target Files: `docs/runtime_target_support_matrix.md`, `README.md`, `docs/README.md`, `docs/new_user_onboarding.md`, `docs/agent_bootstrap/README.md`
-  - Dependencies: `None`
-  - DONE WHEN: The matrix names at least human local contributors, generic terminal coding agents, Codex-style agents, Claude Code, GitHub Copilot, and GitHub PR validation; every named runtime has an explicit support status, consumed instruction surfaces, caveats, and out-of-scope note where needed; root/docs index files link to the matrix.
-  - Audit step: Inspect `docs/runtime_target_support_matrix.md` and verify that every runtime named in repo docs is represented with a support status and file-consumption note.
-
-- [ ] **Create task-to-context trigger matrix**
-  - Scope: Document which context assets must be loaded for specific workflows so stateless sessions stop relying on implicit “read around the repo” startup behavior.
-  - Target Files: `docs/context_trigger_matrix.md`, `context/README.md`, `docs/agent_bootstrap/README.md`, `docs/new_user_onboarding.md`
-  - Dependencies: `Create runtime-target support matrix`
-  - DONE WHEN: The matrix maps first-time orientation, quality remediation, checklist audit, documentation parity audit, template bootstrap, release prep, and PR evidence packaging to explicit minimum context packs, load order, and optional context assets.
-  - Audit step: Inspect `docs/context_trigger_matrix.md` and verify that the task list and referenced files match real repo assets and existing recipes.
-
-- [ ] **Add GitHub Copilot instruction surfaces**
-  - Scope: Create GitHub-native instruction files so Copilot and GitHub cloud-agent modes receive wrapper-first, checklist-aware, evidence-preserving guidance instead of falling back to generic repo prose.
-  - Target Files: `.github/copilot-instructions.md`, `.github/instructions/docs.instructions.md`, `.github/instructions/scripts.instructions.md`, `docs/runtime_target_support_matrix.md`, `docs/README.md`
-  - Dependencies: `Create runtime-target support matrix`
-  - DONE WHEN: The repo contains a repo-wide Copilot instruction file plus path-specific instruction files for at least `docs/` and `scripts/`; the guidance directs agents to wrappers, checklist discipline, evidence blocks, and no-binary policy; the runtime matrix states how GitHub-native instruction surfaces are meant to be used.
-  - Audit step: Inspect the new `.github/` instruction files and verify they reference canonical wrapper commands and do not contradict `AGENTS.md`.
-
-- [ ] **Add Claude Code instruction surface**
-  - Scope: Create explicit Claude-facing repo guidance so Claude Code support stops being implied solely through generic repo documents.
-  - Target Files: `CLAUDE.md`, `.claude/README.md`, `docs/runtime_target_support_matrix.md`, `docs/README.md`
-  - Dependencies: `Create runtime-target support matrix`
-  - DONE WHEN: `CLAUDE.md` exists with wrapper-first rules, checklist discipline, summary-artifact handling, and evidence boundaries; `.claude/README.md` explains which Claude-native assets are intentionally present or intentionally absent; the runtime matrix states the Claude Code support boundary.
-  - Audit step: Inspect `CLAUDE.md` and confirm its command surfaces and policy statements align with `AGENTS.md`, `scripts/README.md`, and `CONTRIBUTING.md`.
 
 - [ ] **Create initial skill pack for high-frequency workflows**
   - Scope: Add an explicit skill directory with reusable `SKILL.md` assets for the repo’s highest-frequency stateless workflows so agents can load focused operational context instead of dragging the full root context into every session.
