@@ -122,3 +122,14 @@ Failure/remediation flow:
 - Remediate implementation (never suppress tooling).
 - Re-run wrapper on touched paths.
 - Re-run full wrappers before handoff.
+
+## Pull request evidence template
+
+Use [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) when opening a PR. The template mirrors wrapper-evidence policy by requiring:
+
+- checklist task scope and touched behavior summary,
+- scoped remediation commands,
+- pasted final summary blocks from `build/automation_contract/`, and
+- explicit unresolved follow-up entries in `Final-Productization-Checklist.md`.
+
+Remote CI runs the same wrapper contract through [`.github/workflows/quality-gates.yml`](.github/workflows/quality-gates.yml).
