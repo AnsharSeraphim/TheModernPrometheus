@@ -188,14 +188,26 @@ def build_inventory_markdown(
     total_documented = sum(len(entries) for entries in collected.values())
     total_missing = sum(len(entries) for entries in missing.values())
     total_symbols = total_documented + total_missing
+    failed_files = len(failures)
 
-    lines.extend(
-        [
-            f"Coverage summary: documented {total_documented}/{total_symbols} symbols "
-            f"({(total_documented / total_symbols * 100) if total_symbols else 100:.2f}%).",
-            "",
-        ]
-    )
+    if failed_files:
+        lines.extend(
+            [
+                f"Coverage summary: documented {total_documented}/{total_symbols} analyzed symbols "
+                f"({((total_documented / total_symbols * 100) if total_symbols else 100):.2f}%).",
+                f"Coverage status: INCOMPLETE ({failed_files} file(s) failed scanning).",
+                "",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "Coverage summary: documented "
+                f"{total_documented}/{total_symbols} symbols ({((total_documented / total_symbols * 100) if total_symbols else 100):.2f}%).",
+                "Coverage status: COMPLETE (all scanned files parsed successfully).",
+                "",
+            ]
+        )
 
     if not collected:
         lines.append("No docstrings were found in the selected scan roots.")
