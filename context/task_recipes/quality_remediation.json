@@ -1,0 +1,50 @@
+{
+  "task_id": "quality_remediation",
+  "title": "Remediate quality-suite violations with wrapper-first loops",
+  "scope": "Fix implementation defects surfaced by pre-commit hooks and rerun wrapper checks until targeted files pass.",
+  "target_files": [
+    "scripts/run_precommit_suite.py",
+    "config/precommit_store/*.json",
+    "Final-Productization-Checklist.md"
+  ],
+  "dependencies": [],
+  "context_sources": [
+    "AGENTS.md",
+    "docs/agent_bootstrap/operator_context_injection.md",
+    "scripts/README.md"
+  ],
+  "commands": [
+    {
+      "name": "targeted_precommit",
+      "command": "python scripts/run_precommit_suite.py --scope paths --paths <file1> <file2>",
+      "purpose": "Run remediation loops for touched paths and refresh skip ledgers."
+    },
+    {
+      "name": "single_hook",
+      "command": "python scripts/run_precommit_suite.py --only <hook> --scope paths --paths <file1> <file2>",
+      "purpose": "Isolate one failing hook while preserving wrapper bookkeeping."
+    },
+    {
+      "name": "closeout_precommit",
+      "command": "python scripts/run_precommit_suite.py",
+      "purpose": "Run full quality gate suite before session close."
+    }
+  ],
+  "validations": [
+    {
+      "name": "wrapper_reports_pass",
+      "method": "Inspect build/automation_contract/precommit_summary_block.txt",
+      "pass_condition": "Summary block reports success and no unresolved violations."
+    },
+    {
+      "name": "checklist_handoff",
+      "method": "Inspect Final-Productization-Checklist.md",
+      "pass_condition": "Any unresolved work is captured as granular open entries."
+    }
+  ],
+  "done_when": [
+    "Touched paths pass wrapper-driven pre-commit checks.",
+    "Full pre-commit suite has been executed once for closure.",
+    "Open remediation tasks are represented as actionable checklist entries."
+  ]
+}

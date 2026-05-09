@@ -52,13 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Add machine-readable task-recipe schema with starter assets**
-  - Scope: Create a machine-readable task-recipe format so future routers or advanced stateless agents can consume high-frequency workflows without parsing prose alone.
-  - Target Files: `context/task_recipes/README.md`, `context/task_recipes/schema.json`, `context/task_recipes/quality_remediation.json`, `context/task_recipes/checklist_audit.json`, `docs/task_recipe_schema.md`, `docs/agent_bootstrap/README.md`
-  - Dependencies: `Create task-to-context trigger matrix`, `Create reusable context prompt library for stateless repo workflows`
-  - DONE WHEN: The schema file exists; the two starter task-recipe JSON assets validate against it; `docs/task_recipe_schema.md` explains required fields such as task ID, scope, target files, dependencies, commands, validations, and `done_when`; bootstrap docs link to the schema.
-  - Audit step: Inspect `context/task_recipes/` and confirm the starter JSON assets use the documented keys and reference canonical wrapper commands.
-
 - [ ] **Add ownership map / CODEOWNERS coverage for operational assets**
   - Scope: Define who maintains the repo’s operationally sensitive docs, scripts, tests, and context assets so future drift can be detected and review routing can be added where useful.
   - Target Files: `.github/CODEOWNERS`, `docs/ownership_map.md`, `docs/README.md`

@@ -119,6 +119,18 @@
   "context/recipes/release_prep_session.md": {
     "skip": "Y"
   },
+  "context/task_recipes/README.md": {
+    "skip": "Y"
+  },
+  "context/task_recipes/checklist_audit.json": {
+    "skip": "Y"
+  },
+  "context/task_recipes/quality_remediation.json": {
+    "skip": "Y"
+  },
+  "context/task_recipes/schema.json": {
+    "skip": "Y"
+  },
   "docs/README.md": {
     "skip": "Y"
   },
@@ -162,6 +174,9 @@
     "skip": "Y"
   },
   "docs/source_boundary_manifest.md": {
+    "skip": "Y"
+  },
+  "docs/task_recipe_schema.md": {
     "skip": "Y"
   },
   "docs/template_customization_checklist.md": {
