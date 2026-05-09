@@ -1,3 +1,7 @@
+---
+applyTo: "scripts/**"
+---
+
 # Instructions for scripts/
 
 When editing `scripts/`:

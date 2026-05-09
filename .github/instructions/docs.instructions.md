@@ -1,3 +1,7 @@
+---
+applyTo: "docs/**"
+---
+
 # Instructions for docs/
 
 When editing `docs/`:
