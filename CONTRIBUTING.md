@@ -2,7 +2,7 @@
 
 This repository is a generic Python automation scaffold that can be reused as a baseline for new projects.
 
-All contributors must follow [AGENTS.md](AGENTS.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+All contributors must follow [AGENTS.md](AGENTS.md), the [Code of Conduct](CODE_OF_CONDUCT.md), and the [security hygiene guide](docs/security_hygiene.md).
 
 ## Local setup
 

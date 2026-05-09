@@ -67,3 +67,10 @@
 - Added calibration examples under `docs/examples/` covering good/bad checklist entries, evidence packaging, and friction entries for stateless-agent output quality baselining.
 - Linked `docs/generated_artifact_contracts.md` to the new examples so evidence-contract guidance points to concrete exemplar/anti-exemplar patterns.
 - Removed the completed `Create exemplar and anti-exemplar package for agent calibration` entry from `Final-Productization-Checklist.md`.
+
+## 2026-05-09
+
+- Added `.github/CODEOWNERS` and `docs/ownership_map.md` to define role-based ownership coverage for governance docs, automation scripts, tests, context assets, and CI workflow files.
+- Added `docs/security_hygiene.md` with explicit secret-handling, deny-path, local-evidence, and source-boundary guidance for template consumers.
+- Linked ownership and security hygiene docs from `README.md`, `CONTRIBUTING.md`, `docs/new_user_onboarding.md`, and `docs/README.md` so policy surfaces appear in first-read onboarding paths.
+- Removed the completed ownership/security entries from `Final-Productization-Checklist.md` so only unresolved backlog items remain.

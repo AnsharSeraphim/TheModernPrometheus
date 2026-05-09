@@ -167,10 +167,16 @@
   "docs/new_user_onboarding.md": {
     "skip": "Y"
   },
+  "docs/ownership_map.md": {
+    "skip": "Y"
+  },
   "docs/release_notes.md": {
     "skip": "Y"
   },
   "docs/runtime_target_support_matrix.md": {
+    "skip": "Y"
+  },
+  "docs/security_hygiene.md": {
     "skip": "Y"
   },
   "docs/source_boundary_manifest.md": {

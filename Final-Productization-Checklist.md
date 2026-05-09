@@ -52,20 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Add ownership map / CODEOWNERS coverage for operational assets**
-  - Scope: Define who maintains the repo’s operationally sensitive docs, scripts, tests, and context assets so future drift can be detected and review routing can be added where useful.
-  - Target Files: `.github/CODEOWNERS`, `docs/ownership_map.md`, `docs/README.md`
-  - Dependencies: `Create runtime-target support matrix`
-  - DONE WHEN: The repo contains either a meaningful `.github/CODEOWNERS` file plus a human-readable ownership map or an ownership map that explicitly documents why CODEOWNERS is intentionally deferred; docs index links to the ownership map.
-  - Audit step: Inspect the ownership assets and confirm they name maintainers or maintainer roles for scripts, tests, docs, context assets, and GitHub workflow files.
-
-- [ ] **Add security hygiene note for template consumers**
-  - Scope: Add a lightweight security/data-boundary guide so the template makes explicit what must not be committed, what local evidence should stay local, and how secret-bearing files should be treated.
-  - Target Files: `docs/security_hygiene.md`, `README.md`, `CONTRIBUTING.md`, `docs/new_user_onboarding.md`
-  - Dependencies: `Add root ignore rules for local evidence and Python-generated artifacts`
-  - DONE WHEN: The security note exists; it covers secrets, env files, generated evidence, binaries, deny-path guidance, and basic local-vs-source boundaries; root/onboarding/contributing docs link to it where contributors are first taught repo hygiene.
-  - Audit step: Inspect `docs/security_hygiene.md` and confirm it distinguishes policy for secrets and local evidence from the repo’s existing no-binary and wrapper-evidence rules.
-  
 ---
 
 ## Only Proceed To This Task If No Entries Above Exist

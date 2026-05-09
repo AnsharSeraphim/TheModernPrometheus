@@ -20,6 +20,8 @@ Use this index to find operational guidance by audience.
 - [`template_customization_checklist.md`](template_customization_checklist.md): required post-clone checklist for replacing template defaults with project-specific decisions.
 - [`../README.md`](../README.md): repository purpose and quickstart.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md): onboarding workflow, wrappers, and remediation expectations.
+- [`security_hygiene.md`](security_hygiene.md): security and data-boundary policy for secrets, local evidence, and deny-path commit rules.
+- [`ownership_map.md`](ownership_map.md): role-based ownership map and CODEOWNERS alignment for operational assets.
 - [`../config/README.md`](../config/README.md): precommit-store artifacts and governance.
 
 ## Agent operators
