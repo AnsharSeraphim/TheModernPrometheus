@@ -59,13 +59,6 @@ Example format:
   - DONE WHEN: The schema file exists; the two starter task-recipe JSON assets validate against it; `docs/task_recipe_schema.md` explains required fields such as task ID, scope, target files, dependencies, commands, validations, and `done_when`; bootstrap docs link to the schema.
   - Audit step: Inspect `context/task_recipes/` and confirm the starter JSON assets use the documented keys and reference canonical wrapper commands.
 
-- [ ] **Add troubleshooting playbook for wrapper and tooling failures**
-  - Scope: Consolidate common failure signatures and remediation paths so agents and maintainers do not have to reconstruct wrapper recovery logic from scattered notes.
-  - Target Files: `docs/troubleshooting.md`, `README.md`, `CONTRIBUTING.md`, `docs/README.md`, `scripts/README.md`
-  - Dependencies: `Create reusable context prompt library for stateless repo workflows`
-  - DONE WHEN: The playbook covers at least missing dependencies, wrapper invocation mistakes, stale-ledger confusion, interrogate/docstring remediation, test-scope selection mistakes, and unresolved-failure escalation into the checklist; docs index/root pages link to it where relevant.
-  - Audit step: Inspect `docs/troubleshooting.md` and verify that the covered failure signatures map to repo behavior already described in `AGENTS.md`, `scripts/README.md`, or recipe assets.
-
 - [ ] **Add ownership map / CODEOWNERS coverage for operational assets**
   - Scope: Define who maintains the repo’s operationally sensitive docs, scripts, tests, and context assets so future drift can be detected and review routing can be added where useful.
   - Target Files: `.github/CODEOWNERS`, `docs/ownership_map.md`, `docs/README.md`

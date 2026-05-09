@@ -10,6 +10,7 @@ Use this index to find operational guidance by audience.
 - [`../.github/workflows/quality-gates.yml`](../.github/workflows/quality-gates.yml): CI enforcement for wrapper-driven pre-commit and test suites.
 - [`../.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md): PR evidence template requiring scoped commands and summary blocks.
 - [`release_notes.md`](release_notes.md): user/tooling change history.
+- [`troubleshooting.md`](troubleshooting.md): common wrapper/tooling failure signatures and remediation paths.
 
 ## Template consumers
 

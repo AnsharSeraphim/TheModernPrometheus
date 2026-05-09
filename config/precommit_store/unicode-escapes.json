@@ -167,6 +167,9 @@
   "docs/template_customization_checklist.md": {
     "skip": "Y"
   },
+  "docs/troubleshooting.md": {
+    "skip": "Y"
+  },
   "pyproject.toml": {
     "skip": "Y"
   },
