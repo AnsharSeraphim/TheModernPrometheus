@@ -86,6 +86,12 @@ Or targeted reset for one hook:
 python scripts/run_precommit_suite.py --reset-baseline --only <hook>
 ```
 
+For repository-wide remote validation (for example CI), use full-check mode so all hooks execute regardless of prior skip flags:
+
+```bash
+python scripts/run_precommit_suite.py --scope all --reset-baseline --filter-mode full
+```
+
 ## Failure 4: Interrogate/docstring coverage violations
 
 ### Symptoms

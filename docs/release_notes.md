@@ -6,6 +6,9 @@
 - Added `docs/template_customization_checklist.md` with a concrete post-clone hardening checklist covering metadata replacement, runtime/dependency decisions, ignore-policy verification, checklist seeding, docs parity, and initial wrapper validation.
 
 ### Changed
+- Updated `.github/workflows/quality-gates.yml` to run pre-commit in explicit repository-wide full-check mode (`--scope all --reset-baseline --filter-mode full`) so CI cannot pass by reusing committed skip-ledger state.
+- Aligned remote-validation documentation in `README.md`, `CONTRIBUTING.md`, `docs/runtime_target_support_matrix.md`, and `docs/troubleshooting.md` with the new CI full-check contract.
+- Removed the completed `Make CI wrapper validation run in full-check mode instead of skip-ledger no-op mode` entry from `Final-Productization-Checklist.md`.
 - Linked the template-customization checklist from `README.md`, `docs/new_user_onboarding.md`, and `docs/README.md` so new template consumers discover it in all primary onboarding paths.
 - Added generated-artifact governance documentation via `docs/generated_artifact_contracts.md` and `docs/source_boundary_manifest.md`, then linked those assets from root/bootstrap/scripts/config READMEs so commit boundaries are explicit.
 - Removed the completed `Document generated-artifact contracts and source boundaries` entry from `Final-Productization-Checklist.md` so open-work tracking only contains unresolved tasks.

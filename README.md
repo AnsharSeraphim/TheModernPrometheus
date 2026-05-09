@@ -66,7 +66,7 @@ python scripts/run_tests.py
 
 - Quality hooks must be driven by `scripts/run_precommit_suite.py` (including checklist-structure validation for `Final-Productization-Checklist.md`).
 - Tests must be driven by `scripts/run_tests.py`.
-- GitHub validates the same wrapper contract in `.github/workflows/quality-gates.yml` for pull requests and pushes to primary branches.
+- GitHub validates the same wrapper contract in `.github/workflows/quality-gates.yml` for pull requests and pushes to primary branches, but forces full-check mode with `--scope all --reset-baseline --filter-mode full` so clean checkouts cannot pass by reusing committed skip-ledger state.
 - Pull requests should use `.github/PULL_REQUEST_TEMPLATE.md` so scoped commands and final summary blocks are always included.
 - Direct/manual invocations (`pre-commit run <hook>`, naked `pytest`) are treated as policy violations because they bypass repository summary artifacts and skip-ledger coordination.
 

@@ -51,15 +51,6 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Make CI wrapper validation run in full-check mode instead of skip-ledger no-op mode**
-  - Scope: Update remote validation so `.github/workflows/quality-gates.yml` does not rely on committed skip-ledger state for repository-wide checks. The current clean-checkout execution path can report success while every pre-commit hook is skipped because tracked files are already marked passed in `config/precommit_store/*.json`.
-  - Target Files: `.github/workflows/quality-gates.yml`, `README.md`, `CONTRIBUTING.md`, `docs/runtime_target_support_matrix.md`, `docs/troubleshooting.md`
-  - Dependencies: `None`
-  - DONE WHEN: GitHub Actions runs the pre-commit wrapper in an explicit full-validation mode (`--reset-baseline`, `--filter-mode full`, or an equivalent repo-sanctioned mechanism) and the documented remote-validation contract matches actual behavior; a clean-checkout run no longer produces an all-`SKIPPED` hook summary for repository-wide validation.
-  - Audit step: Run the exact CI command sequence from a clean checkout and confirm the pre-commit summary shows actual hook execution instead of `All tracked files already passed ...; skipping.` for every hook.
-  - Ensure this does *not* affect other types of operations that *do* want to use the Skip Filter by default to not rescan currently passing untouched files.
-
-
 - [ ] **Make task-recipe validation reproducible from declared dependencies**
   - Scope: Fix the mismatch where `context/task_recipes/README.md` documents a `jsonschema`-based validation workflow, but a fresh environment created from `requirements-dev.txt` cannot import `jsonschema`. This currently makes the published validation contract non-reproducible.
   - Target Files: `requirements-dev.txt`, `pyproject.toml`, `context/task_recipes/README.md`, `docs/task_recipe_schema.md`, optionally `tests/` if regression coverage is added

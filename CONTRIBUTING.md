@@ -72,6 +72,15 @@ python scripts/run_precommit_suite.py
 python scripts/run_tests.py
 ```
 
+Remote CI runs an explicit full-check variant of the quality wrapper:
+
+```bash
+python scripts/run_precommit_suite.py --scope all --reset-baseline --filter-mode full
+python scripts/run_tests.py
+```
+
+This ensures repository-wide validation executes hooks instead of inheriting committed skip-ledger pass state.
+
 PR evidence expectations:
 
 - Include the final summary blocks from `build/automation_contract/`.
