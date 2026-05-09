@@ -37,3 +37,7 @@
 - Expanded `docs/agent_bootstrap/operator_context_injection.md` with an explicit interrogate-failure response workflow that prioritizes in-session docstring remediation and defines checklist fallback requirements.
 
 - Aligned interrogate remediation guidance so `operator_context_injection.md` invokes `audit_docstrings.py` with `--scan-root scripts`, matching the wrapper interrogate target scope and avoiding non-actionable `tests/` findings during interrogate triage.
+## 2026-05-09
+- Added a root `.gitignore` to enforce local evidence and Python artifact ignore boundaries, including wrapper evidence directories and virtualenv/cache paths.
+- Updated contributor/bootstrap guidance to reference the root ignore policy and `git check-ignore -v` verification workflow.
+

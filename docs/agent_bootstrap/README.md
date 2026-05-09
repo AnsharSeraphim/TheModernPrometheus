@@ -16,7 +16,7 @@ This folder documents how to create agent-bootstrap artifacts from existing repo
    - Acceptance check: JSON exists, parses, and includes module/function/class entries.
 2. Generate parity-focused Markdown inventory for reviewers:
    - Command: `python scripts/audit_docstrings.py --scan-root scripts --scan-root tests --output build/automation_contract/docstring_inventory.md`
-   - Output: `build/automation_contract/docstring_inventory.md` (local evidence artifact; do not commit).
+   - Output: `build/automation_contract/docstring_inventory.md` (local evidence artifact; ignored by root `.gitignore`; do not commit).
    - Acceptance check: table rows enumerate script/test symbols and docstrings.
 3. Validate wrapper policy and tests:
    - Commands:

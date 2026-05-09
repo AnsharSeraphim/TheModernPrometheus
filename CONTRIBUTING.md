@@ -51,6 +51,7 @@ Each runner writes a copy-ready summary block under `build/automation_contract/`
 To keep reviews tractable, split work into phases instead of submitting a single oversized diff.
 
 - Never commit binary evidence artifacts (screenshots, videos, archives).
+- Keep local evidence caches and Python local-state artifacts untracked via the root `.gitignore`; verify additions with `git check-ignore -v <path>`.
 - Commit wrapper-managed ledger changes in `config/precommit_store/*.json` whenever the wrapper updates them.
 - Trigger phased execution when either threshold is met:
   - more than 25 files changed in one work unit, or

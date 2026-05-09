@@ -51,13 +51,6 @@ Example format:
 
 ## Outstanding Tasks
 
-- [ ] **Add root ignore rules for local evidence and Python-generated artifacts**
-  - Scope: Create a root `.gitignore` that matches the repository's stated local-evidence policy so wrapper outputs, caches, virtualenv state, and other local-only artifacts do not become accidental source files.
-  - Target Files: `.gitignore`, `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `docs/agent_bootstrap/README.md`, `docs/agent_bootstrap/operator_context_injection.md`
-  - Dependencies: `None`
-  - DONE WHEN: A root `.gitignore` exists; `build/automation_contract/` and `reports/reasoning/pipeline/` are ignored; common Python local-state paths are ignored; docs that describe local evidence caches no longer rely on an absent ignore mechanism.
-  - Audit step: Run `git check-ignore -v build/automation_contract/precommit_summary_block.txt reports/reasoning/pipeline/sample.log .venv/bin/python .pytest_cache/state` and confirm the returned rules map to the new `.gitignore` entries.
-
 - [ ] **Create runtime-target support matrix**
   - Scope: Add a canonical document that states which contributor/agent runtimes this template supports, what repo-local assets they consume, what they ignore, and which runtimes are explicitly out of scope.
   - Target Files: `docs/runtime_target_support_matrix.md`, `README.md`, `docs/README.md`, `docs/new_user_onboarding.md`, `docs/agent_bootstrap/README.md`
