@@ -1,0 +1,23 @@
+# CODEOWNERS for The Modern Prometheus template
+# Template consumers should replace placeholder team names with org-specific owners.
+
+# Core governance
+/AGENTS.md @template-maintainers
+/README.md @template-maintainers
+/CONTRIBUTING.md @template-maintainers
+/Final-Productization-Checklist.md @template-maintainers
+/Final-Optimization-Checklist.md @template-maintainers
+
+# Automation and quality control
+/scripts/ @quality-maintainers
+/tests/ @quality-maintainers
+/config/precommit_store/ @quality-maintainers
+
+# Documentation and context assets
+/docs/ @docs-maintainers
+/context/ @docs-maintainers
+
+# CI and PR process assets
+/.github/workflows/ @ci-maintainers
+/.github/PULL_REQUEST_TEMPLATE.md @ci-maintainers
+/.github/CODEOWNERS @ci-maintainers

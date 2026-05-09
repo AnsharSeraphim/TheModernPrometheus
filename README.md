@@ -39,6 +39,7 @@ This keeps operational prompts versioned and close to the workflows they describ
 - `docs/generated_artifact_contracts.md`: producer/consumer contracts, commit boundaries, and schema expectations for generated artifacts used by wrappers and audits.
 - `docs/source_boundary_manifest.md`: source-of-truth boundary map for hand-authored files vs generated committed ledgers vs local-only evidence.
 - `docs/template_customization_checklist.md`: post-clone checklist for replacing template defaults with project-specific governance and metadata.
+- `docs/security_hygiene.md`: security and data-boundary guide for secrets, local evidence, and deny-path commit policy.
 - `docs/troubleshooting.md`: common wrapper/tooling failure signatures and canonical remediation paths.
 - `.gitignore`: Ignore policy for local evidence caches, Python-generated artifacts, virtual environments, and editor-local state.
 - `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.
@@ -89,6 +90,8 @@ python scripts/run_tests.py
 - Interrogate is configured at 100% coverage in project tooling and is executed via the pre-commit wrapper.
 
 ## Documentation expectations for template consumers
+
+- Review `docs/security_hygiene.md` for secret-handling and local-vs-source boundary rules before your first commit.
 
 - Keep folder-level `README.md` files current so new users and stateless agents can navigate assets without hidden context.
 - Keep local evidence and local Python runtime artifacts out of source control by relying on the root `.gitignore`; use `git check-ignore -v <path>` when verifying new local-only paths.

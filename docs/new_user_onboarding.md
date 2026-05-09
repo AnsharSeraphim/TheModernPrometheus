@@ -43,12 +43,13 @@ Start with these files in this order:
 
 1. `README.md` gives the main project summary, repository map, setup commands, and reusable coding-agent prompt pattern.
 2. `AGENTS.md` defines the operating rules for coding agents and contributors working in the repository.
-3. `Final-Productization-Checklist.md` tracks unresolved quality, tooling, documentation, or release-readiness work.
-4. `Final-Optimization-Checklist.md`, when present, tracks tests that exceed the latency budget and explains why they are temporarily accepted.
-5. `docs/release_notes.md`, when present, records user-facing or workflow-relevant changes.
-6. `docs/runtime_target_support_matrix.md` defines runtime support boundaries and instruction surfaces.
-7. `docs/context_trigger_matrix.md` maps workflows to minimum context packs and command expectations.
-8. `docs/template_customization_checklist.md` provides the post-clone hardening checklist before project-specific feature work starts.
+3. `docs/security_hygiene.md` defines secret handling, local evidence boundaries, and deny-path commit guidance.
+4. `Final-Productization-Checklist.md` tracks unresolved quality, tooling, documentation, or release-readiness work.
+5. `Final-Optimization-Checklist.md`, when present, tracks tests that exceed the latency budget and explains why they are temporarily accepted.
+6. `docs/release_notes.md`, when present, records user-facing or workflow-relevant changes.
+7. `docs/runtime_target_support_matrix.md` defines runtime support boundaries and instruction surfaces.
+8. `docs/context_trigger_matrix.md` maps workflows to minimum context packs and command expectations.
+9. `docs/template_customization_checklist.md` provides the post-clone hardening checklist before project-specific feature work starts.
 
 A new contributor should not begin by randomly running tools or editing files. Read the operating law first. It is cheaper than fixing the preventable mess later, allegedly.
 
