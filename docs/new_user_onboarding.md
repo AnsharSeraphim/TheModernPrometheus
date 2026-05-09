@@ -48,6 +48,7 @@ Start with these files in this order:
 5. `docs/release_notes.md`, when present, records user-facing or workflow-relevant changes.
 6. `docs/runtime_target_support_matrix.md` defines runtime support boundaries and instruction surfaces.
 7. `docs/context_trigger_matrix.md` maps workflows to minimum context packs and command expectations.
+8. `docs/template_customization_checklist.md` provides the post-clone hardening checklist before project-specific feature work starts.
 
 A new contributor should not begin by randomly running tools or editing files. Read the operating law first. It is cheaper than fixing the preventable mess later, allegedly.
 

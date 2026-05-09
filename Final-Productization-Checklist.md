@@ -52,13 +52,6 @@ Example format:
 ## Outstanding Tasks
 
 
-- [ ] **Create template-customization checklist for new repos**
-  - Scope: Add a concrete post-clone checklist so template consumers can turn the scaffold into a project without leaving placeholder metadata, stale policy references, or accidental template residue.
-  - Target Files: `docs/template_customization_checklist.md`, `README.md`, `docs/new_user_onboarding.md`, `docs/README.md`
-  - Dependencies: `Create runtime-target support matrix`, `Create task-to-context trigger matrix`
-  - DONE WHEN: The checklist covers project rename/metadata updates, dependency review, reviewer placeholder replacement, ignore-policy verification, initial checklist seeding, runtime-support decisions, and docs index updates; root/docs onboarding paths link to it.
-  - Audit step: Inspect the checklist and verify it names concrete repo placeholders or policy decisions a new consumer must revisit before first real work.
-
 - [ ] **Document generated-artifact contracts and source boundaries**
   - Scope: Add explicit contracts for machine-consumable/generated artifacts and distinguish hand-authored source assets from generated local evidence, caches, and committed ledgers.
   - Target Files: `docs/generated_artifact_contracts.md`, `docs/source_boundary_manifest.md`, `README.md`, `scripts/README.md`, `docs/agent_bootstrap/README.md`, `config/README.md`

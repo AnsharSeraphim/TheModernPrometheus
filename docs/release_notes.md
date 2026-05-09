@@ -3,6 +3,12 @@
 ## [Unreleased]
 
 ### Added
+- Added `docs/template_customization_checklist.md` with a concrete post-clone hardening checklist covering metadata replacement, runtime/dependency decisions, ignore-policy verification, checklist seeding, docs parity, and initial wrapper validation.
+
+### Changed
+- Linked the template-customization checklist from `README.md`, `docs/new_user_onboarding.md`, and `docs/README.md` so new template consumers discover it in all primary onboarding paths.
+
+### Added
 - Added a UTF-8 compliance hook (`scripts/check_unicode_escapes.py`) to the unified pre-commit suite so text assets are validated for UTF-8 decoding and symbolic Unicode escape literals.
 - Added an `interrogate` hook to the unified pre-commit suite with `--fail-under=100` so docstring coverage enforcement is explicit and automated.
 - Added `.github/dependabot.yml` with grouped weekly update strategies for pip and GitHub Actions dependencies, explicit labels, reviewer defaults, and bounded open-PR limits.
