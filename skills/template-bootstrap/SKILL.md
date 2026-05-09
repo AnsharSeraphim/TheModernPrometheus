@@ -11,6 +11,10 @@ Initialize a new session for template consumers with the minimum context pack an
 - Mid-session remediation where context is already loaded.
 - Narrow checklist-only edits that do not require full onboarding.
 
+## Environment prerequisites
+- POSIX-compatible shell.
+- `rg` (`ripgrep`) available on `PATH`.
+
 ## Required inputs
 - Repository root with `AGENTS.md`, docs, scripts, and checklists present.
 

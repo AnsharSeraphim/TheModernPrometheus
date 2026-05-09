@@ -34,4 +34,6 @@ for path in [
 PY
 ```
 
+Dependency note: this validation requires `jsonschema`, which is included in the repository development dependency set (`requirements-dev.txt` and `project.optional-dependencies.dev`).
+
 Each recipe must define `task_id`, `scope`, `target_files`, `dependencies`, wrapper `commands`, explicit `validations`, and `done_when` closure criteria.

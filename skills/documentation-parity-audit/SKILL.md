@@ -11,6 +11,10 @@ Verify documentation is truthful to implementation, operationally actionable, an
 - You are doing feature-only code implementation without docs impact.
 - You only need first-session onboarding setup (use `template-bootstrap`).
 
+## Environment prerequisites
+- POSIX-compatible shell.
+- `rg` (`ripgrep`) available on `PATH`.
+
 ## Required inputs
 - Target documentation files.
 - Referenced implementation files and command entry points.

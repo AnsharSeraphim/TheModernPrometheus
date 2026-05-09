@@ -62,6 +62,11 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 ```
 
+Environment assumptions for documented command snippets:
+
+- POSIX-compatible shell (examples use Bash-style syntax and heredocs).
+- `rg` (`ripgrep`) installed and available on `PATH`.
+
 After setup, the canonical closing checks are:
 
 ```bash
