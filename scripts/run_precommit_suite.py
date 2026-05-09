@@ -111,12 +111,13 @@ def _format_banner(label: str, width: int = SUMMARY_WIDTH) -> str:
 def _load_dev_dependency_specs() -> dict[str, str]:
     """Load the development dependency map from ``pyproject.toml``."""
 
-    return load_dev_dependency_specs(  # type: ignore[no-any-return]
+    loaded_specs = load_dev_dependency_specs(
         pyproject_path=REPO_ROOT / "pyproject.toml",
         toml_loader=_parse_toml,
         missing_optional_error="[tooling] Missing [project.optional-dependencies] in pyproject.toml.",
         missing_group_error="[tooling] Missing dev dependency group in pyproject.toml.",
     )
+    return {str(key): str(value) for key, value in loaded_specs.items()}
 
 
 def _parse_toml(text: str) -> dict[str, object]:
@@ -148,7 +149,8 @@ def _collect_changed_paths(*, diff_target: str, include_untracked: bool) -> list
     for command in build_git_diff_commands(diff_target, include_untracked=include_untracked):
         completed = run_command(command, cwd=REPO_ROOT, check=False)
         lines.extend((completed.stdout or "").splitlines())
-    return normalize_repository_paths(lines, repo_root=REPO_ROOT)  # type: ignore[no-any-return]
+    normalized_paths = normalize_repository_paths(lines, repo_root=REPO_ROOT)
+    return [Path(path) for path in normalized_paths]
 
 
 def _normalize_cli_paths(paths: Sequence[str]) -> list[Path]:
