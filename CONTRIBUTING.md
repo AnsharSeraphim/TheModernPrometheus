@@ -117,6 +117,8 @@ If you are using this repository as a starter template, complete this onboarding
 4. Collect evidence artifacts from `build/automation_contract/` and paste the summary blocks in your PR/testing notes.
 5. If a failure cannot be fixed in-session, add a granular remaining-work entry to `Final-Productization-Checklist.md` with scope, target files, dependencies, and DONE WHEN criteria.
 
+- Review `docs/troubleshooting.md` for common failure signatures and wrapper-first remediation paths before escalating unresolved issues.
+
 Failure/remediation flow:
 - Wrapper reports failing hook/test target.
 - Remediate implementation (never suppress tooling).

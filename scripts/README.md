@@ -42,6 +42,7 @@ Use the JSON catalog when downstream tooling expects structured machine-readable
 
 - Artifact contracts and commit policies are documented in `docs/generated_artifact_contracts.md`.
 - Source-vs-generated boundaries are documented in `docs/source_boundary_manifest.md`.
+- Troubleshooting reference: `docs/troubleshooting.md` centralizes failure signatures and wrapper-compliant recovery paths.
 - Treat `config/precommit_store/*.json` as generated committed ledgers and `build/automation_contract/*` as local evidence caches.
 
 
