@@ -10,6 +10,10 @@ If you are new to this repository, this guide explains:
 - how to collaborate effectively with coding agents such as **GPT Codex**, **GitHub Copilot**, and **Claude Code**,
 - and how to adapt the template for your own multi-contributor context.
 
+## GPT Codex Prompt Generator
+If you use GPT Codex to work with this base template in a project, here is a convenient prompt generator for your sessions:
+[Create a GPT Codex Prompt On Demand](https://chatgpt.com/g/g-6a07ac8fb7888191bffd4e74b4431990-gpt-codex-dynamic-prompt-engine)
+
 ---
 
 ## Table of Contents
