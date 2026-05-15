@@ -16,6 +16,8 @@ The starter includes coding-agent directives, contributor instructions, unified 
 The system can be extended from single-contributor use to multi-contributor work by adding stronger file identity metadata such as blob hashes, modification times, contributor scope, and manifest reconciliation. Its docstring aggregation and interrogation functions also support rapid conceptual audit: reviewers can inspect what the code claims each module, class, and function is doing without reading the entire repository from scratch. This system also allows .json export of Docstring Manifests for frictionless LLM processing for the purpose of project documentation, user manuals, and conceptual audit.
 
 ## Prompting Coding-LLMs
+If you use GPT Codex to work with this base template in a project, here is a convenient prompt generator for your sessions:
+> [Create a GPT Codex Prompt On Demand](https://chatgpt.com/g/g-6a07ac8fb7888191bffd4e74b4431990-gpt-codex-dynamic-prompt-engine)
 
 Use the reusable prompt library under `context/prompts/` instead of copying a single monolithic metaprompt from this README.
 
