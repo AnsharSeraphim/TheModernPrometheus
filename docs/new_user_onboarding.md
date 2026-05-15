@@ -12,7 +12,7 @@ If you are new to this repository, this guide explains:
 
 ## GPT Codex Prompt Generator
 If you use GPT Codex to work with this base template in a project, here is a convenient prompt generator for your sessions:
-[Create a GPT Codex Prompt On Demand](https://chatgpt.com/g/g-6a07ac8fb7888191bffd4e74b4431990-gpt-codex-dynamic-prompt-engine)
+> [Create a GPT Codex Prompt On Demand](https://chatgpt.com/g/g-6a07ac8fb7888191bffd4e74b4431990-gpt-codex-dynamic-prompt-engine)
 
 ---
 
