@@ -1,9 +1,12 @@
+"""Tests for test-scope selection behavior in the wrapper runner."""
+
 from __future__ import annotations
 
 from scripts.run_tests import Scope, resolve_selection
 
 
 def test_resolve_selection_uses_paths_for_explicit_select() -> None:
+    """Prefer explicit path targeting when ``--select`` arguments are supplied."""
     selection = resolve_selection(
         scope_value="auto",
         select_paths=["tests/test_run_tests.py"],
@@ -19,6 +22,7 @@ def test_resolve_selection_uses_paths_for_explicit_select() -> None:
 
 
 def test_resolve_selection_uses_all_when_no_selectors() -> None:
+    """Fallback to full-suite execution when no selector inputs are provided."""
     selection = resolve_selection(
         scope_value="auto",
         select_paths=[],

@@ -1,4 +1,7 @@
 {
+  "<GLOBAL>": {
+    "skip": "N"
+  },
   "Final-Productization-Checklist.md": {
     "skip": "Y"
   },

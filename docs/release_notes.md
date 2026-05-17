@@ -6,6 +6,8 @@
 - Added `docs/template_customization_checklist.md` with a concrete post-clone hardening checklist covering metadata replacement, runtime/dependency decisions, ignore-policy verification, checklist seeding, docs parity, and initial wrapper validation.
 
 ### Changed
+- Raised the Pylint `max-module-lines` threshold from 3400 to 4500 in `pyproject.toml` and aligned Dependabot update grouping so each ecosystem is consolidated into a single weekly PR stream.
+- Added missing module/test docstrings in targeted test modules to improve out-of-the-box interrogate quality coverage for template consumers.
 - Updated `scripts/run_precommit_suite.py` so interrogate failures now auto-trigger `scripts/audit_docstrings.py` for the same script scope and log the follow-up inventory guidance directly in pre-commit output.
 - Hardened `scripts/audit_docstrings.py` with scan-failure reporting (read/syntax errors) so coverage remediation does not silently skip unparseable files.
 - Updated docstring-remediation guidance in `scripts/README.md`, `docs/troubleshooting.md`, and `docs/agent_bootstrap/operator_context_injection.md` to reflect wrapper-integrated audit follow-up and scan-failure triage order.
