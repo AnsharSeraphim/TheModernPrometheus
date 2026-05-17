@@ -1,3 +1,5 @@
+"""Tests for UTF-8 and escaped-Unicode policy diagnostics."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -8,6 +10,7 @@ from scripts import check_unicode_escapes as unicode_check
 
 
 def test_scan_candidates_flags_escape_literals(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Report symbolic ``\\u`` escapes as violations without flagging UTF-8 decode errors."""
     file_path = tmp_path / "sample.md"
     escape_literal = "\\" + "u2192"
     file_path.write_text(f"Arrow: {escape_literal}\n", encoding="utf-8")
@@ -23,6 +26,7 @@ def test_scan_candidates_flags_escape_literals(tmp_path: Path, monkeypatch: pyte
 
 
 def test_scan_candidates_flags_invalid_utf8_bytes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Report decode failures for invalid UTF-8 bytes and no escape-literal findings."""
     file_path = tmp_path / "bad.txt"
     file_path.write_bytes(b"\xff\xfe")
 

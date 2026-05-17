@@ -1,3 +1,5 @@
+"""Tests for pre-commit manifest filtering state transitions."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -6,6 +8,7 @@ from scripts.precommit_filter import FilterMetadata, FilterMode, PrecommitFilter
 
 
 def test_targeted_run_resets_skip_flags() -> None:
+    """Reset skip flags for explicitly targeted files before rerunning the selected hook."""
     precommit_filter = PrecommitFilter(mode=FilterMode.AUTO)
     precommit_filter.configure_checks({"ruff-format": FilterMetadata(hook_id="ruff-format")})
     precommit_filter.set_hook_state("ruff-format", {"scripts/run_tests.py": True})
@@ -28,6 +31,7 @@ def test_targeted_run_resets_skip_flags() -> None:
 
 
 def test_reset_all_flags_rebuilds_inventory() -> None:
+    """Rebuild hook state from the tracked inventory during baseline reset operations."""
     precommit_filter = PrecommitFilter(mode=FilterMode.AUTO)
     precommit_filter.configure_checks({"pyright": FilterMetadata(hook_id="pyright", global_hook=True)})
     precommit_filter.set_inventory((Path("scripts/run_tests.py"),))
