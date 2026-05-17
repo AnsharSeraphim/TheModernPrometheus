@@ -11,6 +11,8 @@
 - Respect entry ordination directives in checklists, contextualizing your execution based on other available entries. As a sanity check, always question which tasks must be addressed first for a quality execution. Example: If entry `y` depends on results from entry `x` to actually close the task, addressing entry `x` before entry `y`, whether in the same session or consecutive sessions, is **MANDATORY**, as premature remediation of `y` before `x` will lead an agent to mark outstanding work as complete.
 - Surface unresolved quality failures (pre-commit, lint, type checking) in `Final-Productization-Checklist.md`.
 - **MANDATORY PRIORITY ORDER:** - Pre-commit/testing wrapper failures, warnings, and errors discovered during a session are higher priority than any other pending checklist entries. Agents must remediate these as a PR blocker before proceeding to lower-priority tasks unless an explicit, actionable deferment entry is added to `Final-Productization-Checklist.md` with scope, impacted files, dependency ordering, and `DONE WHEN` criteria for highest-priority follow-up.
+- Document newly discovered work items in the checklists with enough context for another contributor to continue.
+- Assume parallel contributors: resolve merge conflicts, stale processes, or wiring drift before finishing.
 
 ## **MANDATORY TIME AND DATE POLICY**
 - Derive any timestamps or datestamps from **Git metadata** or other *trusted* sources; **NEVER** rely on *GPTCodex's internal clock and calendar*, which is intentionally unsynchronized and will produce **incorrect dates**.
