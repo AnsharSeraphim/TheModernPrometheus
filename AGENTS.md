@@ -9,11 +9,12 @@
 - It is **MANDATORY** that you use `scripts/run_precommit_suite.py` and not just individual invocations of tools for remediation and that you submit .json assets that change during your session so our script and filter do not become stale. See below for syntax on using this script.
 - The % of completion notice when using `scripts/run_precommit_suite.py` is displayed for your convenience, so you do not erroneously believe the script to be stalling. Note that the calculation that generates this percentage is based on the last complete run and is not authoritatively accurate. It is not uncommon for the script to actually complete at only 25% or another value if the timing entry is stale. Do **NOT** use visible percentage of completion for the script execution as a rationale for using keyboard interrupt / ^C during the script execution. Be patient and **WAIT** for it to finish. This is **MANDATORY**.
 - Respect entry ordination directives in checklists, contextualizing your execution based on other available entries. As a sanity check, always question which tasks must be addressed first for a quality execution. Example: If entry `y` depends on results from entry `x` to actually close the task, addressing entry `x` before entry `y`, whether in the same session or consecutive sessions, is **MANDATORY**, as premature remediation of `y` before `x` will lead an agent to mark outstanding work as complete.
+- Surface unresolved quality failures (pre-commit, lint, type checking) in `Final-Productization-Checklist.md`.
+- **MANDATORY PRIORITY ORDER:** - Pre-commit/testing wrapper failures, warnings, and errors discovered during a session are higher priority than any other pending checklist entries. Agents must remediate these as a PR blocker before proceeding to lower-priority tasks unless an explicit, actionable deferment entry is added to `Final-Productization-Checklist.md` with scope, impacted files, dependency ordering, and `DONE WHEN` criteria for highest-priority follow-up.
 
 ## **MANDATORY TIME AND DATE POLICY**
 - Derive any timestamps or datestamps from **Git metadata** or other *trusted* sources; **NEVER** rely on *GPTCodex's internal clock and calendar*, which is intentionally unsynchronized and will produce **incorrect dates**.
 - You **MUST NOT IGNORE THIS DIRECTIVE**, **whether naming a folder** or **dating an entry**. GPTCodex's native time and calendar will literally date logs *a year into the future or the past* if you use it as a source of truth, causing us to mistakenly destroy new logs we believe to be old, replace new provenance with old provenance, and even cause redundant task churn due to misunderstanding of ordinal progression.
-
 
 ## Stateless agent quickstart context pack (read first)
 - Read `docs/agent_bootstrap/operator_context_injection.md` before making edits so wrapper syntax and commit/PR discipline are loaded explicitly.
@@ -56,15 +57,11 @@
 - If you modify a test file or create a new test, the test latency budget is 0.20s. If a new or modified test cannot be optimized to run at this time or under, it must be documented in `Final-Optimization-Checklist.md` with a justification for its latency overage and inability to be further optimized.
 - Do not modify `Final-Optimization-Checklist.md` for unchanged tests, unless specifically directed.
 
-## Checklist policy
-- Surface unresolved quality failures (pre-commit, lint, type checking) in `Final-Productization-Checklist.md`.
-
 ## Operational hygiene
 - Update `docs/release_notes.md` when tooling or user-facing behavior changes.
 - Keep manifests, release indexes, and evidence logs consistent with your edits.
 
 These directives keep parallel contributors aligned and the automation evidence trustworthy.
-
 
 ## Workflow-friction escalation authorization
 - Agents are authorized to add actionable entries in the `Coding-Agent-Surfaced Execution Friction / What Will Make Agents Able To Navigate Your Project More Easily` section of `Final-Productization-Checklist.md` when they discover reproducible workflow/context failures; each entry must include `Scope`, `Target Files`, `Dependencies`, `DONE WHEN`, and an `Audit step`.
