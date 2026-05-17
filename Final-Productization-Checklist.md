@@ -1,6 +1,5 @@
 # Final Productization Checklist
-
-**Use this file to track unresolved quality, tooling, or release-readiness work that should be carried into a later session.**
+> **Use this file to track unresolved quality, tooling, or release-readiness work that should be carried into a later session.**
 
 # **MANDATORY CHECKLIST POLICY**
 **FOLLOW THE BELOW DIRECTIVES WHEN ADDRESSING *ANY* ENTRY BELOW**
@@ -11,16 +10,9 @@
 - Each entry should represent a specific action / goal / gap to address in the scope of a session. 
 - Every entry should specify the remaining work to be done for that specific task, so that when the work is complete, the entry is addressed and iterative sessions will not continually work on the same entries, annotating progress.
 
-
 **Entries in `Final-Productization-Checklist.md` can be responsible for task churn, specifically entries that contain the words:**
 ```
-all
-continue
-every
-each
-remaining
-across
-etc
+all; continue; every; each; remaining; across
 ```
 Poor wording in these entries can keep each checklist entry from being specific, actionable, and granular in scope, and encourage iterative churn, annotations of incremental progress, and multiple executions inside of a single entry.
 
@@ -43,7 +35,6 @@ Example format:
   - Dependencies: <entry title or `None`>
   - DONE WHEN: <verifiable outcome>
 ```
-
 
 > CHECK FOR VIOLATIONS OF THE ABOVE ENTRY BEFORE ADVANCING TO ANY OTHER CHECKLIST ENTRIES IN OTHER SECTIONS.
 
