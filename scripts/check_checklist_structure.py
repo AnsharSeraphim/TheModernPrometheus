@@ -31,7 +31,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def validate_checklist(path: Path) -> list[str]:
-    """Return validation errors for missing required governance sections."""
+    """Identify missing governance sections in the required productization checklist."""
 
     if not path.exists():
         return [f"Missing checklist file: {path}"]
@@ -45,7 +45,7 @@ def validate_checklist(path: Path) -> list[str]:
 
 
 def main() -> int:
-    """Run checklist structure validation and return a process exit code."""
+    """Execute checklist structure validation and report the resulting process status."""
 
     args = parse_args()
     errors = validate_checklist(args.path)

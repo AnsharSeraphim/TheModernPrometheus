@@ -40,7 +40,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def _tracked_files() -> list[Path]:
-    """Return tracked repository files from git."""
+    """Enumerate git-tracked files used as default text-encoding scan candidates."""
 
     completed = run_command(["git", "ls-files"], cwd=REPO_ROOT, check=False)
     if completed.returncode != 0:
@@ -89,7 +89,7 @@ def _resolve_candidates(paths: list[str]) -> list[Path]:
 
 
 def scan_candidates(candidates: list[Path]) -> tuple[dict[Path, tuple[int, int]], dict[Path, list[int]]]:
-    """Return invalid UTF-8 bytes and Unicode-escape violations for each candidate file."""
+    """Inspect candidate text assets for invalid UTF-8 bytes and symbolic Unicode escapes."""
 
     invalid_utf8: dict[Path, tuple[int, int]] = {}
     escaped_unicode: dict[Path, list[int]] = {}
@@ -113,7 +113,7 @@ def scan_candidates(candidates: list[Path]) -> tuple[dict[Path, tuple[int, int]]
 
 
 def main() -> int:
-    """Run repository text encoding checks and emit remediation guidance on failure."""
+    """Execute repository text-encoding checks and print remediation guidance on failure."""
 
     args = parse_args()
     candidates = _resolve_candidates(list(args.paths))

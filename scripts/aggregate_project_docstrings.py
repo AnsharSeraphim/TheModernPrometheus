@@ -123,7 +123,7 @@ def _iter_symbols(tree: ast.Module) -> list[tuple[str, str, DocstringNode]]:
 
 
 def _quality_notes(text: str) -> list[str]:
-    """Return heuristic quality findings for one docstring body."""
+    """Detect heuristic docstring quality findings for catalog remediation workflows."""
 
     lowered = text.strip().casefold()
     notes: list[str] = []
@@ -220,7 +220,7 @@ def _collect_file_record(root: Path, path: Path) -> FileDocstringRecord:
 
 
 def _is_excluded(path: Path, excluded_roots: set[str]) -> bool:
-    """Return True when a path should be skipped from the scan."""
+    """Identify paths that belong to excluded repository directories during catalog scans."""
 
     return any(part in excluded_roots for part in path.parts)
 

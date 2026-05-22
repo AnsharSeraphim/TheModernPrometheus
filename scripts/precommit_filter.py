@@ -110,7 +110,7 @@ class PrecommitFilter:
         self._state.targeted_paths = set(paths) if paths else None
 
     def build_repository_inventory(self) -> list[Path]:
-        """Return tracked Python files in the repository."""
+        """Enumerate tracked Python files for hook-scoped pre-commit filtering."""
 
         completed = run_command(["git", "ls-files"], cwd=REPO_ROOT, check=False)
         if completed.returncode != 0:
@@ -158,7 +158,7 @@ class PrecommitFilter:
         self._state.manifest_log.clear()
 
     def determine_paths(self, hook_id: str, candidates: Sequence[Path]) -> tuple[tuple[Path, ...], bool, str | None]:
-        """Return the paths that should run for ``hook_id``."""
+        """Resolve the concrete repository paths selected for one filtered hook run."""
 
         metadata = self.metadata.get(hook_id)
         if metadata is None:
@@ -234,7 +234,7 @@ class PrecommitFilter:
             runtime.dirty_hooks.discard(hook_id)
 
     def verify_index_clean(self) -> bool:
-        """Return ``True`` for compatibility with the original interface."""
+        """Preserve the historical clean-index compatibility check for wrapper callers."""
 
         return True
 
@@ -244,7 +244,7 @@ class PrecommitFilter:
         self._state.hook_state[hook_id] = dict(entries)
 
     def get_hook_state(self, hook_id: str) -> dict[str, bool]:
-        """Return a copy of the manifest state for ``hook_id``."""
+        """Expose an isolated copy of persisted manifest state for one hook identifier."""
 
         return dict(self._state.hook_state.get(hook_id, {}))
 
@@ -309,7 +309,7 @@ class PrecommitFilter:
             self._state.hook_state[path.stem] = parsed
 
     def _manifest_path(self, hook_id: str) -> Path:
-        """Return the on-disk manifest path for ``hook_id``."""
+        """Derive the persisted manifest file path associated with one hook identifier."""
 
         return STORE_ROOT / f"{hook_id}.json"
 

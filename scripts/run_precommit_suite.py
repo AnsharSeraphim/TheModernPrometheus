@@ -183,13 +183,13 @@ def _collect_python_files(paths: Sequence[Path]) -> tuple[Path, ...]:
 
 
 def _default_python_candidates() -> tuple[Path, ...]:
-    """Return default Python candidates for full-suite runs."""
+    """Collect default Python files covered by full quality-suite execution."""
 
     return _collect_python_files([Path(entry) for entry in _DEFAULT_TARGET_GLOBS])
 
 
 def _script_python_targets(paths: Sequence[Path]) -> tuple[Path, ...]:
-    """Return Python files under ``scripts/`` from the current path selection."""
+    """Filter the current path selection down to Python files under the scripts tree."""
 
     script_roots: list[Path] = []
     for path in paths:
@@ -203,7 +203,7 @@ def _script_python_targets(paths: Sequence[Path]) -> tuple[Path, ...]:
 
 
 def _default_script_candidates() -> tuple[Path, ...]:
-    """Return default script-module candidates for interrogate checks."""
+    """Collect default script-module files covered by interrogate docstring checks."""
 
     return _collect_python_files((Path("scripts"),))
 
@@ -228,7 +228,7 @@ def _collect_text_files(paths: Sequence[Path]) -> tuple[Path, ...]:
 
 
 def _default_text_candidates() -> tuple[Path, ...]:
-    """Return tracked text-like files for the UTF-8 compliance hook."""
+    """Collect tracked text-like files covered by the UTF-8 compliance hook."""
 
     completed = run_command(["git", "ls-files"], cwd=REPO_ROOT, check=False)
     if completed.returncode != 0:
@@ -365,7 +365,7 @@ def _build_checks(
 
 
 def _targeted_command(check: Check, selected_paths: tuple[Path, ...]) -> list[str]:
-    """Return ``check.command`` narrowed to ``selected_paths`` when appropriate."""
+    """Narrow a check command to selected paths when the hook supports targeted execution."""
 
     selected = [path.as_posix() for path in selected_paths]
     command_by_key = {
@@ -435,7 +435,7 @@ def _update_pylint_failure_store(check: Check, stdout_text: str, success: bool) 
 
 
 def _run_check(check: Check) -> tuple[int, str, float]:
-    """Run a single check command and return exit code, output, and duration."""
+    """Execute one quality check and capture its status, output, and elapsed duration."""
 
     start = time.perf_counter()
     completed = run_command(check.command, cwd=REPO_ROOT, check=False)
@@ -513,13 +513,13 @@ def parse_args() -> argparse.Namespace:
 
 
 def _should_skip_global_hook(should_run: bool, check: Check, filter_mode: FilterMode) -> bool:
-    """Return ``True`` when a global hook should be skipped for this run."""
+    """Decide whether a global hook is unnecessary for the current targeted run."""
 
     return not should_run and check.global_hook and filter_mode == FilterMode.AUTO
 
 
 def _prepare_check(check: Check, selected_paths: tuple[Path, ...]) -> Check:
-    """Return the executable check definition for the current path selection."""
+    """Construct the executable check definition for the current path selection."""
 
     if check.global_hook:
         return check
@@ -538,7 +538,7 @@ def _execute_checks(
     manifest_filter: PrecommitFilter,
     precommit_lines: list[str],
 ) -> tuple[list[CheckResult], int]:
-    """Run the configured checks and return their results plus an aggregate exit code."""
+    """Execute prepared quality checks and compute the aggregate suite exit code."""
 
     results: list[CheckResult] = []
     exit_code = 0
@@ -571,7 +571,7 @@ def _resolve_scope_targets(
     scope: Scope,
     targeted_paths: tuple[Path, ...] | None,
 ) -> tuple[tuple[Path, ...], tuple[Path, ...], tuple[Path, ...]]:
-    """Return Python, text, and script target sets for the requested ``scope``."""
+    """Resolve Python, text, and script target sets for the requested suite scope."""
 
     scoped_paths = None if scope == Scope.ALL else targeted_paths
     python_targets = _python_targets_for_scope(scoped_paths)
@@ -611,7 +611,7 @@ def _run_suite(args: argparse.Namespace) -> tuple[list[CheckResult], list[str], 
 
 
 def main() -> int:
-    """Run the pre-commit suite and write summary artifacts."""
+    """Execute the unified pre-commit suite and write wrapper summary artifacts."""
 
     args = parse_args()
     if not args.skip_dependency_check:

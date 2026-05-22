@@ -12,7 +12,7 @@ from typing import cast
 
 
 def _expect_table(source: Mapping[str, object], key: str, error: str) -> dict[str, object]:
-    """Return a nested TOML table or raise ``SystemExit``."""
+    """Validate that a TOML key contains the nested table required by automation loaders."""
 
     value = source.get(key)
     if isinstance(value, dict):
@@ -21,7 +21,7 @@ def _expect_table(source: Mapping[str, object], key: str, error: str) -> dict[st
 
 
 def _expect_list(source: Mapping[str, object], key: str, error: str) -> list[object]:
-    """Return a nested TOML list or raise ``SystemExit``."""
+    """Validate that a TOML key contains the list required by automation loaders."""
 
     value = source.get(key)
     if isinstance(value, list):
@@ -36,7 +36,7 @@ def load_dev_dependency_specs(
     missing_optional_error: str,
     missing_group_error: str,
 ) -> dict[str, str]:
-    """Return specifiers declared in the ``dev`` optional dependency group."""
+    """Extract normalized package specifiers from the project dev dependency group."""
 
     if not pyproject_path.exists():
         raise SystemExit("pyproject.toml is missing; cannot resolve development dependencies.")
@@ -63,7 +63,7 @@ def resolve_missing_dependencies(
     dependency_map: Mapping[str, str],
     find_spec: Callable[[str], object | None],
 ) -> tuple[list[str], list[str]]:
-    """Return install specs and unresolved packages for missing modules."""
+    """Resolve unavailable runtime modules into installable dev dependency specifiers."""
 
     missing: list[str] = []
     unresolved: list[str] = []
@@ -93,7 +93,7 @@ def gather_missing_dependencies(
     find_spec: Callable[[str], object | None],
     unresolved_error_template: str,
 ) -> list[str]:
-    """Return dependency specs that still need to be installed."""
+    """Collect installable dependency specifiers and fail on undeclared required packages."""
 
     missing, unresolved = resolve_missing_dependencies(
         required_modules=required_modules,
@@ -105,7 +105,7 @@ def gather_missing_dependencies(
 
 
 def build_pip_install_command(packages: Sequence[str]) -> list[str]:
-    """Return a pip install command for the active interpreter."""
+    """Compose the interpreter-local pip command used for toolchain self-installation."""
 
     return [
         sys.executable,
@@ -161,7 +161,7 @@ def normalize_repository_paths(lines: Iterable[str], *, repo_root: Path) -> list
 
 
 def build_git_diff_commands(diff_target: str, *, include_untracked: bool) -> list[list[str]]:
-    """Return git commands used to determine changed files."""
+    """Compose git queries that enumerate changed, staged, and optional untracked files."""
 
     commands = [
         ["git", "diff", "--name-only", "--diff-filter=ACMRTUXB", diff_target],

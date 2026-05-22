@@ -9,7 +9,7 @@ WRAPPER_ENV_VAR = "MODERN_PROMETHEUS_WRAPPED_PYTEST"
 
 
 def render_pytest_wrapper_warning(*, width: int = 88) -> str:
-    """Return a formatted warning for naked pytest invocations."""
+    """Render the warning that redirects direct pytest usage to the canonical test wrapper."""
 
     intro = (
         "Direct pytest invocation is disabled for this repository. "

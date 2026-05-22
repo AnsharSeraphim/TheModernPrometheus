@@ -107,13 +107,13 @@ class _DocstringCollector(ast.NodeVisitor):
 
 
 def _is_excluded(path: Path) -> bool:
-    """Return True when the path includes an excluded directory name."""
+    """Identify paths that pass through directories excluded from docstring inventory scans."""
 
     return any(part in EXCLUDED_DIRECTORY_NAMES for part in path.parts)
 
 
 def _iter_python_files(*, roots: tuple[Path, ...]) -> list[Path]:
-    """Return sorted Python files found beneath the configured scan roots."""
+    """Enumerate sorted Python files beneath the configured audit scan roots."""
 
     files: list[Path] = []
     for root in roots:
@@ -128,7 +128,7 @@ def _iter_python_files(*, roots: tuple[Path, ...]) -> list[Path]:
 
 
 def _relative_display_path(*, file_path: Path, roots: tuple[Path, ...]) -> str:
-    """Return a stable display path relative to repository or requested scan roots."""
+    """Derive stable inventory display paths for repository and ad hoc scan roots."""
 
     if file_path.is_relative_to(REPO_ROOT):
         return file_path.relative_to(REPO_ROOT).as_posix()

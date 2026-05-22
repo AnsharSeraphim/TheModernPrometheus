@@ -3,8 +3,8 @@
     "python_files": 22,
     "symbols_total": 181,
     "missing_docstrings": 0,
-    "flagged_docstrings": 0,
-    "quality_status": "pass"
+    "flagged_docstrings": 42,
+    "quality_status": "needs_review"
   },
   "files": [
     {
@@ -44,25 +44,25 @@
           "symbol": "_expect_table",
           "kind": "function",
           "line": 14,
-          "docstring": "Validate that a TOML key contains the nested table required by automation loaders."
+          "docstring": "Return a nested TOML table or raise ``SystemExit``."
         },
         {
           "symbol": "_expect_list",
           "kind": "function",
           "line": 23,
-          "docstring": "Validate that a TOML key contains the list required by automation loaders."
+          "docstring": "Return a nested TOML list or raise ``SystemExit``."
         },
         {
           "symbol": "load_dev_dependency_specs",
           "kind": "function",
           "line": 32,
-          "docstring": "Extract normalized package specifiers from the project dev dependency group."
+          "docstring": "Return specifiers declared in the ``dev`` optional dependency group."
         },
         {
           "symbol": "resolve_missing_dependencies",
           "kind": "function",
           "line": 60,
-          "docstring": "Resolve unavailable runtime modules into installable dev dependency specifiers."
+          "docstring": "Return install specs and unresolved packages for missing modules."
         },
         {
           "symbol": "raise_for_unresolved_dependencies",
@@ -74,13 +74,13 @@
           "symbol": "gather_missing_dependencies",
           "kind": "function",
           "line": 89,
-          "docstring": "Collect installable dependency specifiers and fail on undeclared required packages."
+          "docstring": "Return dependency specs that still need to be installed."
         },
         {
           "symbol": "build_pip_install_command",
           "kind": "function",
           "line": 107,
-          "docstring": "Compose the interpreter-local pip command used for toolchain self-installation."
+          "docstring": "Return a pip install command for the active interpreter."
         },
         {
           "symbol": "run_command",
@@ -98,7 +98,7 @@
           "symbol": "build_git_diff_commands",
           "kind": "function",
           "line": 163,
-          "docstring": "Compose git queries that enumerate changed, staged, and optional untracked files."
+          "docstring": "Return git commands used to determine changed files."
         },
         {
           "symbol": "add_include_untracked_argument",
@@ -114,9 +114,52 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_expect_table",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_expect_list",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "load_dev_dependency_specs",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "resolve_missing_dependencies",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "gather_missing_dependencies",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "build_pip_install_command",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "build_git_diff_commands",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 7,
+        "status": "needs_review"
       }
     },
     {
@@ -193,7 +236,7 @@
           "symbol": "_quality_notes",
           "kind": "function",
           "line": 125,
-          "docstring": "Detect heuristic docstring quality findings for catalog remediation workflows."
+          "docstring": "Return heuristic quality findings for one docstring body."
         },
         {
           "symbol": "_evaluate_symbol_docstring",
@@ -223,7 +266,7 @@
           "symbol": "_is_excluded",
           "kind": "function",
           "line": 222,
-          "docstring": "Identify paths that belong to excluded repository directories during catalog scans."
+          "docstring": "Return True when a path should be skipped from the scan."
         },
         {
           "symbol": "_record_to_payload",
@@ -257,9 +300,22 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_quality_notes",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_is_excluded",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 2,
+        "status": "needs_review"
       }
     },
     {
@@ -342,19 +398,19 @@
           "symbol": "_is_excluded",
           "kind": "function",
           "line": 109,
-          "docstring": "Identify paths that pass through directories excluded from docstring inventory scans."
+          "docstring": "Return True when the path includes an excluded directory name."
         },
         {
           "symbol": "_iter_python_files",
           "kind": "function",
           "line": 115,
-          "docstring": "Enumerate sorted Python files beneath the configured audit scan roots."
+          "docstring": "Return sorted Python files found beneath the configured scan roots."
         },
         {
           "symbol": "_relative_display_path",
           "kind": "function",
           "line": 130,
-          "docstring": "Derive stable inventory display paths for repository and ad hoc scan roots."
+          "docstring": "Return a stable display path relative to repository or requested scan roots."
         },
         {
           "symbol": "collect_docstrings",
@@ -388,9 +444,28 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_is_excluded",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_iter_python_files",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_relative_display_path",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 3,
+        "status": "needs_review"
       }
     },
     {
@@ -413,13 +488,13 @@
           "symbol": "validate_checklist",
           "kind": "function",
           "line": 33,
-          "docstring": "Identify missing governance sections in the required productization checklist."
+          "docstring": "Return validation errors for missing required governance sections."
         },
         {
           "symbol": "main",
           "kind": "function",
           "line": 47,
-          "docstring": "Execute checklist structure validation and report the resulting process status."
+          "docstring": "Run checklist structure validation and return a process exit code."
         }
       ],
       "completeness": {
@@ -429,9 +504,22 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "validate_checklist",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "main",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 2,
+        "status": "needs_review"
       }
     },
     {
@@ -454,25 +542,25 @@
           "symbol": "find_conflict_markers",
           "kind": "function",
           "line": 25,
-          "docstring": "Locate merge-conflict marker diagnostics within a repository text file."
+          "docstring": "Return merge-conflict marker diagnostics for ``path``."
         },
         {
           "symbol": "find_duplicate_top_level_definitions",
           "kind": "function",
           "line": 40,
-          "docstring": "Detect repeated top-level Python class or function definitions in one file."
+          "docstring": "Return duplicate top-level Python definitions for ``path``."
         },
         {
           "symbol": "find_python_whitespace_issues",
           "kind": "function",
           "line": 61,
-          "docstring": "Detect Python trailing whitespace and indentation-style inconsistencies in one file."
+          "docstring": "Return trailing whitespace and mixed-indentation diagnostics for ``path``."
         },
         {
           "symbol": "main",
           "kind": "function",
           "line": 91,
-          "docstring": "Execute the repository hygiene scan for conflicts, duplicates, and whitespace issues."
+          "docstring": "Run the repository hygiene scan."
         }
       ],
       "completeness": {
@@ -482,9 +570,34 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "find_conflict_markers",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "find_duplicate_top_level_definitions",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "find_python_whitespace_issues",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "main",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 4,
+        "status": "needs_review"
       }
     },
     {
@@ -507,7 +620,7 @@
           "symbol": "_tracked_files",
           "kind": "function",
           "line": 42,
-          "docstring": "Enumerate git-tracked files used as default text-encoding scan candidates."
+          "docstring": "Return tracked repository files from git."
         },
         {
           "symbol": "_resolve_candidates",
@@ -519,13 +632,13 @@
           "symbol": "scan_candidates",
           "kind": "function",
           "line": 91,
-          "docstring": "Inspect candidate text assets for invalid UTF-8 bytes and symbolic Unicode escapes."
+          "docstring": "Return invalid UTF-8 bytes and Unicode-escape violations for each candidate file."
         },
         {
           "symbol": "main",
           "kind": "function",
           "line": 115,
-          "docstring": "Execute repository text-encoding checks and print remediation guidance on failure."
+          "docstring": "Run repository text encoding checks and emit remediation guidance on failure."
         }
       ],
       "completeness": {
@@ -535,9 +648,28 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_tracked_files",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "scan_candidates",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "main",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 3,
+        "status": "needs_review"
       }
     },
     {
@@ -560,7 +692,7 @@
           "symbol": "render_manual_hook_usage",
           "kind": "function",
           "line": 31,
-          "docstring": "Render the advisory that redirects direct pre-commit hook usage to the wrapper suite."
+          "docstring": "Return a formatted advisory for manual hook invocations."
         },
         {
           "symbol": "main",
@@ -576,9 +708,16 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "render_manual_hook_usage",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 1,
+        "status": "needs_review"
       }
     },
     {
@@ -643,7 +782,7 @@
           "symbol": "PrecommitFilter.build_repository_inventory",
           "kind": "function",
           "line": 112,
-          "docstring": "Enumerate tracked Python files for hook-scoped pre-commit filtering."
+          "docstring": "Return tracked Python files in the repository."
         },
         {
           "symbol": "PrecommitFilter.sync_manifest",
@@ -661,7 +800,7 @@
           "symbol": "PrecommitFilter.determine_paths",
           "kind": "function",
           "line": 160,
-          "docstring": "Resolve the concrete repository paths selected for one filtered hook run."
+          "docstring": "Return the paths that should run for ``hook_id``."
         },
         {
           "symbol": "PrecommitFilter.record_result",
@@ -685,7 +824,7 @@
           "symbol": "PrecommitFilter.verify_index_clean",
           "kind": "function",
           "line": 236,
-          "docstring": "Preserve the historical clean-index compatibility check for wrapper callers."
+          "docstring": "Return ``True`` for compatibility with the original interface."
         },
         {
           "symbol": "PrecommitFilter.set_hook_state",
@@ -697,7 +836,7 @@
           "symbol": "PrecommitFilter.get_hook_state",
           "kind": "function",
           "line": 246,
-          "docstring": "Expose an isolated copy of persisted manifest state for one hook identifier."
+          "docstring": "Return a copy of the manifest state for ``hook_id``."
         },
         {
           "symbol": "PrecommitFilter.set_inventory",
@@ -727,7 +866,7 @@
           "symbol": "PrecommitFilter._manifest_path",
           "kind": "function",
           "line": 311,
-          "docstring": "Derive the persisted manifest file path associated with one hook identifier."
+          "docstring": "Return the on-disk manifest path for ``hook_id``."
         },
         {
           "symbol": "PrecommitFilter._commit_pending_manifests",
@@ -749,9 +888,40 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "PrecommitFilter.build_repository_inventory",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "PrecommitFilter.determine_paths",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "PrecommitFilter.verify_index_clean",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "PrecommitFilter.get_hook_state",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "PrecommitFilter._manifest_path",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 5,
+        "status": "needs_review"
       }
     },
     {
@@ -768,7 +938,7 @@
           "symbol": "render_pytest_wrapper_warning",
           "kind": "function",
           "line": 11,
-          "docstring": "Render the warning that redirects direct pytest usage to the canonical test wrapper."
+          "docstring": "Return a formatted warning for naked pytest invocations."
         }
       ],
       "completeness": {
@@ -778,9 +948,16 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "render_pytest_wrapper_warning",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 1,
+        "status": "needs_review"
       }
     },
     {
@@ -857,19 +1034,19 @@
           "symbol": "_default_python_candidates",
           "kind": "function",
           "line": 185,
-          "docstring": "Collect default Python files covered by full quality-suite execution."
+          "docstring": "Return default Python candidates for full-suite runs."
         },
         {
           "symbol": "_script_python_targets",
           "kind": "function",
           "line": 191,
-          "docstring": "Filter the current path selection down to Python files under the scripts tree."
+          "docstring": "Return Python files under ``scripts/`` from the current path selection."
         },
         {
           "symbol": "_default_script_candidates",
           "kind": "function",
           "line": 205,
-          "docstring": "Collect default script-module files covered by interrogate docstring checks."
+          "docstring": "Return default script-module candidates for interrogate checks."
         },
         {
           "symbol": "_collect_text_files",
@@ -881,7 +1058,7 @@
           "symbol": "_default_text_candidates",
           "kind": "function",
           "line": 230,
-          "docstring": "Collect tracked text-like files covered by the UTF-8 compliance hook."
+          "docstring": "Return tracked text-like files for the UTF-8 compliance hook."
         },
         {
           "symbol": "resolve_targeted_paths",
@@ -917,7 +1094,7 @@
           "symbol": "_targeted_command",
           "kind": "function",
           "line": 367,
-          "docstring": "Narrow a check command to selected paths when the hook supports targeted execution."
+          "docstring": "Return ``check.command`` narrowed to ``selected_paths`` when appropriate."
         },
         {
           "symbol": "_filtered_checks",
@@ -947,7 +1124,7 @@
           "symbol": "_run_check",
           "kind": "function",
           "line": 437,
-          "docstring": "Execute one quality check and capture its status, output, and elapsed duration."
+          "docstring": "Run a single check command and return exit code, output, and duration."
         },
         {
           "symbol": "_run_interrogate_followup",
@@ -971,25 +1148,25 @@
           "symbol": "_should_skip_global_hook",
           "kind": "function",
           "line": 515,
-          "docstring": "Decide whether a global hook is unnecessary for the current targeted run."
+          "docstring": "Return ``True`` when a global hook should be skipped for this run."
         },
         {
           "symbol": "_prepare_check",
           "kind": "function",
           "line": 521,
-          "docstring": "Construct the executable check definition for the current path selection."
+          "docstring": "Return the executable check definition for the current path selection."
         },
         {
           "symbol": "_execute_checks",
           "kind": "function",
           "line": 535,
-          "docstring": "Execute prepared quality checks and compute the aggregate suite exit code."
+          "docstring": "Run the configured checks and return their results plus an aggregate exit code."
         },
         {
           "symbol": "_resolve_scope_targets",
           "kind": "function",
           "line": 570,
-          "docstring": "Resolve Python, text, and script target sets for the requested suite scope."
+          "docstring": "Return Python, text, and script target sets for the requested ``scope``."
         },
         {
           "symbol": "_run_suite",
@@ -1001,7 +1178,7 @@
           "symbol": "main",
           "kind": "function",
           "line": 613,
-          "docstring": "Execute the unified pre-commit suite and write wrapper summary artifacts."
+          "docstring": "Run the pre-commit suite and write summary artifacts."
         }
       ],
       "completeness": {
@@ -1011,9 +1188,76 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_default_python_candidates",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_script_python_targets",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_default_script_candidates",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_default_text_candidates",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_targeted_command",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_run_check",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_should_skip_global_hook",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_prepare_check",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_execute_checks",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_resolve_scope_targets",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "main",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 11,
+        "status": "needs_review"
       }
     },
     {
@@ -1096,19 +1340,19 @@
           "symbol": "_run_pytest",
           "kind": "function",
           "line": 219,
-          "docstring": "Execute pytest in a subprocess and persist its combined output plus duration."
+          "docstring": "Run pytest in a subprocess and capture output plus duration."
         },
         {
           "symbol": "_supports_inline_execution",
           "kind": "function",
           "line": 233,
-          "docstring": "Decide whether a lightweight single-target pytest run can execute inline safely."
+          "docstring": "Return ``True`` when inline pytest execution can be used safely."
         },
         {
           "symbol": "_run_pytest_inline",
           "kind": "function",
           "line": 243,
-          "docstring": "Execute pytest inline for focused single-target selections with wrapper gating."
+          "docstring": "Run pytest inline for lightweight single-target invocations."
         },
         {
           "symbol": "parse_args",
@@ -1130,9 +1374,28 @@
         "missing_count": 0
       },
       "quality_audit": {
-        "flagged_entries": [],
-        "flagged_count": 0,
-        "status": "pass"
+        "flagged_entries": [
+          {
+            "symbol": "_run_pytest",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_supports_inline_execution",
+            "flags": [
+              "generic_prefix"
+            ]
+          },
+          {
+            "symbol": "_run_pytest_inline",
+            "flags": [
+              "generic_prefix"
+            ]
+          }
+        ],
+        "flagged_count": 3,
+        "status": "needs_review"
       }
     },
     {
@@ -1467,5 +1730,565 @@
         "status": "pass"
       }
     }
-  ]
+  ],
+  "docstring_remediation": {
+    "summary": {
+      "total_remediation_targets": 42,
+      "missing_docstring_insertions": 0,
+      "existing_docstring_quality_upgrades": 42,
+      "affected_files": 11,
+      "initial_docstrings_aggregated": 181,
+      "initial_symbols_total": 181,
+      "initial_missing_docstrings": 0,
+      "initial_flagged_docstrings": 42
+    },
+    "targets": [
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "_expect_table",
+        "kind": "function",
+        "line": 14,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a nested TOML table or raise ``SystemExit``.",
+        "replacement_docstring": "Validate that a TOML key contains the nested table required by automation loaders.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "_expect_list",
+        "kind": "function",
+        "line": 23,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a nested TOML list or raise ``SystemExit``.",
+        "replacement_docstring": "Validate that a TOML key contains the list required by automation loaders.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "load_dev_dependency_specs",
+        "kind": "function",
+        "line": 32,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return specifiers declared in the ``dev`` optional dependency group.",
+        "replacement_docstring": "Extract normalized package specifiers from the project dev dependency group.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "resolve_missing_dependencies",
+        "kind": "function",
+        "line": 60,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return install specs and unresolved packages for missing modules.",
+        "replacement_docstring": "Resolve unavailable runtime modules into installable dev dependency specifiers.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "gather_missing_dependencies",
+        "kind": "function",
+        "line": 89,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return dependency specs that still need to be installed.",
+        "replacement_docstring": "Collect installable dependency specifiers and fail on undeclared required packages.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "build_pip_install_command",
+        "kind": "function",
+        "line": 107,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a pip install command for the active interpreter.",
+        "replacement_docstring": "Compose the interpreter-local pip command used for toolchain self-installation.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/_automation_shared.py",
+        "symbol": "build_git_diff_commands",
+        "kind": "function",
+        "line": 163,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return git commands used to determine changed files.",
+        "replacement_docstring": "Compose git queries that enumerate changed, staged, and optional untracked files.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/aggregate_project_docstrings.py",
+        "symbol": "_quality_notes",
+        "kind": "function",
+        "line": 125,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return heuristic quality findings for one docstring body.",
+        "replacement_docstring": "Detect heuristic docstring quality findings for catalog remediation workflows.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/aggregate_project_docstrings.py",
+        "symbol": "_is_excluded",
+        "kind": "function",
+        "line": 222,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return True when a path should be skipped from the scan.",
+        "replacement_docstring": "Identify paths that belong to excluded repository directories during catalog scans.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/audit_docstrings.py",
+        "symbol": "_is_excluded",
+        "kind": "function",
+        "line": 109,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return True when the path includes an excluded directory name.",
+        "replacement_docstring": "Identify paths that pass through directories excluded from docstring inventory scans.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/audit_docstrings.py",
+        "symbol": "_iter_python_files",
+        "kind": "function",
+        "line": 115,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return sorted Python files found beneath the configured scan roots.",
+        "replacement_docstring": "Enumerate sorted Python files beneath the configured audit scan roots.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/audit_docstrings.py",
+        "symbol": "_relative_display_path",
+        "kind": "function",
+        "line": 130,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a stable display path relative to repository or requested scan roots.",
+        "replacement_docstring": "Derive stable inventory display paths for repository and ad hoc scan roots.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_checklist_structure.py",
+        "symbol": "validate_checklist",
+        "kind": "function",
+        "line": 33,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return validation errors for missing required governance sections.",
+        "replacement_docstring": "Identify missing governance sections in the required productization checklist.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_checklist_structure.py",
+        "symbol": "main",
+        "kind": "function",
+        "line": 47,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run checklist structure validation and return a process exit code.",
+        "replacement_docstring": "Execute checklist structure validation and report the resulting process status.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_conflicts.py",
+        "symbol": "find_conflict_markers",
+        "kind": "function",
+        "line": 25,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return merge-conflict marker diagnostics for ``path``.",
+        "replacement_docstring": "Locate merge-conflict marker diagnostics within a repository text file.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_conflicts.py",
+        "symbol": "find_duplicate_top_level_definitions",
+        "kind": "function",
+        "line": 40,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return duplicate top-level Python definitions for ``path``.",
+        "replacement_docstring": "Detect repeated top-level Python class or function definitions in one file.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_conflicts.py",
+        "symbol": "find_python_whitespace_issues",
+        "kind": "function",
+        "line": 61,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return trailing whitespace and mixed-indentation diagnostics for ``path``.",
+        "replacement_docstring": "Detect Python trailing whitespace and indentation-style inconsistencies in one file.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_conflicts.py",
+        "symbol": "main",
+        "kind": "function",
+        "line": 91,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run the repository hygiene scan.",
+        "replacement_docstring": "Execute the repository hygiene scan for conflicts, duplicates, and whitespace issues.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_unicode_escapes.py",
+        "symbol": "_tracked_files",
+        "kind": "function",
+        "line": 42,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return tracked repository files from git.",
+        "replacement_docstring": "Enumerate git-tracked files used as default text-encoding scan candidates.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_unicode_escapes.py",
+        "symbol": "scan_candidates",
+        "kind": "function",
+        "line": 91,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return invalid UTF-8 bytes and Unicode-escape violations for each candidate file.",
+        "replacement_docstring": "Inspect candidate text assets for invalid UTF-8 bytes and symbolic Unicode escapes.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/check_unicode_escapes.py",
+        "symbol": "main",
+        "kind": "function",
+        "line": 115,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run repository text encoding checks and emit remediation guidance on failure.",
+        "replacement_docstring": "Execute repository text-encoding checks and print remediation guidance on failure.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/manual_hook_warning.py",
+        "symbol": "render_manual_hook_usage",
+        "kind": "function",
+        "line": 31,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a formatted advisory for manual hook invocations.",
+        "replacement_docstring": "Render the advisory that redirects direct pre-commit hook usage to the wrapper suite.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/precommit_filter.py",
+        "symbol": "PrecommitFilter.build_repository_inventory",
+        "kind": "function",
+        "line": 112,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return tracked Python files in the repository.",
+        "replacement_docstring": "Enumerate tracked Python files for hook-scoped pre-commit filtering.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/precommit_filter.py",
+        "symbol": "PrecommitFilter.determine_paths",
+        "kind": "function",
+        "line": 160,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return the paths that should run for ``hook_id``.",
+        "replacement_docstring": "Resolve the concrete repository paths selected for one filtered hook run.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/precommit_filter.py",
+        "symbol": "PrecommitFilter.verify_index_clean",
+        "kind": "function",
+        "line": 236,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return ``True`` for compatibility with the original interface.",
+        "replacement_docstring": "Preserve the historical clean-index compatibility check for wrapper callers.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/precommit_filter.py",
+        "symbol": "PrecommitFilter.get_hook_state",
+        "kind": "function",
+        "line": 246,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a copy of the manifest state for ``hook_id``.",
+        "replacement_docstring": "Expose an isolated copy of persisted manifest state for one hook identifier.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/precommit_filter.py",
+        "symbol": "PrecommitFilter._manifest_path",
+        "kind": "function",
+        "line": 311,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return the on-disk manifest path for ``hook_id``.",
+        "replacement_docstring": "Derive the persisted manifest file path associated with one hook identifier.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/pytest_guard.py",
+        "symbol": "render_pytest_wrapper_warning",
+        "kind": "function",
+        "line": 11,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return a formatted warning for naked pytest invocations.",
+        "replacement_docstring": "Render the warning that redirects direct pytest usage to the canonical test wrapper.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_default_python_candidates",
+        "kind": "function",
+        "line": 185,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return default Python candidates for full-suite runs.",
+        "replacement_docstring": "Collect default Python files covered by full quality-suite execution.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_script_python_targets",
+        "kind": "function",
+        "line": 191,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return Python files under ``scripts/`` from the current path selection.",
+        "replacement_docstring": "Filter the current path selection down to Python files under the scripts tree.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_default_script_candidates",
+        "kind": "function",
+        "line": 205,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return default script-module candidates for interrogate checks.",
+        "replacement_docstring": "Collect default script-module files covered by interrogate docstring checks.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_default_text_candidates",
+        "kind": "function",
+        "line": 230,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return tracked text-like files for the UTF-8 compliance hook.",
+        "replacement_docstring": "Collect tracked text-like files covered by the UTF-8 compliance hook.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_targeted_command",
+        "kind": "function",
+        "line": 367,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return ``check.command`` narrowed to ``selected_paths`` when appropriate.",
+        "replacement_docstring": "Narrow a check command to selected paths when the hook supports targeted execution.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_run_check",
+        "kind": "function",
+        "line": 437,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run a single check command and return exit code, output, and duration.",
+        "replacement_docstring": "Execute one quality check and capture its status, output, and elapsed duration.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_should_skip_global_hook",
+        "kind": "function",
+        "line": 515,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return ``True`` when a global hook should be skipped for this run.",
+        "replacement_docstring": "Decide whether a global hook is unnecessary for the current targeted run.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_prepare_check",
+        "kind": "function",
+        "line": 521,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return the executable check definition for the current path selection.",
+        "replacement_docstring": "Construct the executable check definition for the current path selection.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_execute_checks",
+        "kind": "function",
+        "line": 535,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run the configured checks and return their results plus an aggregate exit code.",
+        "replacement_docstring": "Execute prepared quality checks and compute the aggregate suite exit code.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "_resolve_scope_targets",
+        "kind": "function",
+        "line": 570,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return Python, text, and script target sets for the requested ``scope``.",
+        "replacement_docstring": "Resolve Python, text, and script target sets for the requested suite scope.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_precommit_suite.py",
+        "symbol": "main",
+        "kind": "function",
+        "line": 613,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run the pre-commit suite and write summary artifacts.",
+        "replacement_docstring": "Execute the unified pre-commit suite and write wrapper summary artifacts.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_tests.py",
+        "symbol": "_run_pytest",
+        "kind": "function",
+        "line": 219,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run pytest in a subprocess and capture output plus duration.",
+        "replacement_docstring": "Execute pytest in a subprocess and persist its combined output plus duration.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_tests.py",
+        "symbol": "_supports_inline_execution",
+        "kind": "function",
+        "line": 233,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Return ``True`` when inline pytest execution can be used safely.",
+        "replacement_docstring": "Decide whether a lightweight single-target pytest run can execute inline safely.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      },
+      {
+        "action": "replace_docstring",
+        "file": "scripts/run_tests.py",
+        "symbol": "_run_pytest_inline",
+        "kind": "function",
+        "line": 243,
+        "flags": [
+          "generic_prefix"
+        ],
+        "original_docstring": "Run pytest inline for lightweight single-target invocations.",
+        "replacement_docstring": "Execute pytest inline for focused single-target selections with wrapper gating.",
+        "rationale": "Replace generic return/run phrasing with a domain-specific contract statement."
+      }
+    ]
+  }
 }

@@ -29,7 +29,7 @@ def _format_command_block(commands: Iterable[str]) -> str:
 
 
 def render_manual_hook_usage(hook_id: str | None, *, width: int = 88) -> str:
-    """Return a formatted advisory for manual hook invocations."""
+    """Render the advisory that redirects direct pre-commit hook usage to the wrapper suite."""
 
     normalized = hook_id or "quality hook"
     intro = (

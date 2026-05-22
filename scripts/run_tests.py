@@ -217,7 +217,7 @@ def _build_pytest_command(
 
 
 def _run_pytest(command: Sequence[str]) -> tuple[int, str, float]:
-    """Run pytest in a subprocess and capture output plus duration."""
+    """Execute pytest in a subprocess and persist its combined output plus duration."""
 
     SUMMARY_DIR.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
@@ -231,7 +231,7 @@ def _run_pytest(command: Sequence[str]) -> tuple[int, str, float]:
 
 
 def _supports_inline_execution(selection: TestSelection, extra_args: Sequence[str]) -> bool:
-    """Return ``True`` when inline pytest execution can be used safely."""
+    """Decide whether a lightweight single-target pytest run can execute inline safely."""
 
     return (
         selection.scope == Scope.PATHS
@@ -241,7 +241,7 @@ def _supports_inline_execution(selection: TestSelection, extra_args: Sequence[st
 
 
 def _run_pytest_inline(command: Sequence[str]) -> tuple[int, str, float]:
-    """Run pytest inline for lightweight single-target invocations."""
+    """Execute pytest inline for focused single-target selections with wrapper gating."""
 
     SUMMARY_DIR.mkdir(parents=True, exist_ok=True)
     if list(command[:3]) != [sys.executable, "-m", "pytest"]:

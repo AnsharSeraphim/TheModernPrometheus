@@ -23,7 +23,7 @@ def iter_files(root: Path) -> Iterable[Path]:
 
 
 def find_conflict_markers(path: Path) -> list[str]:
-    """Return merge-conflict marker diagnostics for ``path``."""
+    """Locate merge-conflict marker diagnostics within a repository text file."""
 
     errors: list[str] = []
     try:
@@ -38,7 +38,7 @@ def find_conflict_markers(path: Path) -> list[str]:
 
 
 def find_duplicate_top_level_definitions(path: Path) -> list[str]:
-    """Return duplicate top-level Python definitions for ``path``."""
+    """Detect repeated top-level Python class or function definitions in one file."""
 
     if path.suffix != ".py":
         return []
@@ -59,7 +59,7 @@ def find_duplicate_top_level_definitions(path: Path) -> list[str]:
 
 
 def find_python_whitespace_issues(path: Path) -> list[str]:
-    """Return trailing whitespace and mixed-indentation diagnostics for ``path``."""
+    """Detect Python trailing whitespace and indentation-style inconsistencies in one file."""
 
     if path.suffix != ".py":
         return []
@@ -89,7 +89,7 @@ def find_python_whitespace_issues(path: Path) -> list[str]:
 
 
 def main(argv: list[str]) -> int:
-    """Run the repository hygiene scan."""
+    """Execute the repository hygiene scan for conflicts, duplicates, and whitespace issues."""
 
     root = Path(argv[1]) if len(argv) > 1 else Path(__file__).resolve().parents[1]
     errors: list[str] = []
