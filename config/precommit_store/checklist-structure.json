@@ -5,6 +5,9 @@
   "Final-Productization-Checklist.md": {
     "skip": "Y"
   },
+  "build/automation_contract/docstring_remediation/apply_docstring_remediation.py": {
+    "skip": "N"
+  },
   "scripts/__init__.py": {
     "skip": "N"
   },
