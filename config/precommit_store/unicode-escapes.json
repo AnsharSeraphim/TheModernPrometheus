@@ -41,42 +41,6 @@
   "README.md": {
     "skip": "Y"
   },
-  "build/automation_contract/docstring_inventory.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_inventory_all_roots.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/README.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/aggregated_docstrings_after_apply.json": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/aggregated_docstrings_enriched.json": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/apply_docstring_remediation.py": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/changed_files.txt": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/codex_docstring_remediation_prompt.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/docstring_inventory_after_apply.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/docstring_inventory_all_roots_after_apply.md": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/docstring_remediation_manifest.json": {
-    "skip": "Y"
-  },
-  "build/automation_contract/docstring_remediation/validation_report.json": {
-    "skip": "Y"
-  },
   "config/README.md": {
     "skip": "Y"
   },

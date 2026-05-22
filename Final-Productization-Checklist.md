@@ -42,8 +42,11 @@ Example format:
 
 ## Outstanding Tasks
 
-- **INSTRUCTIONS FOR USER:** REPLACE THIS LINE WITH YOUR FIRST DIRECTIVES FOR CODING-AGENT DEVELOPMENT. 
-  - Example: - [ ] Ingest `XYZ-Conversation-Log-About-Project-Design.txt` to understand the project vision and create exhaustive maximal actionable granular checklist entries, following the template above, to outline a development plan to create it in the project.
+- [ ] **No open productization tasks currently captured. Add the next actionable task here before dispatching another agent.**
+  - Scope: Keep this section limited to unresolved, execution-ready work only; remove this placeholder once a real task is added.
+  - Target Files: `Final-Productization-Checklist.md`
+  - Dependencies: None
+  - DONE WHEN: At least one concrete actionable task replaces this placeholder, or the checklist is intentionally left empty with explicit user direction.
   
 ---
 
