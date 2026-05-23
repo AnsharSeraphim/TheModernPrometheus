@@ -5,6 +5,7 @@
 **FOLLOW THE BELOW DIRECTIVES WHEN ADDRESSING *ANY* ENTRY BELOW**
 - Record only open work. When a task is finished, **delete it** so only unresolved entries remain.
 - Rewrite partially completed tasks as explicit, actionable "remaining work" items.
+- Any session that implements or remediates checklist-scoped code **must** update this checklist in the same commit: remove fully completed entries and reword partial entries to the exact remaining implementation surface. Progress-note annotations are prohibited.
 - Run remediation loops through `python scripts/run_precommit_suite.py` (never direct hook calls).
 - Source of truth for current pylint diagnostics is `config/precommit_store/pylint_failures.json`.
 - Each entry should represent a specific action / goal / gap to address in the scope of a session. 
