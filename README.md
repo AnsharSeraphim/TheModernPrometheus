@@ -69,6 +69,15 @@ You can use this generic monolithic prompt if you've localized all pending tasks
 - `Final-Productization-Checklist.md`: Open, actionable backlog for unresolved template hardening work.
 - `Final-Optimization-Checklist.md`: Tracking for tests above the latency budget with explicit rationale.
 
+## Checklist policy quick reference (humans + coding agents)
+
+- `Final-Productization-Checklist.md` stores unresolved, execution-ready work items; remove entries when fully complete and rewrite partial items as explicit remaining scope.
+- `Final-Optimization-Checklist.md` governs tests that exceed the 0.20s latency budget and must separate:
+  - pending comprehensive optimization audits, and
+  - confirmed justified latency exceptions.
+- The `✅` marker in `Final-Optimization-Checklist.md` is reserved for exceptions that have completed a test-level code audit proving further optimization would compromise fidelity/purpose.
+- Apply the same checklist contract across GPT Codex, Claude Code, GitHub Copilot, and manual human workflows so documentation and execution evidence remain consistent.
+
 ## Start here
 
 1. Create and activate a virtual environment.

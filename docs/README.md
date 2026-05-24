@@ -27,6 +27,8 @@ Use this index to find operational guidance by audience.
 ## Agent operators
 
 - [`agent_bootstrap/README.md`](agent_bootstrap/README.md): recipe for generating bootstrap JSON/markdown artifacts.
+- [`../CLAUDE.md`](../CLAUDE.md): Claude Code-specific execution guidance aligned to repository policy.
+- [`../COPILOT.md`](../COPILOT.md): GitHub Copilot-specific execution guidance aligned to repository policy.
 - [`../scripts/README.md`](../scripts/README.md): wrapper command surfaces and utility behavior.
 - [`../tests/README.md`](../tests/README.md): test suite coverage map.
 - [`../context/recipes/documentation_parity_audit_session.md`](../context/recipes/documentation_parity_audit_session.md): repeatable rubric for documentation parity audits.

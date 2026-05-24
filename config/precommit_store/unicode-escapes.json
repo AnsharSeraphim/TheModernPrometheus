@@ -32,6 +32,9 @@
   "CONTRIBUTING.md": {
     "skip": "Y"
   },
+  "COPILOT.md": {
+    "skip": "Y"
+  },
   "Final-Optimization-Checklist.md": {
     "skip": "Y"
   },
