@@ -222,6 +222,8 @@ Checklists are not status journals; they are an execution queue.
 
 - Product work, quality debt, and documentation debt should be captured as actionable entries in [`Final-Productization-Checklist.md`](../Final-Productization-Checklist.md).
 - Tests exceeding latency budget should be documented in [`Final-Optimization-Checklist.md`](../Final-Optimization-Checklist.md).
+- In `Final-Optimization-Checklist.md`, reserve `✅` strictly for tests with a completed code audit confirming further optimization would compromise fidelity/purpose.
+- Keep over-budget tests separated into pending optimization audits versus confirmed justified exceptions; do not mix these states.
 
 Strong checklist entries include:
 
@@ -281,6 +283,10 @@ Claude Code sessions generally benefit from strong up-front instruction packets.
 If using repo-local Claude guidance, align with:
 
 - [`CLAUDE.md`](../CLAUDE.md)
+
+If using repo-local GitHub Copilot guidance, align with:
+
+- [`COPILOT.md`](../COPILOT.md)
 
 ### 10.4 Other coding agents
 

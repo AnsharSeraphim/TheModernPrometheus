@@ -59,6 +59,13 @@
 - If you modify a test file or create a new test, the test latency budget is 0.20s. If a new or modified test cannot be optimized to run at this time or under, it must be documented in `Final-Optimization-Checklist.md` with a justification for its latency overage and inability to be further optimized.
 - Do not modify `Final-Optimization-Checklist.md` for unchanged tests, unless specifically directed.
 
+## Checklist governance parity (all contributors and all agent runtimes)
+- `Final-Productization-Checklist.md` is the canonical backlog for unresolved implementation/documentation/tooling work. Keep entries actionable, dependency-aware, and removable when complete.
+- `Final-Optimization-Checklist.md` is the canonical ledger for over-budget tests tied to the 0.20s policy; maintain separate sections for pending optimization audits versus code-audited justified exceptions.
+- In `Final-Optimization-Checklist.md`, the `✅` symbol is reserved for confirmed justified exceptions only after an explicit test-level code audit proves additional optimization would compromise test fidelity/purpose.
+- Apply checklist policy consistently across human contributors and coding-agent platforms (GPT Codex, Claude Code, GitHub Copilot, and others); do not assume runtime-specific implicit behavior.
+- When checklist governance changes, update repository-facing documentation (`README.md`, `docs/new_user_onboarding.md`, agent guidance files) in the same session to preserve instruction parity.
+
 ## Operational hygiene
 - Update `docs/release_notes.md` when tooling or user-facing behavior changes.
 - Keep manifests, release indexes, and evidence logs consistent with your edits.
